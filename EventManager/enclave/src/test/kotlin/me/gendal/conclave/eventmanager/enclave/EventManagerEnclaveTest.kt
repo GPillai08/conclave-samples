@@ -147,6 +147,63 @@ class EventManagerEnclaveTest {
       * Check the IDENTITY of the 'winner' is returned, not the value
       *
        */
+        /**
+         * avg 1
+         * 1. setup a computation for avg with 3 participants - alice, bob and charley
+         * 2. Submit a different value for alice, bob and charley
+         * 3. Submit a GetResults
+         * 4. Assert the value with the correct one
+         **/
+        val setupAverageComputation = SetupComputation(
+            Computation(
+                "AverageComputation",
+                Computation.ComputationType.avg,
+                listOf(keys["alice"]!!.publicKey, keys["bob"]!!.publicKey, keys["charley"]!!.publicKey),
+                3
+            )
+        )
+        var responseSetup = enclaveRequest(setupAverageComputation, EnclaveMessageResponse.serializer(), postOffices["charley"]!!)
+        assertSame(ResponseCode.SUCCESS, responseSetup[0].responseCode)
+
+        var submissionAlice = "100"
+        var submissionMessageForAlice  = "Submission from Alice"
+        val submitValueForAlice = SubmitValue("AverageComputation", Submission(submissionAlice, submissionMessageForAlice))
+        var responseForSubmissionByAlice = enclaveRequest(submitValueForAlice, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByAlice[0].responseCode)
+
+        var submissionBob = "200"
+        var submissionMessageForBob  = "Submission from Bob"
+        val submitValueForBob = SubmitValue("AverageComputation", Submission(submissionBob, submissionMessageForBob))
+        var responseForSubmissionByBob = enclaveRequest(submitValueForBob, EnclaveMessageResponse.serializer(), postOffices["bob"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByBob[0].responseCode)
+
+        var submissionCharley = "200"
+        var submissionMessageForCharley  = "Submission from Charley"
+        val submitValueForCharley = SubmitValue("AverageComputation", Submission(submissionCharley, submissionMessageForCharley))
+        var responseForSubmissionByCharley = enclaveRequest(submitValueForCharley, EnclaveMessageResponse.serializer(), postOffices["charley"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByCharley[0].responseCode)
+
+        val getComputationResult = GetComputationResult("AverageComputation")
+        var responseForGetComputationResult = enclaveRequest(getComputationResult, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForGetComputationResult[0].responseCode)
+        assertTrue("166.66666666666666".equals(responseForGetComputationResult[0].message))
+
+
+        /**
+         * avg 2
+         * 1. setup a computation for avg with 3 participants - alice, bob and charley
+         * 2. Submit a zero value for alice, bob and charley
+         * 3. Submit a GetResults
+         * 4. Assert the value with the correct one
+         *
+         * avg 3
+         * 1. setup a computation for avg with 3 participants - alice, bob and charley
+         * 2. Submit a negative value for alice, bob and charley
+         * 3. Submit a GetResults
+         * 4. Assert the value with the correct one
+         */
+
+
     }
 
     @Test
