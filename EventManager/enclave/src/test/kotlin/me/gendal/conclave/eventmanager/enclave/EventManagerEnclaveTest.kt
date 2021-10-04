@@ -1,6 +1,7 @@
 package me.gendal.conclave.eventmanager.enclave
 
 import com.r3.conclave.common.EnclaveInstanceInfo
+import com.r3.conclave.common.SHA256Hash
 import com.r3.conclave.host.EnclaveHost
 import com.r3.conclave.host.MailCommand
 import com.r3.conclave.mail.Curve25519PrivateKey
@@ -256,6 +257,46 @@ class EventManagerEnclaveTest {
         * Confirm that locking does not take place
         *
          */
+
+    }
+
+    @Test
+    fun `Confirm only submitters of a key can see what other submitters of same key have submitted`() {
+        val setupKeyComputation = SetupComputation(
+            Computation(
+                "KeyComputation",
+                Computation.ComputationType.key,
+                listOf(keys["alice"]!!.publicKey, keys["bob"]!!.publicKey, keys["charley"]!!.publicKey),
+                2
+            )
+        )
+        var responseSetup = enclaveRequest(setupKeyComputation, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseSetup[0].responseCode)
+
+        var submissionAlice = "KEY-Ganesh"
+        var submissionMessageForAlice  = "Submission from Alice"
+        val submitValueForAlice = SubmitValue("KeyComputation", Submission(submissionAlice, submissionMessageForAlice))
+        var responseForSubmissionByAlice = enclaveRequest(submitValueForAlice, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByAlice[0].responseCode)
+
+        var submissionBob = "Key-BOB"
+        var submissionMessageForBob  = "Submission from Bob"
+        val submitValueForBob = SubmitValue("KeyComputation", Submission(submissionBob, submissionMessageForBob))
+        var responseForSubmissionByBob = enclaveRequest(submitValueForBob, EnclaveMessageResponse.serializer(), postOffices["bob"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByBob[0].responseCode)
+
+        val getComputationResult = GetComputationResult("KeyComputation")
+        var responseForGetComputationResult = enclaveRequest(getComputationResult, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.CHECK_INBOX, responseForGetComputationResult[0].responseCode)
+       // assertTrue(keys["alice"]!!.publicKey.toString().equals(responseForGetComputationResult[0].message))
+
+        val messages = inbox(
+            "KeyMatch" + SHA256Hash.hash(keys["alice"]!!.publicKey.encoded).toString(),
+            postOffices["alice"]!!,
+            KeyMatcherResult.serializer()
+        )
+        println('1')
+
     }
 
     @Test
