@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/EventManager.iml" filepath="$PROJECT_DIR$/.idea/EventManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/client/EventManager.client.iml" filepath="$PROJECT_DIR$/.idea/modules/client/EventManager.client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/client/EventManager.client.main.iml" filepath="$PROJECT_DIR$/.idea/modules/client/EventManager.client.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/client/EventManager.client.test.iml" filepath="$PROJECT_DIR$/.idea/modules/client/EventManager.client.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/EventManager.common.iml" filepath="$PROJECT_DIR$/.idea/modules/common/EventManager.common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/EventManager.common.main.iml" filepath="$PROJECT_DIR$/.idea/modules/common/EventManager.common.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/EventManager.common.test.iml" filepath="$PROJECT_DIR$/.idea/modules/common/EventManager.common.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/enclave/EventManager.enclave.iml" filepath="$PROJECT_DIR$/.idea/modules/enclave/EventManager.enclave.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/enclave/EventManager.enclave.main.iml" filepath="$PROJECT_DIR$/.idea/modules/enclave/EventManager.enclave.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/enclave/EventManager.enclave.test.iml" filepath="$PROJECT_DIR$/.idea/modules/enclave/EventManager.enclave.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/host/EventManager.host.iml" filepath="$PROJECT_DIR$/.idea/modules/host/EventManager.host.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/host/EventManager.host.main.iml" filepath="$PROJECT_DIR$/.idea/modules/host/EventManager.host.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/host/EventManager.host.test.iml" filepath="$PROJECT_DIR$/.idea/modules/host/EventManager.host.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/EventManager.main.iml" filepath="$PROJECT_DIR$/.idea/modules/EventManager.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/EventManager.test.iml" filepath="$PROJECT_DIR$/.idea/modules/EventManager.test.iml" />
+    </modules>
+  </component>
+</project>

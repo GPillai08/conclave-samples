@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: com.r3.conclave:native-host-release:1.1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../conclave-sdk-1.1/repo/com/r3/conclave/native-host-release/1.1/native-host-release-1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
