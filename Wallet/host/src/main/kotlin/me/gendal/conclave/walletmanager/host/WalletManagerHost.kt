@@ -1,4 +1,4 @@
-package me.gendal.conclave.eventmanager.host
+package me.gendal.conclave.walletmanager.host
 
 import com.r3.conclave.host.EnclaveHost
 import com.r3.conclave.host.EnclaveLoadException
@@ -11,20 +11,20 @@ import javax.annotation.PostConstruct
 import javax.annotation.PreDestroy
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.protobuf.ProtoBuf
-import me.gendal.conclave.eventmanager.common.SignedData
+import me.gendal.conclave.walletmanager.common.SignedData
 import java.lang.System.*
 import kotlin.jvm.Throws
 
 @ExperimentalSerializationApi
 @RestController
-class EventManagerHost {
+class WalletManagerHost {
     // see build.gradle to see how this setting is propagated from the -PenclaveMode option to the
     // gradle wrapper, if set.
     private val mockMode = getProperty("conclavemode", "mock").equals("mock")
 
     private val idCounter = AtomicLong()
     private val inboxes = HashMap<String, MutableList<ByteArray>>()
-    private val logger = LoggerFactory.getLogger(EventManagerHost::class.java)
+    private val logger = LoggerFactory.getLogger(WalletManagerHost::class.java)
     private lateinit var enclave: EnclaveHost
 
     @Throws(EnclaveLoadException::class, IOException::class)
@@ -37,7 +37,7 @@ class EventManagerHost {
             logger.info("This platform does not support hardware enclaves: " + e.message)
         }
 
-        enclave = EnclaveHost.load("me.gendal.conclave.eventmanager.enclave.EventManagerEnclave");
+        enclave = EnclaveHost.load("me.gendal.conclave.walletmanager.enclave.WalletManagerEnclave");
 
         enclave.start(null) { commands: List<MailCommand?> ->
             for (command in commands) {

@@ -1,7 +1,6 @@
-package me.gendal.conclave.eventmanager.enclave
+package me.gendal.conclave.walletmanager.enclave
 
 import com.r3.conclave.common.EnclaveInstanceInfo
-import com.r3.conclave.common.SHA256Hash
 import com.r3.conclave.host.EnclaveHost
 import com.r3.conclave.host.MailCommand
 import com.r3.conclave.mail.Curve25519PrivateKey
@@ -9,7 +8,7 @@ import com.r3.conclave.mail.PostOffice
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.protobuf.ProtoBuf
-import me.gendal.conclave.eventmanager.common.*
+import me.gendal.conclave.walletmanager.common.*
 import org.junit.jupiter.api.*
 import org.slf4j.LoggerFactory
 import java.util.*
@@ -19,7 +18,7 @@ import kotlin.collections.HashMap
 import org.junit.jupiter.api.Assertions.*
 
 @ExperimentalSerializationApi
-class EventManagerEnclaveTest {
+class WalletManagerEnclaveTest {
 
     private lateinit var enclave: EnclaveHost
     private lateinit var attestation: EnclaveInstanceInfo
@@ -29,11 +28,11 @@ class EventManagerEnclaveTest {
     private val postOffices = HashMap<String, PostOffice>()
 
     private val idCounter = AtomicLong()
-    private val logger = LoggerFactory.getLogger(EventManagerEnclaveTest::class.java)
+    private val logger = LoggerFactory.getLogger(WalletManagerEnclaveTest::class.java)
 
     @BeforeEach
     fun startup() {
-        enclave = EnclaveHost.load("me.gendal.conclave.eventmanager.enclave.EventManagerEnclave");
+        enclave = EnclaveHost.load("me.gendal.conclave.walletmanager.enclave.WalletManagerEnclave");
         enclave.start(null) { commands: List<MailCommand?> ->
             for (command in commands) {
                 if (command is MailCommand.PostMail) {
@@ -262,41 +261,6 @@ class EventManagerEnclaveTest {
 
     @Test
     fun `Confirm only submitters of a key can see what other submitters of same key have submitted`() {
-        val setupKeyComputation = SetupComputation(
-            Computation(
-                "KeyComputation",
-                Computation.ComputationType.key,
-                listOf(keys["alice"]!!.publicKey, keys["bob"]!!.publicKey, keys["charley"]!!.publicKey),
-                2
-            )
-        )
-        var responseSetup = enclaveRequest(setupKeyComputation, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
-        assertSame(ResponseCode.SUCCESS, responseSetup[0].responseCode)
-
-        var submissionAlice = "KEY-Ganesh"
-        var submissionMessageForAlice  = "Submission from Alice"
-        val submitValueForAlice = SubmitValue("KeyComputation", Submission(submissionAlice, submissionMessageForAlice))
-        var responseForSubmissionByAlice = enclaveRequest(submitValueForAlice, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
-        assertSame(ResponseCode.SUCCESS, responseForSubmissionByAlice[0].responseCode)
-
-        var submissionBob = "Key-BOB"
-        var submissionMessageForBob  = "Submission from Bob"
-        val submitValueForBob = SubmitValue("KeyComputation", Submission(submissionBob, submissionMessageForBob))
-        var responseForSubmissionByBob = enclaveRequest(submitValueForBob, EnclaveMessageResponse.serializer(), postOffices["bob"]!!)
-        assertSame(ResponseCode.SUCCESS, responseForSubmissionByBob[0].responseCode)
-
-        val getComputationResult = GetComputationResult("KeyComputation")
-        var responseForGetComputationResult = enclaveRequest(getComputationResult, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
-        assertSame(ResponseCode.CHECK_INBOX, responseForGetComputationResult[0].responseCode)
-       // assertTrue(keys["alice"]!!.publicKey.toString().equals(responseForGetComputationResult[0].message))
-
-        val messages = inbox(
-            "KeyMatch" + SHA256Hash.hash(keys["alice"]!!.publicKey.encoded).toString(),
-            postOffices["alice"]!!,
-            KeyMatcherResult.serializer()
-        )
-        println('1')
-
     }
 
     @Test

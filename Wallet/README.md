@@ -8,7 +8,7 @@ Digital Wallet implements the idea of an enclave that can simultaneously host Ca
 
 The idea is that an enclave of this type could be used to host simple one-off multi-party computations (eg Set up card involves an agreement from the pay server, pay requires a generating a token through pay server ). 
 
-The comments in me/gendal/conclave/eventmanager/enclave/EventManagerEnclave.kt explain more.
+The comments in me/gendal/conclave/walletmanager/enclave/EventManagerEnclave.kt explain more.
 
 The project also includes a command-line application for interacting with the enclave via a simple Spring Boot host server. There are three developer specific enhancements for ease of testing.
 
@@ -31,7 +31,7 @@ The project is set up with a default of 'mock' mode so that it can be used immed
     
 To run the host in any other mode, add `-PenclaveMode=[mock|simulation|debug|Release]` to the end of the gradlew command line in the usual manner.  If running on a Mac, you can use `container-gradle`, also in the usual way.  
 
-Note that the host has been configured by default to listen on port 9999 (versus the Spring Boot default of 8080) in order to be compatible with the default in the container-gradle script.  If connecting to a non mock-mode enclave you will need to ensure the enclave constraint used by the client matches the enclave that is actually running.  See `EventManagerClient.properties` to see how the client constraint is set.
+Note that the host has been configured by default to listen on port 9999 (versus the Spring Boot default of 8080) in order to be compatible with the default in the container-gradle script.  If connecting to a non mock-mode enclave you will need to ensure the enclave constraint used by the client matches the enclave that is actually running.  See `WalletManagerClient.properties` to see how the client constraint is set.
 
 To run the client in native mode, execute `./gradlew client:nativeImage` from the project's root folder. You can edit the `event-client.sh` script in the client folder to make the new native image the default for the demo scripts.  If the native build of the client fails, see the notes in `configure-native-image-build.sh`
     

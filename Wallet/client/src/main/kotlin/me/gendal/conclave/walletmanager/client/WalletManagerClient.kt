@@ -1,4 +1,4 @@
-package me.gendal.conclave.eventmanager.client
+package me.gendal.conclave.walletmanager.client
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.r3.conclave.client.EnclaveConstraint
@@ -10,7 +10,7 @@ import com.r3.conclave.mail.PostOffice
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.protobuf.ProtoBuf
-import me.gendal.conclave.eventmanager.common.*
+import me.gendal.conclave.walletmanager.common.*
 import org.apache.http.client.entity.EntityBuilder
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.client.methods.HttpPost
@@ -25,7 +25,7 @@ import picocli.CommandLine
 import picocli.CommandLine.Command
 import picocli.CommandLine.Option
 import picocli.CommandLine.Parameters
-import me.gendal.conclave.eventmanager.common.Computation.ComputationType as ComputationType
+import me.gendal.conclave.walletmanager.common.Computation.ComputationType as ComputationType
 
 @Command(name = "Event Manager Client for Conclave",
     mixinStandardHelpOptions = true,
@@ -42,13 +42,13 @@ import me.gendal.conclave.eventmanager.common.Computation.ComputationType as Com
     ]
 )
 @ExperimentalSerializationApi
-class EventManagerClient : Callable<Int> {
+class WalletManagerClient : Callable<Int> {
 
     @Option(names = ["-s", "--server"], defaultValue = "http://localhost:9999",
         description = ["Enclave host URI. Default: \${DEFAULT-VALUE}"])
     lateinit var host: String
 
-    @Option(names = ["-c", "--config-file"], defaultValue = "EventManagerClient.properties",
+    @Option(names = ["-c", "--config-file"], defaultValue = "WalletManagerClient.properties",
         description = ["Configuration file containing enclave constraint. Default: \${DEFAULT-VALUE}"])
     lateinit var configFile: String
 
@@ -179,7 +179,7 @@ class EventManagerClient : Callable<Int> {
 class ListComputations : Callable<Int> {
 
     @CommandLine.ParentCommand
-    private val parent: EventManagerClient? = null // picocli injects reference to parent command
+    private val parent: WalletManagerClient? = null // picocli injects reference to parent command
 
     override fun call(): Int {
         parent!!
@@ -201,7 +201,7 @@ class ListComputations : Callable<Int> {
 class CreateComputation : Callable<Int> {
 
     @CommandLine.ParentCommand
-    private val parent: EventManagerClient? = null // picocli injects reference to parent command
+    private val parent: WalletManagerClient? = null // picocli injects reference to parent command
 
     @Parameters(index = "0", description = ["The name of the computation to be created"])
     lateinit var computationName: String
@@ -239,7 +239,7 @@ class CreateComputation : Callable<Int> {
 class SubmitValue : Callable<Int> {
 
     @CommandLine.ParentCommand
-    private val parent: EventManagerClient? = null // picocli injects reference to parent command
+    private val parent: WalletManagerClient? = null // picocli injects reference to parent command
 
     @Parameters(index = "0", description = ["The name of the computation to which this submission should be sent"])
     lateinit var computationName: String
@@ -267,7 +267,7 @@ class SubmitValue : Callable<Int> {
 class GetResult : Callable<Int> {
 
     @CommandLine.ParentCommand
-    private val parent: EventManagerClient? = null // picocli injects reference to parent command
+    private val parent: WalletManagerClient? = null // picocli injects reference to parent command
 
     @Parameters(index = "0", description = ["The name of the computation to which this submission should be sent"])
     lateinit var computationName: String
@@ -292,7 +292,7 @@ class GetResult : Callable<Int> {
 class ShareIdentity : Callable<Int> {
 
     @CommandLine.ParentCommand
-    private val parent: EventManagerClient? = null // picocli injects reference to parent command
+    private val parent: WalletManagerClient? = null // picocli injects reference to parent command
 
     override fun call(): Int {
         parent!!
@@ -317,7 +317,7 @@ class ShareIdentity : Callable<Int> {
 class GetMatches : Callable<Int> {
 
     @CommandLine.ParentCommand
-    private val parent: EventManagerClient? = null // picocli injects reference to parent command
+    private val parent: WalletManagerClient? = null // picocli injects reference to parent command
 
     override fun call(): Int {
         parent!!
@@ -344,14 +344,14 @@ class GetMatches : Callable<Int> {
 class ConfigureReflection : Callable<Int> {
 
     @CommandLine.ParentCommand
-    private val parent: EventManagerClient? = null // picocli injects reference to parent command
+    private val parent: WalletManagerClient? = null // picocli injects reference to parent command
 
     override fun call(): Int {
         parent!!
         parent.establishEnclaveConnection()
         parent.restoreStateAndLearnParticipants()
 
-        val cmdLine = CommandLine(EventManagerClient())
+        val cmdLine = CommandLine(WalletManagerClient())
 
         var args = arrayOf(parent.name, "create-computation", "Xkey", "key", "1", "XALICE,XBOB")
         cmdLine.execute(*args)
@@ -375,5 +375,5 @@ class ConfigureReflection : Callable<Int> {
 }
 
 @ExperimentalSerializationApi
-fun main(args: Array<String>) : Unit = exitProcess(CommandLine(EventManagerClient()).execute(*args))
+fun main(args: Array<String>) : Unit = exitProcess(CommandLine(WalletManagerClient()).execute(*args))
 

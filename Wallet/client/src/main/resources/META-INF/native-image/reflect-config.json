@@ -122,48 +122,48 @@
   "methods":[{"name":"<init>","parameterTypes":["sun.security.x509.X500Name"] }]
 },
 {
-  "name":"me.gendal.conclave.eventmanager.client.ConfigureReflection",
+  "name":"me.gendal.conclave.walletmanager.client.ConfigureReflection",
   "allDeclaredFields":true,
   "allDeclaredMethods":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"me.gendal.conclave.eventmanager.client.CreateComputation",
+  "name":"me.gendal.conclave.walletmanager.client.CreateComputation",
   "allDeclaredFields":true,
   "allDeclaredMethods":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"me.gendal.conclave.eventmanager.client.EventManagerClient",
+  "name":"me.gendal.conclave.walletmanager.client.WalletManagerClient",
   "allDeclaredFields":true,
   "allDeclaredMethods":true
 },
 {
-  "name":"me.gendal.conclave.eventmanager.client.GetMatches",
+  "name":"me.gendal.conclave.walletmanager.client.GetMatches",
   "allDeclaredFields":true,
   "allDeclaredMethods":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"me.gendal.conclave.eventmanager.client.GetResult",
+  "name":"me.gendal.conclave.walletmanager.client.GetResult",
   "allDeclaredFields":true,
   "allDeclaredMethods":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"me.gendal.conclave.eventmanager.client.ListComputations",
+  "name":"me.gendal.conclave.walletmanager.client.ListComputations",
   "allDeclaredFields":true,
   "allDeclaredMethods":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"me.gendal.conclave.eventmanager.client.ShareIdentity",
+  "name":"me.gendal.conclave.walletmanager.client.ShareIdentity",
   "allDeclaredFields":true,
   "allDeclaredMethods":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"me.gendal.conclave.eventmanager.client.SubmitValue",
+  "name":"me.gendal.conclave.walletmanager.client.SubmitValue",
   "allDeclaredFields":true,
   "allDeclaredMethods":true,
   "methods":[{"name":"<init>","parameterTypes":[] }]

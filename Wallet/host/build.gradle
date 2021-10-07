@@ -4,7 +4,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
-group 'me.gendal.conclave.eventmanager'
+group 'me.gendal.conclave.walletmanager'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -26,7 +26,7 @@ dependencies {
 }
 
 application {
-    mainClassName = "me.gendal.conclave.eventmanager.host.EventManagerMain"
+    mainClassName = "me.gendal.conclave.walletmanager.host.WalletManagerMain"
 }
 
 test {

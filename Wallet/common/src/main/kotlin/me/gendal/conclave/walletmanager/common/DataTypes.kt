@@ -1,4 +1,4 @@
-package me.gendal.conclave.eventmanager.common
+package me.gendal.conclave.walletmanager.common
 
 import com.r3.conclave.mail.Curve25519PublicKey
 import kotlinx.serialization.KSerializer
@@ -79,8 +79,8 @@ data class EnclaveMessageResponse(
 
 @Serializable
 data class Computations(
-        val computations: List<Computation> = emptyList(),
-        val responseCode: ResponseCode = ResponseCode.SUCCESS
+    val computations: List<Computation> = emptyList(),
+    val responseCode: ResponseCode = ResponseCode.SUCCESS
 ) : EnclaveResponse()
 
 @Serializable

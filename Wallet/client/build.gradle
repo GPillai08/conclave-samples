@@ -5,7 +5,7 @@ plugins {
     id 'kotlin-kapt'
 }
 
-group 'me.gendal.conclave.eventmanager'
+group 'me.gendal.conclave.walletmanager'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -22,7 +22,7 @@ dependencies {
 }
 
 application {
-    mainClassName = "me.gendal.conclave.eventmanager.client.EventManagerClientKt";
+    mainClassName = "me.gendal.conclave.walletmanager.client.WalletManagerClientKt";
 }
 
 configure([compileKotlin, compileTestKotlin]) {
@@ -32,7 +32,7 @@ configure([compileKotlin, compileTestKotlin]) {
 }
 
 graal {
-    mainClass("me.gendal.conclave.eventmanager.client.EventManagerClientKt")
-    outputName("EventManagerClient")
+    mainClass("me.gendal.conclave.walletmanager.client.WalletManagerClientKt")
+    outputName("WalletManagerClient")
     javaVersion("8")
 }

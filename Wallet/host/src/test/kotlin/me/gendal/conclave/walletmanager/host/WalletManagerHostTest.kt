@@ -1,8 +1,8 @@
-package me.gendal.conclave.eventmanager.host
+package me.gendal.conclave.walletmanager.host
 
 import org.junit.jupiter.api.Test
 
-class EventManagerHostTest {
+class WalletManagerHostTest {
 
     @Test
     fun `NO HOST TESTS IMPLEMENTED YET`() {

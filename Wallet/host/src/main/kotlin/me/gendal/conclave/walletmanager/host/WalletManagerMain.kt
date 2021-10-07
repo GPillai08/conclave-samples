@@ -1,4 +1,4 @@
-package me.gendal.conclave.eventmanager.host
+package me.gendal.conclave.walletmanager.host
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -12,11 +12,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
  */
 
 @SpringBootApplication
-open class EventManagerMain {
+open class WalletManagerMain {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            SpringApplication.run(EventManagerMain::class.java, *args)
+            SpringApplication.run(WalletManagerMain::class.java, *args)
         }
     }
 }

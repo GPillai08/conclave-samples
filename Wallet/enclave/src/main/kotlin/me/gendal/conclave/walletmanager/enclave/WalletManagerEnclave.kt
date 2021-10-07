@@ -1,4 +1,4 @@
-package me.gendal.conclave.eventmanager.enclave
+package me.gendal.conclave.walletmanager.enclave
 
 import com.r3.conclave.common.SHA256Hash
 import com.r3.conclave.enclave.Enclave
@@ -9,13 +9,13 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerializationStrategy
 import kotlinx.serialization.protobuf.ProtoBuf
-import me.gendal.conclave.eventmanager.common.*
+import me.gendal.conclave.walletmanager.common.*
 import java.security.PublicKey
 import org.slf4j.LoggerFactory
 
 /*
 *
-* EventManager
+* WalletManager
 *
 * This enclave implements the following common multi-party computation pattern:
 * A client, which we shall think of as a 'convenor', requests the creation of a new Calculation instance.
@@ -58,9 +58,9 @@ import org.slf4j.LoggerFactory
  */
 
 @ExperimentalSerializationApi
-class EventManagerEnclave : Enclave() {
+class WalletManagerEnclave : Enclave() {
 
-    private val logger = LoggerFactory.getLogger(EventManagerEnclave::class.java)
+    private val logger = LoggerFactory.getLogger(WalletManagerEnclave::class.java)
 
     private val computationHostsByName = HashMap<String, ComputationHost>()
 
@@ -130,7 +130,8 @@ class EventManagerEnclave : Enclave() {
                     postOffice(mail).encrypt(
                         EnclaveMessageResponse(
                             "The number of participants must be at least as large as the quorum",
-                            ResponseCode.QUORUM_NOT_REACHED),
+                            ResponseCode.QUORUM_NOT_REACHED
+                        ),
                         EnclaveMessageResponse.serializer()
                     ), routingHint
                 )
@@ -140,7 +141,8 @@ class EventManagerEnclave : Enclave() {
                     postOffice(mail).encrypt(
                         EnclaveMessageResponse(
                             "A computation with name ${message.computation.computationName} already exists",
-                            ResponseCode.COMPUTATION_ALREADY_EXISTS),
+                            ResponseCode.COMPUTATION_ALREADY_EXISTS
+                        ),
                         EnclaveMessageResponse.serializer()
                     ), routingHint
                 )
@@ -151,7 +153,8 @@ class EventManagerEnclave : Enclave() {
                     postOffice(mail).encrypt(
                         EnclaveMessageResponse(
                             "Computation ${message.computation.computationName} created successfully",
-                            ResponseCode.SUCCESS),
+                            ResponseCode.SUCCESS
+                        ),
                         EnclaveMessageResponse.serializer()
                     ), routingHint
                 )
