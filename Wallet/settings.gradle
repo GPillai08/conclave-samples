@@ -18,7 +18,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'EventManager'
+rootProject.name = 'Wallet'
 include 'enclave'
 include 'host'
 include 'client'
