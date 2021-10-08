@@ -295,6 +295,11 @@ class WalletManagerEnclave : Enclave() {
                         assert(false) { "Impossible condition reached" }
                         "THIS SHOULD NEVER HAPPEN"
                     }
+
+                    Computation.ComputationType.addcard -> {
+                        assert(false) { "TODO" }
+                        "TODO"
+                    }
                 }
             }
         }

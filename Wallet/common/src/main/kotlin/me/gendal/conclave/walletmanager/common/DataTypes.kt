@@ -32,6 +32,7 @@ data class Computation(
         min,
         avg,
         key,
+        addcard
     }
 }
 
@@ -53,6 +54,14 @@ object ListComputations : ClientRequest()
 @Serializable
 data class GetComputationResult(
     val computationName: String
+) : ClientRequest()
+
+@Serializable
+data class AddCard(
+    val computationName: String,
+    val cardNumber: String,
+    val expiryDate: String,
+    val cvv: String
 ) : ClientRequest()
 
 @Serializable
