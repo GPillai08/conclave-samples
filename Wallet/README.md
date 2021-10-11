@@ -4,7 +4,7 @@ Digital wallet Conclave
 Introduction
 ------------
 
-Digital Wallet implements the idea of an enclave that can simultaneously host Cards and Payments as 'Computations'. These computations are initiated by a Conclave client, have a name and a type, have a defined set of 'participants' (Card holder, Pay-server) and a 'quorum' that must be reached before a result (or results) can be obtained. Supported use cases are setup card and payment 
+Desktop Wallet implements the idea of an enclave that can simultaneously host Cards and Payments as 'Computations'. These computations are initiated by a Conclave client, have a name and a type, have a defined set of 'participants' (Card holder, Pay-server) and a 'quorum' that must be reached before a result (or results) can be obtained. Supported use cases are setup card and payment 
 
 The idea is that an enclave of this type could be used to host simple one-off multi-party computations (eg Set up card involves an agreement from the pay server, pay requires a generating a token through pay server ). 
 
