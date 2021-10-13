@@ -1,0 +1,135 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>MailCommand</title>
+<link href="../../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script><link href="../../../images/docs_logo.svg"><link href="../../../images/arrow_down.svg">  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="Conclave 1.1::com.r3.conclave.host/MailCommand///PointingToDeclaration//-654294413">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">Conclave 1.1</a>/<a href="../index.html">com.r3.conclave.host</a>/<a href="index.html">MailCommand</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Mail</span><wbr></wbr><span>Command</span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace">public class <a href="index.html">MailCommand</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Represents a mail command from the enclave to the host for it carry out some action on its behalf.</p><p class="paragraph">These commands are delivered grouped in a list in a callback to <a href="../-enclave-host/start.html">EnclaveHost.start</a>. The host gathers all the commands it receives within the context of a <a href="../-enclave-host/deliver-mail.html">EnclaveHost.deliverMail</a> or <a href="../-enclave-host/call-enclave.html">EnclaveHost.callEnclave</a> call and delivers them in one go in order to the callback on the same thread. This allows the host to provide transactionality when processing mail. For example, the receipt of mail from clients can occur atomically within the same database transaction as the delivery of any mail replies from the enclave.</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button><button class="section-tab" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Inheritors">Inheritors</button></div>
+            <div class="tabs-section-body">
+              <h2 class="tabbedcontent">Constructors</h2>
+              <div class="table" data-togglable="Constructors"><a data-name="652400322%2FConstructors%2F-654294413" anchor-label="MailCommand" id="652400322%2FConstructors%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue TabbedContent">
+                    <div class=""><span class="inline-flex"><a href="-mail-command.html">MailCommand</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="652400322%2FConstructors%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block"><a href="index.html">MailCommand</a> <a href="-mail-command.html">MailCommand</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Types</h2>
+              <div class="table" data-togglable="Types"><a data-name="623528374%2FClasslikes%2F-654294413" anchor-label="AcknowledgeMail" id="623528374%2FClasslikes%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-acknowledge-mail/index.html">AcknowledgeMail</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="623528374%2FClasslikes%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace">public class <a href="-acknowledge-mail/index.html">AcknowledgeMail</a> extends <a href="index.html">MailCommand</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="623528374%2FClasslikes%2F-654294413" anchor-label="AcknowledgeMail" id="623528374%2FClasslikes%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="623528374%2FClasslikes%2F-654294413" anchor-label="AcknowledgeMail" id="623528374%2FClasslikes%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">A <a href="index.html">MailCommand</a> which is emitted when the enclave wants to mark a given piece of mail as acknowledged (via <code>Enclave.acknowledgeMail</code>), so it can be deleted and should not be re-delivered.</p><p class="paragraph">You should perform the acknowledgement synchronously and atomically with any posts, as this is required for clients to observe transactional behaviour.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="21631867%2FClasslikes%2F-654294413" anchor-label="AcknowledgementReceipt" id="21631867%2FClasslikes%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-acknowledgement-receipt/index.html">AcknowledgementReceipt</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="21631867%2FClasslikes%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace">public class <a href="-acknowledgement-receipt/index.html">AcknowledgementReceipt</a> extends <a href="index.html">MailCommand</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="21631867%2FClasslikes%2F-654294413" anchor-label="AcknowledgementReceipt" id="21631867%2FClasslikes%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="21631867%2FClasslikes%2F-654294413" anchor-label="AcknowledgementReceipt" id="21631867%2FClasslikes%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">A <a href="index.html">MailCommand</a> which is emitted along with <a href="-acknowledge-mail/index.html">AcknowledgeMail</a> when the enclave wants to mark certain mail as acknowledged. To ensure the host can restart an enclave it's important that the last generated receipt be provided to <a href="../-enclave-host/start.html">EnclaveHost.start</a>.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1948440574%2FClasslikes%2F-654294413" anchor-label="PostMail" id="-1948440574%2FClasslikes%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-post-mail/index.html">PostMail</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1948440574%2FClasslikes%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace">public class <a href="-post-mail/index.html">PostMail</a> extends <a href="index.html">MailCommand</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-1948440574%2FClasslikes%2F-654294413" anchor-label="PostMail" id="-1948440574%2FClasslikes%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="-1948440574%2FClasslikes%2F-654294413" anchor-label="PostMail" id="-1948440574%2FClasslikes%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">A <a href="index.html">MailCommand</a> which is emitted when the enclave wants to send an encrypted message over the network to a client (via <code>Enclave.postMail</code>). The host should examine the public key and/or the <a href="-post-mail/index.html#-132801296%2FProperties%2F-654294413">routingHint</a> parameter to decide where the enclave wants it to be sent.</p><p class="paragraph">The routing hint may be &quot;self&quot;. In that case you are expected to send the mail back to the enclave when the enclave is restarted.</p><p class="paragraph">You don't have to perform the actual send synchronously if that's inappropriate for your app. However, the mail must be recorded for delivery synchronously, so no messages can be lost in case of crash failure.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Inheritors</h2>
+              <div class="table" data-togglable="Inheritors"><a data-name="-1948440574%2FInheritors%2F-654294413" anchor-label="MailCommand" id="-1948440574%2FInheritors%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-post-mail/index.html">MailCommand</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1948440574%2FInheritors%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="623528374%2FInheritors%2F-654294413" anchor-label="MailCommand" id="623528374%2FInheritors%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-acknowledge-mail/index.html">MailCommand</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="623528374%2FInheritors%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+<a data-name="21631867%2FInheritors%2F-654294413" anchor-label="MailCommand" id="21631867%2FInheritors%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-acknowledgement-receipt/index.html">MailCommand</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="21631867%2FInheritors%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span><a href="https://docs.conclave.net">&#60;&#60; Back to Conclave documentation</a></span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

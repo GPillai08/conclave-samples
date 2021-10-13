@@ -1,0 +1,61 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.r3.conclave",
+    "module": "native-substratevm-release",
+    "version": "1.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.6.1",
+      "buildId": "ynpnrwttbnazrjru2alvsadliq"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "native-substratevm-release-1.1.jar",
+          "url": "native-substratevm-release-1.1.jar",
+          "size": 134539,
+          "sha512": "8bf5bd00293dcf42d5bd13562a5598f37a7f61acd3e8cc330d0f0f22b561b4c1d7d42056fa9a0a203708f995d235fa1053d1df6f211f14061d2aa68a7f598b22",
+          "sha256": "942a19818c6328ca1c45b30243c62868a583870a3518a657e66a006becc7c044",
+          "sha1": "14a321b4cfd0b117d360b1fe435502f22161a374",
+          "md5": "b85c62b9d3486b02b5b0d58802806797"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "native-substratevm-release-1.1.jar",
+          "url": "native-substratevm-release-1.1.jar",
+          "size": 134539,
+          "sha512": "8bf5bd00293dcf42d5bd13562a5598f37a7f61acd3e8cc330d0f0f22b561b4c1d7d42056fa9a0a203708f995d235fa1053d1df6f211f14061d2aa68a7f598b22",
+          "sha256": "942a19818c6328ca1c45b30243c62868a583870a3518a657e66a006becc7c044",
+          "sha1": "14a321b4cfd0b117d360b1fe435502f22161a374",
+          "md5": "b85c62b9d3486b02b5b0d58802806797"
+        }
+      ]
+    }
+  ]
+}

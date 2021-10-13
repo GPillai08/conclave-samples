@@ -1,0 +1,128 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.r3.conclave",
+    "module": "conclave-common",
+    "version": "1.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.6.1",
+      "buildId": "ynpnrwttbnazrjru2alvsadliq"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "com.r3.conclave",
+          "module": "conclave-mail",
+          "version": {
+            "requires": "1.1"
+          },
+          "excludes": [
+            {
+              "group": "commons-logging",
+              "module": "commons-logging"
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "name": "conclave-common-1.1.jar",
+          "url": "conclave-common-1.1.jar",
+          "size": 2228220,
+          "sha512": "1fde9bea606c1ab30b37a1c4b02ca4b18317962961b0bf3129163c0f9c670edd3bef74895af54bde6e3932b180edd8f69040cc8a1fb6da4becd79507d27c40dc",
+          "sha256": "d1d3f30420ea380d58a3837ab3879ddfafb253ddbbba00d4e0dffef564b811a4",
+          "sha1": "54c29e56d028722e382400f53e40d6209aaa8ac2",
+          "md5": "656acf7ff774dfdee96eaf771151d6ce"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "net.i2p.crypto",
+          "module": "eddsa",
+          "version": {
+            "requires": "0.3.0"
+          },
+          "excludes": [
+            {
+              "group": "commons-logging",
+              "module": "commons-logging"
+            }
+          ]
+        },
+        {
+          "group": "com.r3.conclave",
+          "module": "conclave-mail",
+          "version": {
+            "requires": "1.1"
+          },
+          "excludes": [
+            {
+              "group": "commons-logging",
+              "module": "commons-logging"
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "name": "conclave-common-1.1.jar",
+          "url": "conclave-common-1.1.jar",
+          "size": 2228220,
+          "sha512": "1fde9bea606c1ab30b37a1c4b02ca4b18317962961b0bf3129163c0f9c670edd3bef74895af54bde6e3932b180edd8f69040cc8a1fb6da4becd79507d27c40dc",
+          "sha256": "d1d3f30420ea380d58a3837ab3879ddfafb253ddbbba00d4e0dffef564b811a4",
+          "sha1": "54c29e56d028722e382400f53e40d6209aaa8ac2",
+          "md5": "656acf7ff774dfdee96eaf771151d6ce"
+        }
+      ]
+    },
+    {
+      "name": "shadowRuntimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "shadowed",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "conclave-common-1.1.jar",
+          "url": "conclave-common-1.1.jar",
+          "size": 2228220,
+          "sha512": "1fde9bea606c1ab30b37a1c4b02ca4b18317962961b0bf3129163c0f9c670edd3bef74895af54bde6e3932b180edd8f69040cc8a1fb6da4becd79507d27c40dc",
+          "sha256": "d1d3f30420ea380d58a3837ab3879ddfafb253ddbbba00d4e0dffef564b811a4",
+          "sha1": "54c29e56d028722e382400f53e40d6209aaa8ac2",
+          "md5": "656acf7ff774dfdee96eaf771151d6ce"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1575 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.6">
+    
+    
+      
+        <title>Integrating an enclave with Corda - Conclave documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-87760032-7","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#writing-the-sample-cordapp" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="index.html" title="Conclave documentation" class="md-header-nav__button md-logo" aria-label="Conclave documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Conclave documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Integrating an enclave with Corda
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="index.html" class="md-tabs__link">
+      Welcome
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="enclaves.html" class="md-tabs__link">
+        Concepts
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="tutorial.html" class="md-tabs__link md-tabs__link--active">
+        Development
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="system-requirements.html" class="md-tabs__link">
+        Operations
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="faq.html" class="md-tabs__link">
+      FAQ
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Conclave documentation" class="md-nav__button md-logo" aria-label="Conclave documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Conclave documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+      
+      <label class="md-nav__link" for="nav-2">
+        Concepts
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Concepts" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="enclaves.html" class="md-nav__link">
+        Confidential Computing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architecture.html" class="md-nav__link">
+        Conclave Architecture
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      
+      <label class="md-nav__link" for="nav-3">
+        Development
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Development" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" checked>
+      
+      <label class="md-nav__link" for="nav-3-1">
+        Tutorials
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="2">
+        <label class="md-nav__title" for="nav-3-1">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial.html" class="md-nav__link">
+        Running your first enclave
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="writing-hello-world.html" class="md-nav__link">
+        Writing your first enclave
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Integrating an enclave with Corda
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="writing-cordapps.html" class="md-nav__link md-nav__link--active">
+        Integrating an enclave with Corda
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configure-your-workflow-cordapp-module" class="md-nav__link">
+    Configure your workflow CorDapp module
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#write-an-enclave-host-service" class="md-nav__link">
+    Write an enclave host service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relaying-mail-from-a-flow-to-the-enclave" class="md-nav__link">
+    Relaying mail from a flow to the Enclave
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2" >
+      
+      <label class="md-nav__link" for="nav-3-2">
+        Design topics
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Design topics" data-md-level="2">
+        <label class="md-nav__title" for="nav-3-2">
+          <span class="md-nav__icon md-icon"></span>
+          Design topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mail.html" class="md-nav__link">
+        Communicating with an enclave using Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mockmode.html" class="md-nav__link">
+        Rapid testing and development with Mock Mode
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security.html" class="md-nav__link">
+        Maximising the security of your enclave
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3" >
+      
+      <label class="md-nav__link" for="nav-3-3">
+        Reference
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Reference" data-md-level="2">
+        <label class="md-nav__title" for="nav-3-3">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="threads.html" class="md-nav__link">
+        Threads
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="javascript.html" class="md-nav__link">
+        JavaScript
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="filesystem.html" class="md-nav__link">
+        File system
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="performance.html" class="md-nav__link">
+        Performance
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="container-gradle.html" class="md-nav__link">
+        Testing on macOS
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" >
+      
+      <label class="md-nav__link" for="nav-3-4">
+        API
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="API" data-md-level="2">
+        <label class="md-nav__title" for="nav-3-4">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/index.html" class="md-nav__link">
+        JavaDocs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="enclave-configuration.html" class="md-nav__link">
+        Configuration options for enclaves
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api-changes.html" class="md-nav__link">
+        Migration notes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="known-issues.html" class="md-nav__link">
+        Known issues
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+      
+      <label class="md-nav__link" for="nav-4">
+        Operations
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Operations" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Operations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+      
+      <label class="md-nav__link" for="nav-4-1">
+        Server deployment
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Server deployment" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-1">
+          <span class="md-nav__icon md-icon"></span>
+          Server deployment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="system-requirements.html" class="md-nav__link">
+        System requirements
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1-2" type="checkbox" id="nav-4-1-2" >
+      
+      <label class="md-nav__link" for="nav-4-1-2">
+        Machine setup
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Machine setup" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-1-2">
+          <span class="md-nav__icon md-icon"></span>
+          Machine setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="machine-setup.html" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="azure.html" class="md-nav__link">
+        Cloud Deployment
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ias.html" class="md-nav__link">
+        Self-Hosting
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2" >
+      
+      <label class="md-nav__link" for="nav-4-2">
+        Upgrades
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Upgrades" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-2">
+          <span class="md-nav__icon md-icon"></span>
+          Upgrades
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="signing.html" class="md-nav__link">
+        Enclave signing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="renewability.html" class="md-nav__link">
+        Renewability
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="faq.html" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configure-your-workflow-cordapp-module" class="md-nav__link">
+    Configure your workflow CorDapp module
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#write-an-enclave-host-service" class="md-nav__link">
+    Write an enclave host service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relaying-mail-from-a-flow-to-the-enclave" class="md-nav__link">
+    Relaying mail from a flow to the Enclave
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="writing-the-sample-cordapp">Writing the sample CorDapp<a class="headerlink" href="#writing-the-sample-cordapp" title="Permanent link">&para;</a></h1>
+<p><a href="https://www.corda.net">Corda</a> is R3's open source enterprise blockchain platform. You can think of it as a peer
+to peer database in which user-written apps can be installed. Enclaves can be used inside "CorDapps" to
+provide multi-party computation over the peer to peer network. Or look at it the other way around: Corda can provide
+communication and identity services to your enclave.</p>
+<p>The sample CorDapp builds on the <a href="writing-hello-world.html">hello-world</a> sample allowing nodes to perform the 
+reverse string task between two nodes, one of which loads the enclave. Smart contracts aren't used in this 
+sample, only flows are needed.</p>
+<p>The sample divides the code into several pieces. The packages that <em>don't</em> have <code>samples</code> in the name are
+intended to be copy/pasted into your own code. They'll be turned into a full API in future. The code
+expects a DCAP capable host, but if you want to use EPID you can edit the enclave startup code to make it use your
+Intel API keys.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>To understand this tutorial you are expected to have read both the <a href="writing-hello-world.html">Conclave Hello World tutorial</a> 
+and <a href="https://docs.corda.net/docs/corda-os/4.7/hello-world-introduction.html">the Corda tutorials</a> already. </p>
+</div>
+<h2 id="configure-your-workflow-cordapp-module">Configure your workflow CorDapp module<a class="headerlink" href="#configure-your-workflow-cordapp-module" title="Permanent link">&para;</a></h2>
+<p>Both Conclave and Corda rely on Gradle build system plugins. Follow the instructions in the 
+<a href="writing-hello-world.html">hello world tutorial</a> to configure Gradle to include an enclave mode. Add the host libraries
+to your Corda workflows module:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>dependencies {
+    compile project(path: &quot;:enclave&quot;, configuration: mode)
+    compile &quot;com.r3.conclave:conclave-host:$conclaveVersion&quot;
+    compile &quot;com.r3.conclave:conclave-client:$conclaveVersion&quot;
+    compile &quot;com.r3.conclave:conclave-common:$conclaveVersion&quot;
+    compile &quot;com.r3.conclave:conclave-mail:$conclaveVersion&quot;
+
+    // Corda dependencies.
+    cordaCompile &quot;$corda_core_release_group:corda-core:$corda_core_release_version&quot;
+    cordaRuntime &quot;$corda_release_group:corda:$corda_release_version&quot;
+    testCompile &quot;$corda_release_group:corda-node-driver:$corda_release_version&quot;
+}
+</code></pre></div>
+</td></tr></table>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You must use Gradle's <code>compile</code> configurations for the host dependencies. If you use <code>implementation</code> then you
+will get errors about missing classes when the node starts up, due to issues with fat JARing. The host <code>dependencies</code>
+section should look like above.</p>
+</div>
+<h2 id="write-an-enclave-host-service">Write an enclave host service<a class="headerlink" href="#write-an-enclave-host-service" title="Permanent link">&para;</a></h2>
+<p>The enclave will be loaded into a service object. This singleton will be available to flows for later usage, and lets
+us integrate with the lifecycle of the node. The sample project contains a helper class called <code>EnclaveHostService</code> that
+you can copy into your project and sub-class. At the moment it isn't a complete or supported API so you may need to
+edit it to make it work for your use case.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@CordaService</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ReverseEnclaveService</span> <span class="kd">extends</span> <span class="n">EnclaveHostService</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="nf">ReverseEnclaveService</span><span class="p">(</span><span class="nd">@NotNull</span> <span class="n">AppServiceHub</span> <span class="n">serviceHub</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">(</span><span class="s">&quot;com.r3.conclave.cordapp.sample.enclave.ReverseEnclave&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>This will make a best effort to enable SGX support on the host if necessary, then it loads the sample <code>ReverseEnclave</code> 
+class (which expands on the one already seen in the hello world tutorial). The <code>EnclaveHostService</code> class exposes methods to
+send and receive mail with the enclave, in a way that lets flows suspend waiting for the enclave to deliver mail.</p>
+<p>In the next section about <a href="writing-cordapps.html#relaying-mail-from-a-flow-to-the-enclave">relaying a mail from a flow to the Enclave</a>,
+the above class is used as a parameter to initiate the responder flow that ensures the host service is started.</p>
+<h2 id="relaying-mail-from-a-flow-to-the-enclave">Relaying mail from a flow to the Enclave<a class="headerlink" href="#relaying-mail-from-a-flow-to-the-enclave" title="Permanent link">&para;</a></h2>
+<p>We've already seen how to <a href="writing-hello-world.html#create-a-new-subclass-of-enclave">create a new subclass of Enclave</a> and how to
+<a href="writing-hello-world.html#receiving-and-post-mail-in-the-enclave">receive and post mail in the enclave</a> in the 
+<a href="writing-hello-world.html">hello-world</a> tutorial, and in the coming sections we'll see how some of this boilerplate has been
+wrapped into an API to simplify setting up secure flows and exchange secure messages between parties.</p>
+<p>In this tutorial, reversing a string involves two parties: one is the initiator that sends the secret string to reverse, 
+the other is the responder that reverses the string inside the enclave.</p>
+<p>To implement this we will need a flow used by clients, and a 'responder' flow used by the host node.</p>
+<p>Here's the responder flow to get the enclave host service up and running, get the enclave attestation and send it to the other
+party for verification, get, verify and acknowledge the other party's encrypted identity, get the other party's encrypted mail
+with the string to reverse, deliver it to the enclave, and retrieve the enclave encrypted mail to send to the other party for 
+decryption.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1">// We start with a few lines of boilerplate: read the Corda tutorials if you aren&#39;t sure what these are about.</span>
+<span class="nd">@InitiatedBy</span><span class="p">(</span><span class="n">ReverseFlow</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ReverseFlowResponder</span> <span class="kd">extends</span> <span class="n">FlowLogic</span><span class="o">&lt;</span><span class="n">Void</span><span class="o">&gt;</span> <span class="p">{</span>
+
+    <span class="c1">// private variable</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">FlowSession</span> <span class="n">counterpartySession</span><span class="p">;</span>
+
+    <span class="c1">// Constructor</span>
+    <span class="kd">public</span> <span class="nf">ReverseFlowResponder</span><span class="p">(</span><span class="n">FlowSession</span> <span class="n">counterpartySession</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">counterpartySession</span> <span class="o">=</span> <span class="n">counterpartySession</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Suspendable</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">Void</span> <span class="nf">call</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">FlowException</span> <span class="p">{</span>
+
+        <span class="n">EnclaveFlowResponder</span> <span class="n">session</span> <span class="o">=</span>
+                <span class="n">EnclaveClientHelper</span><span class="p">.</span><span class="na">initiateResponderFlow</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">counterpartySession</span><span class="p">,</span> <span class="n">ReverseEnclaveService</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+
+        <span class="n">session</span><span class="p">.</span><span class="na">relayMessageToFromEnclave</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>Looking into the responder's flow initiation, we see that this side of the flow starts by ensuring a specific instance of the 
+<code>EnclaveHostService</code> is started and sending the remote attestation. Typically, an interaction with the enclave should start 
+this way, although the attestation may be cached if such logic is required. The flow responder expects to receive
+an identity during the initialization. An empty identity message can be sent if the party prefers to remain anonymous.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@Suspendable</span>
+<span class="nd">@Throws</span><span class="p">(</span><span class="n">FlowException</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+<span class="nd">@JvmStatic</span>
+<span class="nd">@JvmOverloads</span>
+<span class="kd">fun</span> <span class="o">&lt;</span><span class="n">T</span> <span class="p">:</span> <span class="n">EnclaveHostService</span><span class="o">&gt;</span> <span class="nf">initiateResponderFlow</span><span class="p">(</span><span class="n">flow</span><span class="p">:</span> <span class="n">FlowLogic</span><span class="o">&lt;*&gt;</span><span class="p">,</span> 
+                                                   <span class="n">counterPartySession</span><span class="p">:</span> <span class="n">FlowSession</span><span class="p">,</span>
+                                                   <span class="n">serviceType</span><span class="p">:</span> <span class="n">Class</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">):</span> <span class="n">EnclaveFlowResponder</span> <span class="p">{</span>
+    <span class="c1">// Start an instance of the enclave hosting service</span>
+    <span class="kd">val</span> <span class="nv">host</span> <span class="o">=</span> <span class="n">flow</span><span class="p">.</span><span class="na">serviceHub</span><span class="p">.</span><span class="na">cordaService</span><span class="p">(</span><span class="n">serviceType</span><span class="p">)</span>
+    <span class="c1">// Send the other party the enclave identity (remote attestation) for verification.</span>
+    <span class="n">counterPartySession</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">host</span><span class="p">.</span><span class="na">attestationBytes</span><span class="p">)</span>
+    <span class="kd">val</span> <span class="nv">instance</span> <span class="o">=</span> <span class="n">EnclaveFlowResponder</span><span class="p">(</span><span class="n">flow</span><span class="p">,</span> <span class="n">counterPartySession</span><span class="p">,</span> <span class="n">host</span><span class="p">)</span>
+    <span class="c1">// Relay the initial identity message to the enclave and relay the response back</span>
+    <span class="n">instance</span><span class="p">.</span><span class="na">relayMessageToFromEnclave</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">instance</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>The <code>EnclaveFlowResponder</code> implements a simple request/response type protocol that receives an encrypted byte array
+and uses the <code>deliverAndPickUpMail</code> method of the <code>EnclaveHostService</code> class. This returns an operation that can be passed
+to <code>await</code>. The flow will suspend (thus freeing up its thread), potentially for a long period. There is no requirement
+that the enclave reply immediately. It can return from processing the delivered mail without replying. When it does
+choose to reply, the flow will be re-awakened and the encrypted mail returned to the other side.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@Suspendable</span>
+<span class="nd">@Throws</span><span class="p">(</span><span class="n">FlowException</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+<span class="kd">fun</span> <span class="nf">relayMessageToFromEnclave</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Other party sends us an encrypted mail.</span>
+    <span class="kd">val</span> <span class="nv">encryptedMail</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="na">receive</span><span class="p">(</span><span class="n">ByteArray</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">).</span><span class="na">unwrap</span> <span class="p">{</span> <span class="nb">it</span> <span class="p">}</span>
+    <span class="c1">// Deliver and wait for the enclave to reply. The flow will suspend until the enclave chooses to deliver a mail</span>
+    <span class="c1">// to this flow, which might not be immediately.</span>
+    <span class="kd">val</span> <span class="nv">encryptedReply</span><span class="p">:</span> <span class="n">ByteArray</span> <span class="o">=</span> <span class="n">flow</span><span class="p">.</span><span class="na">await</span><span class="p">(</span><span class="n">host</span><span class="p">.</span><span class="na">deliverAndPickUpMail</span><span class="p">(</span><span class="n">flow</span><span class="p">,</span> <span class="n">encryptedMail</span><span class="p">))</span>
+    <span class="c1">// Send back to the other party the encrypted enclave&#39;s reply</span>
+    <span class="n">session</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">encryptedReply</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Although the Corda flow framework has built in support for it, this sample code does not handle node restarts.</p>
+</div>
+<p>And here's the initiator flow that initiates a session with the responder party, get the enclave attestation, validate it, 
+build and send a verifiable identity for the enclave to validate, send the encrypted mail with the string to reverse and 
+read and decrypt the enclave's response. Keep in mind that a verifiable identity is only sent to the enclave if the <code>anonymous</code>
+property is set to false.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@InitiatingFlow</span>
+<span class="nd">@StartableByRPC</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ReverseFlow</span> <span class="kd">extends</span> <span class="n">FlowLogic</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Party</span> <span class="n">receiver</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">message</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">constraint</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Boolean</span> <span class="n">anonymous</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="nf">ReverseFlow</span><span class="p">(</span><span class="n">Party</span> <span class="n">receiver</span><span class="p">,</span> <span class="n">String</span> <span class="n">message</span><span class="p">,</span> <span class="n">String</span> <span class="n">constraint</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">(</span><span class="n">receiver</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">constraint</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="nf">ReverseFlow</span><span class="p">(</span><span class="n">Party</span> <span class="n">receiver</span><span class="p">,</span> <span class="n">String</span> <span class="n">message</span><span class="p">,</span> <span class="n">String</span> <span class="n">constraint</span><span class="p">,</span> <span class="n">Boolean</span> <span class="n">anonymous</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">receiver</span> <span class="o">=</span> <span class="n">receiver</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">message</span> <span class="o">=</span> <span class="n">message</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">constraint</span> <span class="o">=</span> <span class="n">constraint</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">anonymous</span> <span class="o">=</span> <span class="n">anonymous</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="nd">@Suspendable</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">call</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">FlowException</span> <span class="p">{</span>
+        <span class="n">EnclaveFlowInitiator</span> <span class="n">session</span> <span class="o">=</span> <span class="n">EnclaveClientHelper</span><span class="p">.</span><span class="na">initiateFlow</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">receiver</span><span class="p">,</span> <span class="n">constraint</span><span class="p">,</span> <span class="n">anonymous</span><span class="p">);</span>
+
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">response</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="na">sendAndReceive</span><span class="p">(</span><span class="n">message</span><span class="p">.</span><span class="na">getBytes</span><span class="p">(</span><span class="n">StandardCharsets</span><span class="p">.</span><span class="na">UTF_8</span><span class="p">));</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="n">String</span><span class="p">(</span><span class="n">response</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>The flow initiation starts in the usual manner for a Corda flow. Once a session with the hosting node is established, the
+flow waits for an <code>EnclaveInstanceInfo</code> to verify it against the constraint passed. If the enclave verifies successfully
+and doesn't throw an exception, the flow can continue by sending the initiator party identity to the enclave for
+<a href="writing-cordapps.html#authenticating-senders-identity">authentication</a>. The last step is only applicable if the party wishes to
+share its identity. No party identity is not sent if the parameter <code>anonymous</code> is set to <code>true</code>.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@Suspendable</span>
+<span class="nd">@Throws</span><span class="p">(</span><span class="n">FlowException</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+<span class="nd">@JvmStatic</span>
+<span class="nd">@JvmOverloads</span>
+<span class="kd">fun</span> <span class="nf">initiateFlow</span><span class="p">(</span><span class="n">flow</span><span class="p">:</span> <span class="n">FlowLogic</span><span class="o">&lt;*&gt;</span><span class="p">,</span> <span class="n">receiver</span><span class="p">:</span> <span class="n">Party</span><span class="p">,</span> <span class="n">constraint</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                 <span class="n">anonymous</span><span class="p">:</span> <span class="kt">Boolean</span> <span class="o">=</span> <span class="kc">false</span><span class="p">):</span> <span class="n">EnclaveFlowInitiator</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="nv">session</span> <span class="o">=</span> <span class="n">flow</span><span class="p">.</span><span class="na">initiateFlow</span><span class="p">(</span><span class="n">receiver</span><span class="p">)</span>
+
+    <span class="c1">// Read the enclave attestation from the peer.</span>
+    <span class="kd">val</span> <span class="nv">attestation</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="na">receive</span><span class="p">(</span><span class="n">ByteArray</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">).</span><span class="na">unwrap</span> <span class="p">{</span> <span class="n">from</span><span class="p">:</span> <span class="n">ByteArray</span> <span class="o">-&gt;</span>
+        <span class="n">EnclaveInstanceInfo</span><span class="p">.</span><span class="na">deserialize</span><span class="p">(</span><span class="n">from</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">// The key hash below (the hex string after &#39;S&#39;) is the public key version of sample_private_key.pem</span>
+    <span class="c1">// In a real app you should remove the SEC:INSECURE part, of course.</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="n">EnclaveConstraint</span><span class="p">.</span><span class="na">parse</span><span class="p">(</span><span class="n">constraint</span><span class="p">).</span><span class="na">check</span><span class="p">(</span><span class="n">attestation</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="n">InvalidEnclaveException</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="n">FlowException</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="kd">val</span> <span class="nv">instance</span> <span class="o">=</span> <span class="n">EnclaveFlowInitiator</span><span class="p">(</span><span class="n">flow</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">attestation</span><span class="p">)</span>
+    <span class="n">instance</span><span class="p">.</span><span class="na">sendIdentityToEnclave</span><span class="p">(</span><span class="n">anonymous</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">instance</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>Once the enclave is successfully verified, and our identity is authenticated by the enclave (if we decided to share our identity),
+the flow can start securely exchanging encrypted messages with the enclave through the <code>EnclaveFlowInitiator</code> instance returned,
+which implements a simple send/receive API that encrypts and decrypts the outgoing and incoming data in the form of byte arrays.
+The send and receive methods use the PostOffice API. The <code>EnclaveFlowInitiator</code> class holds one PostOffice instance which
+has the topic set to the session's flow id.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@Suspendable</span>
+<span class="nd">@Throws</span><span class="p">(</span><span class="n">FlowException</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+<span class="kd">fun</span> <span class="nf">sendAndReceive</span><span class="p">(</span><span class="n">messageBytes</span><span class="p">:</span> <span class="n">ByteArray</span><span class="p">):</span> <span class="n">ByteArray</span> <span class="p">{</span>
+    <span class="n">sendToEnclave</span><span class="p">(</span><span class="n">messageBytes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">receiveFromEnclave</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="nd">@Suspendable</span>
+<span class="nd">@Throws</span><span class="p">(</span><span class="n">FlowException</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+<span class="kd">private</span> <span class="kd">fun</span> <span class="nf">sendToEnclave</span><span class="p">(</span><span class="n">messageBytes</span><span class="p">:</span> <span class="n">ByteArray</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="nv">encryptedMail</span> <span class="o">=</span> <span class="n">postOffice</span><span class="p">.</span><span class="na">encryptMail</span><span class="p">(</span><span class="n">messageBytes</span><span class="p">)</span>
+    <span class="n">session</span><span class="p">.</span><span class="na">send</span><span class="p">(</span><span class="n">encryptedMail</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nd">@Suspendable</span>
+<span class="nd">@Throws</span><span class="p">(</span><span class="n">FlowException</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+<span class="kd">fun</span> <span class="nf">receiveFromEnclave</span><span class="p">():</span> <span class="n">ByteArray</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="nv">reply</span><span class="p">:</span> <span class="n">EnclaveMail</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="na">receive</span><span class="p">(</span><span class="n">ByteArray</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">).</span><span class="na">unwrap</span> <span class="p">{</span> <span class="n">mail</span><span class="p">:</span> <span class="n">ByteArray</span> <span class="o">-&gt;</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">postOffice</span><span class="p">.</span><span class="na">decryptMail</span><span class="p">(</span><span class="n">mail</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="n">IOException</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="n">FlowException</span><span class="p">(</span><span class="s">&quot;Unable to decrypt mail from Enclave&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">reply</span><span class="p">.</span><span class="na">bodyAsBytes</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<h1 id="authenticating-senders-identity">Authenticating sender's identity<a class="headerlink" href="#authenticating-senders-identity" title="Permanent link">&para;</a></h1>
+<p>The enclave can authenticate a sender's identity that belongs to a network where nodes are identified by a X.509
+certificate, and the network is controlled by a certificate authority like in a Corda network.</p>
+<p>The network CA root certificate's public key must be stored in the enclave's resource folder (in this example the 
+path is enclave/src/main/resources/) in a file named trustedroot.cer, so that the enclave can validate the sender
+identity.</p>
+<p>The identity is set up by the <code>EnclaveFlowInitiator</code> class during authentication and sent to the enclave who 
+verifies it. Please be aware that the first byte of the identity message indicates whether a party wants to remain
+anonymous or not. If a party decides to remain anonymous, the identity message is padded with zeros to prevent
+anyone in the middle from using statistical analysis to guess whether a party is anonymous or not. If a party decides to authenticate
+itself, the remaining bytes represent the party's identity.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@Suspendable</span>
+<span class="kd">private</span> <span class="kd">fun</span> <span class="nf">buildMailerIdentity</span><span class="p">():</span> <span class="n">SenderIdentityImpl</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="nv">sharedSecret</span> <span class="o">=</span> <span class="n">encryptionKey</span><span class="p">.</span><span class="na">publicKey</span><span class="p">.</span><span class="na">encoded</span>
+    <span class="kd">val</span> <span class="nv">signerPublicKey</span> <span class="o">=</span> <span class="n">flow</span><span class="p">.</span><span class="na">ourIdentity</span><span class="p">.</span><span class="na">owningKey</span>
+    <span class="kd">val</span> <span class="nv">signature</span> <span class="o">=</span> <span class="n">flow</span><span class="p">.</span><span class="na">serviceHub</span><span class="p">.</span><span class="na">keyManagementService</span><span class="p">.</span><span class="na">sign</span><span class="p">(</span><span class="n">sharedSecret</span><span class="p">,</span> <span class="n">signerPublicKey</span><span class="p">).</span><span class="na">withoutKey</span><span class="p">()</span>
+    <span class="kd">val</span> <span class="nv">signerCertPath</span> <span class="o">=</span> <span class="n">flow</span><span class="p">.</span><span class="na">ourIdentityAndCert</span><span class="p">.</span><span class="na">certPath</span>
+    <span class="k">return</span> <span class="n">SenderIdentityImpl</span><span class="p">(</span><span class="n">signerCertPath</span><span class="p">,</span> <span class="n">signature</span><span class="p">.</span><span class="na">bytes</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nd">@Suspendable</span>
+<span class="nd">@Throws</span><span class="p">(</span><span class="n">FlowException</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+<span class="kd">fun</span> <span class="nf">sendIdentityToEnclave</span><span class="p">(</span><span class="n">isAnonymous</span><span class="p">:</span> <span class="kt">Boolean</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="kd">val</span> <span class="nv">serializedIdentity</span> <span class="o">=</span> <span class="n">getSerializedIdentity</span><span class="p">(</span><span class="n">isAnonymous</span><span class="p">)</span>
+    <span class="n">sendToEnclave</span><span class="p">(</span><span class="n">serializedIdentity</span><span class="p">)</span>
+
+    <span class="kd">val</span> <span class="nv">mail</span><span class="p">:</span> <span class="n">EnclaveMail</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="na">receive</span><span class="p">(</span><span class="n">ByteArray</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">java</span><span class="p">).</span><span class="na">unwrap</span> <span class="p">{</span> <span class="n">mail</span><span class="p">:</span> <span class="n">ByteArray</span> <span class="o">-&gt;</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">postOffice</span><span class="p">.</span><span class="na">decryptMail</span><span class="p">(</span><span class="n">mail</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="n">IOException</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="n">FlowException</span><span class="p">(</span><span class="s">&quot;Unable to decrypt mail from Enclave&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">mail</span><span class="p">.</span><span class="na">topic</span><span class="p">.</span><span class="na">contentEquals</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$</span><span class="n">flowTopic</span><span class="s">-ack&quot;</span><span class="p">))</span>
+        <span class="k">throw</span> <span class="n">FlowException</span><span class="p">(</span><span class="s">&quot;The enclave could not validate the identity sent&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>When the enclave successfully validates the identity, it stores it in a key based cache. Subsequent messages
+from the same sender in the same session are paired with the cached identity which is then available from
+within the <code>receiveMail</code> method through the extra parameter called <code>identity</code>. This identity can be used to uniquely 
+identify a sender but be aware that the parameter might be null if the user decides to remain anonymous.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@Override</span>
+<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">receiveMail</span><span class="p">(</span><span class="kt">long</span> <span class="n">id</span><span class="p">,</span> <span class="n">EnclaveMail</span> <span class="n">mail</span><span class="p">,</span> <span class="n">String</span> <span class="n">routingHint</span><span class="p">,</span> <span class="n">SenderIdentity</span> <span class="n">identity</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">String</span> <span class="n">reversedString</span> <span class="o">=</span> <span class="n">reverse</span><span class="p">(</span><span class="k">new</span> <span class="n">String</span><span class="p">(</span><span class="n">mail</span><span class="p">.</span><span class="na">getBodyAsBytes</span><span class="p">()));</span>
+
+    <span class="n">String</span> <span class="n">responseString</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">identity</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">responseString</span> <span class="o">=</span> <span class="n">String</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="s">&quot;Reversed string: %s; Sender name: &lt;Anonymous&gt;&quot;</span><span class="p">,</span> <span class="n">reversedString</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">responseString</span> <span class="o">=</span> <span class="n">String</span><span class="p">.</span><span class="na">format</span><span class="p">(</span><span class="s">&quot;Reversed string: %s; Sender name: %s&quot;</span><span class="p">,</span> <span class="n">reversedString</span><span class="p">,</span> <span class="n">identity</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Get the PostOffice instance for responding back to this mail. Our response will use the same topic.</span>
+    <span class="kd">final</span> <span class="n">EnclavePostOffice</span> <span class="n">postOffice</span> <span class="o">=</span> <span class="n">postOffice</span><span class="p">(</span><span class="n">mail</span><span class="p">);</span>
+    <span class="c1">// Create the encrypted response and send it back to the sender.</span>
+    <span class="kd">final</span> <span class="kt">byte</span><span class="o">[]</span> <span class="n">reply</span> <span class="o">=</span> <span class="n">postOffice</span><span class="p">.</span><span class="na">encryptMail</span><span class="p">(</span><span class="n">responseString</span><span class="p">.</span><span class="na">getBytes</span><span class="p">(</span><span class="n">StandardCharsets</span><span class="p">.</span><span class="na">UTF_8</span><span class="p">));</span>
+    <span class="n">postMail</span><span class="p">(</span><span class="n">reply</span><span class="p">,</span> <span class="n">routingHint</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>The method <code>receiveMail</code> contains the enclave logic and therefore can contain any logic necessary to meet the business requirements.
+For the example above, the enclave simply reverses a string and returns the result back with the sender name if the party
+decided not to be anonymous. The mail parameter contains some metadata, and the data which is going to be processed by the enclave.
+The call <code>mail.getBodyAsBytes()</code> returns the data that is going to be processed by the enclave. As mention previously, the <code>identity</code>
+parameter object contains the identity of the sender or is set to null if the sender decided to remain anonymous.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Contrary to the 'hello world' project, the method <code>receiveMail</code> contains an extra parameter called identity. Even though
+technically this is an overload, the original is final and can't be used.</p>
+</div>
+<h2 id="unit-testing">Unit testing<a class="headerlink" href="#unit-testing" title="Permanent link">&para;</a></h2>
+<p>The unit tests are completely normal for Corda. However, as the code above will load a real or simulated Linux enclave,
+they won't run on Windows or macOS. You can build your enclave in <a href="mockmode.html">mock mode</a> to fix this or on macOS, you can use the 
+<code>container-gradle</code> script to run the tests inside a Linux VM.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="writing-hello-world.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Writing your first enclave
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="mail.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Communicating with an enclave using Mail
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.53cc9318.min.js"></script>
+      <script src="assets/javascripts/bundle.e9c9f54f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: ['navigation.tabs', 'navigation.instant', 'navigation.sections'],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

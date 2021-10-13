@@ -1,0 +1,85 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.r3.conclave",
+    "module": "conclave-mail",
+    "version": "1.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.6.1",
+      "buildId": "ynpnrwttbnazrjru2alvsadliq"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "files": [
+        {
+          "name": "conclave-mail-1.1.jar",
+          "url": "conclave-mail-1.1.jar",
+          "size": 1727106,
+          "sha512": "e3b78451c09fb51357569640cb91bb9912d310323455c9d7ed027d4f8bfa43832a7e3bfda748ab4f59634ed0819c73be7ae5ecb1eca36ba65bfa82221b066e5d",
+          "sha256": "79b4b95fc46d30c6f448a6d929d3b3bb882435fd7244bfcc70257d27f2ef12db",
+          "sha1": "a332e6f63d1e48812f9e73fbbc65b1100d975c59",
+          "md5": "a67c6f0485c0dd91bd4cbfc0aa2f1d62"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "files": [
+        {
+          "name": "conclave-mail-1.1.jar",
+          "url": "conclave-mail-1.1.jar",
+          "size": 1727106,
+          "sha512": "e3b78451c09fb51357569640cb91bb9912d310323455c9d7ed027d4f8bfa43832a7e3bfda748ab4f59634ed0819c73be7ae5ecb1eca36ba65bfa82221b066e5d",
+          "sha256": "79b4b95fc46d30c6f448a6d929d3b3bb882435fd7244bfcc70257d27f2ef12db",
+          "sha1": "a332e6f63d1e48812f9e73fbbc65b1100d975c59",
+          "md5": "a67c6f0485c0dd91bd4cbfc0aa2f1d62"
+        }
+      ]
+    },
+    {
+      "name": "shadowRuntimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "shadowed",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "conclave-mail-1.1.jar",
+          "url": "conclave-mail-1.1.jar",
+          "size": 1727106,
+          "sha512": "e3b78451c09fb51357569640cb91bb9912d310323455c9d7ed027d4f8bfa43832a7e3bfda748ab4f59634ed0819c73be7ae5ecb1eca36ba65bfa82221b066e5d",
+          "sha256": "79b4b95fc46d30c6f448a6d929d3b3bb882435fd7244bfcc70257d27f2ef12db",
+          "sha1": "a332e6f63d1e48812f9e73fbbc65b1100d975c59",
+          "md5": "a67c6f0485c0dd91bd4cbfc0aa2f1d62"
+        }
+      ]
+    }
+  ]
+}

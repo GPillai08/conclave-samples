@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>com.r3.conclave.enclave</title>
+<link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../";</script><script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../styles/style.css" rel="Stylesheet"><link href="../../styles/logo-styles.css" rel="Stylesheet"><link href="../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../scripts/main.js" async="async"></script><link href="../../images/docs_logo.svg"><link href="../../images/arrow_down.svg">  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="Conclave 1.1::com.r3.conclave.enclave////PointingToDeclaration//-654294413">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../index.html">Conclave 1.1</a>/<a href="index.html">com.r3.conclave.enclave</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Package com.</span><wbr></wbr><span>r3.</span><wbr></wbr><span>conclave.</span><wbr></wbr><span>enclave</span></h1>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Types">Types</button></div>
+            <div class="tabs-section-body">
+              <h2 class="">Types</h2>
+              <div class="table" data-togglable="Types"><a data-name="-2059312019%2FClasslikes%2F-654294413" anchor-label="Enclave" id="-2059312019%2FClasslikes%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-enclave/index.html">Enclave</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2059312019%2FClasslikes%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace">public abstract class <a href="-enclave/index.html">Enclave</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-2059312019%2FClasslikes%2F-654294413" anchor-label="Enclave" id="-2059312019%2FClasslikes%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="-2059312019%2FClasslikes%2F-654294413" anchor-label="Enclave" id="-2059312019%2FClasslikes%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">Subclass this inside your enclave to provide an entry point. The outside world communicates with the enclave via two mechanisms:</p><ol><li><p class="paragraph">Local connections from the host. But remember the host is malicious in the SGX     threat model, so anything received from the host cannot be completely trusted.     Override and implement <a href="-enclave/receive-from-untrusted-host.html">receiveFromUntrustedHost</a> to receive the byte arrays sent via     <code>EnclaveHost.callEnclave</code>.</p></li><li><p class="paragraph"><a href="../com.r3.conclave.mail/-enclave-mail/index.html">EnclaveMail</a>, an encrypted, authenticated and padded asynchronous messaging     scheme. Clients that obtain a <a href="../com.r3.conclave.common/-enclave-instance-info/index.html">EnclaveInstanceInfo</a> from the host can create     mails and send it to the host for delivery. Override and implement <a href="-enclave/receive-mail.html">receiveMail</a> to receive mail via the host.</p></li></ol><p class="paragraph">Enclaves can sign things with a key that appears in the <a href="../com.r3.conclave.common/-enclave-instance-info/index.html">com.r3.conclave.common.EnclaveInstanceInfo</a>. This can be useful when the enclave is being used to create a proof of correct computation, rather than operate on secret data.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1485526703%2FClasslikes%2F-654294413" anchor-label="EnclavePostOffice" id="-1485526703%2FClasslikes%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="-enclave-post-office/index.html">EnclavePostOffice</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1485526703%2FClasslikes%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace">public abstract class <a href="-enclave-post-office/index.html">EnclavePostOffice</a> extends <span data-unresolved-link="com.r3.conclave.mail.internal/AbstractPostOffice///PointingToDeclaration/">AbstractPostOffice</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-1485526703%2FClasslikes%2F-654294413" anchor-label="EnclavePostOffice" id="-1485526703%2FClasslikes%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="-1485526703%2FClasslikes%2F-654294413" anchor-label="EnclavePostOffice" id="-1485526703%2FClasslikes%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">A special post office which is tailored for use inside the enclave. A cached instance can be retrieved using one of the <a href="-enclave/post-office.html">Enclave.postOffice</a> methods. The sender private key is automatically set to the enclave's private encryption key, which is why a private key is not required.</p><p class="paragraph"><a href="-enclave-post-office/index.html">EnclavePostOffice</a> differs from the general <a href="../com.r3.conclave.mail/-post-office/index.html">PostOffice</a> by not having a decrypt method as the enclave already does that, and not exposing the sender private key as that's a secret of the enclave that should not be leaked.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span><a href="https://docs.conclave.net">&#60;&#60; Back to Conclave documentation</a></span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

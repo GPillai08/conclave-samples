@@ -1,0 +1,61 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.r3.conclave",
+    "module": "native-binutils",
+    "version": "1.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.6.1",
+      "buildId": "ynpnrwttbnazrjru2alvsadliq"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "native-binutils-1.1.jar",
+          "url": "native-binutils-1.1.jar",
+          "size": 735158,
+          "sha512": "8c904aa6950c02421000314f99024961c247a2b690f61cac01d797dbafe7e14b94c454895c6b5be99c956a24f6ed2d21114069248d681ab87b2e2fb35259c10b",
+          "sha256": "1401fc57560ff80dda59b2b355ede08da6c619519336e69bc9a1538dd6a22277",
+          "sha1": "a2d8a97700c67064e6892bc4226de5b68347e927",
+          "md5": "5b4462a9dd691bbd10f915617a619c52"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "native-binutils-1.1.jar",
+          "url": "native-binutils-1.1.jar",
+          "size": 735158,
+          "sha512": "8c904aa6950c02421000314f99024961c247a2b690f61cac01d797dbafe7e14b94c454895c6b5be99c956a24f6ed2d21114069248d681ab87b2e2fb35259c10b",
+          "sha256": "1401fc57560ff80dda59b2b355ede08da6c619519336e69bc9a1538dd6a22277",
+          "sha1": "a2d8a97700c67064e6892bc4226de5b68347e927",
+          "md5": "5b4462a9dd691bbd10f915617a619c52"
+        }
+      ]
+    }
+  ]
+}

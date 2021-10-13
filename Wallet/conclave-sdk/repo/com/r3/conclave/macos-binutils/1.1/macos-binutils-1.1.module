@@ -1,0 +1,65 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.r3.conclave",
+    "module": "macos-binutils",
+    "version": "1.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.6.1",
+      "buildId": "ynpnrwttbnazrjru2alvsadliq"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "files": [
+        {
+          "name": "macos-binutils-1.1.jar",
+          "url": "macos-binutils-1.1.jar",
+          "size": 747973,
+          "sha512": "856d16d9743a5f850cc84d299f510eb0b67b6ea0463d583cb5554d3c2c4462bae4597c7001ad64227bace31a47e3a95dca7a2483046450fa508533c51bec6f54",
+          "sha256": "2842a057be4008e8912f079fdc0830354842eb13e1e958717e36aed82e495faa",
+          "sha1": "8073b70fe0d8116e14c0b7716811bc1d55d31c47",
+          "md5": "6ad433ca45cda8d3628e5c5d1b82b085"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "files": [
+        {
+          "name": "macos-binutils-1.1.jar",
+          "url": "macos-binutils-1.1.jar",
+          "size": 747973,
+          "sha512": "856d16d9743a5f850cc84d299f510eb0b67b6ea0463d583cb5554d3c2c4462bae4597c7001ad64227bace31a47e3a95dca7a2483046450fa508533c51bec6f54",
+          "sha256": "2842a057be4008e8912f079fdc0830354842eb13e1e958717e36aed82e495faa",
+          "sha1": "8073b70fe0d8116e14c0b7716811bc1d55d31c47",
+          "md5": "6ad433ca45cda8d3628e5c5d1b82b085"
+        }
+      ]
+    }
+  ]
+}

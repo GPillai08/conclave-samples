@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>receiveMail</title>
+<link href="../../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script><link href="../../../images/docs_logo.svg"><link href="../../../images/arrow_down.svg">  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="Conclave 1.1::com.r3.conclave.enclave/Enclave/receiveMail/#kotlin.Long#com.r3.conclave.mail.EnclaveMail#kotlin.String?/PointingToDeclaration//-654294413">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">Conclave 1.1</a>/<a href="../index.html">com.r3.conclave.enclave</a>/<a href="index.html">Enclave</a>/<a href="receive-mail.html">receiveMail</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>receive</span><wbr></wbr><span>Mail</span></h1>
+          </div>
+<div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block"><span data-unresolved-link="/void///PointingToDeclaration/">void</span> <a href="receive-mail.html">receiveMail</a>(<span data-unresolved-link="/long///PointingToDeclaration/">long</span> id, <a href="../../com.r3.conclave.mail/-enclave-mail/index.html">EnclaveMail</a> mail, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html">String</a> routingHint)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<p class="paragraph">Invoked when a mail has been delivered by the host (via <code>EnclaveHost.deliverMail</code>), successfully decrypted and authenticated (so the <span data-unresolved-link="com.r3.conclave.mail/EnclaveMail/authenticatedSender/#/PointingToDeclaration/">EnclaveMail.authenticatedSender</span> property is reliable).</p><p class="paragraph">Default implementation throws <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/UnsupportedOperationException.html">UnsupportedOperationException</a> so you should not perform a supercall.</p><p class="paragraph">Received mail should be acknowledged by passing it to <a href="acknowledge-mail.html">acknowledgeMail</a>, as otherwise it will be redelivered if the enclave restarts.</p><p class="paragraph">By not acknowledging mail in a topic until a multi-step messaging conversation is finished, you can ensure that the conversation survives restarts and upgrades.</p><p class="paragraph">Any uncaught exceptions thrown by this method propagate to the calling <code>EnclaveHost.deliverMail</code>. In Java, checked exceptions can be made to propagate by rethrowing them in an unchecked one.</p><h2 class="">Parameters</h2><div data-togglable="Parameters"><div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="Parameters"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">id</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">An opaque identifier for the mail.</p></div></div></div></div></div><div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">mail</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Access to the decrypted/authenticated mail body+envelope.</p></div></div></div></div></div><div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">routingHint</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">An optional string provided by the host that can be passed to <a href="post-mail.html">postMail</a> to tell the host that you wish to reply to whoever provided it with this mail (e.g. connection ID). Note that this may not be the same as the logical sender of the mail if advanced anonymity techniques are being used, like users passing mail around between themselves before it's delivered.</p></div></div></div></div></div></div></div></div></div></div></div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span><a href="https://docs.conclave.net">&#60;&#60; Back to Conclave documentation</a></span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

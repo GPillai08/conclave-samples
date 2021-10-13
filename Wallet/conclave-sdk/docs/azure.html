@@ -1,0 +1,1344 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.6">
+    
+    
+      
+        <title>Cloud Deployment - Conclave documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-87760032-7","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deploying-to-azure" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="index.html" title="Conclave documentation" class="md-header-nav__button md-logo" aria-label="Conclave documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Conclave documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Cloud Deployment
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="index.html" class="md-tabs__link">
+      Welcome
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="enclaves.html" class="md-tabs__link">
+        Concepts
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="tutorial.html" class="md-tabs__link">
+        Development
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="system-requirements.html" class="md-tabs__link md-tabs__link--active">
+        Operations
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="faq.html" class="md-tabs__link">
+      FAQ
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Conclave documentation" class="md-nav__button md-logo" aria-label="Conclave documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Conclave documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+      
+      <label class="md-nav__link" for="nav-2">
+        Concepts
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Concepts" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="enclaves.html" class="md-nav__link">
+        Confidential Computing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architecture.html" class="md-nav__link">
+        Conclave Architecture
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+      
+      <label class="md-nav__link" for="nav-3">
+        Development
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Development" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+      
+      <label class="md-nav__link" for="nav-3-1">
+        Tutorials
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="2">
+        <label class="md-nav__title" for="nav-3-1">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial.html" class="md-nav__link">
+        Running your first enclave
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="writing-hello-world.html" class="md-nav__link">
+        Writing your first enclave
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="writing-cordapps.html" class="md-nav__link">
+        Integrating an enclave with Corda
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2" >
+      
+      <label class="md-nav__link" for="nav-3-2">
+        Design topics
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Design topics" data-md-level="2">
+        <label class="md-nav__title" for="nav-3-2">
+          <span class="md-nav__icon md-icon"></span>
+          Design topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mail.html" class="md-nav__link">
+        Communicating with an enclave using Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mockmode.html" class="md-nav__link">
+        Rapid testing and development with Mock Mode
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security.html" class="md-nav__link">
+        Maximising the security of your enclave
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3" >
+      
+      <label class="md-nav__link" for="nav-3-3">
+        Reference
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Reference" data-md-level="2">
+        <label class="md-nav__title" for="nav-3-3">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="threads.html" class="md-nav__link">
+        Threads
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="javascript.html" class="md-nav__link">
+        JavaScript
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="filesystem.html" class="md-nav__link">
+        File system
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="performance.html" class="md-nav__link">
+        Performance
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="container-gradle.html" class="md-nav__link">
+        Testing on macOS
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" >
+      
+      <label class="md-nav__link" for="nav-3-4">
+        API
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="API" data-md-level="2">
+        <label class="md-nav__title" for="nav-3-4">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/index.html" class="md-nav__link">
+        JavaDocs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="enclave-configuration.html" class="md-nav__link">
+        Configuration options for enclaves
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api-changes.html" class="md-nav__link">
+        Migration notes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="known-issues.html" class="md-nav__link">
+        Known issues
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      
+      <label class="md-nav__link" for="nav-4">
+        Operations
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Operations" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Operations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" checked>
+      
+      <label class="md-nav__link" for="nav-4-1">
+        Server deployment
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Server deployment" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-1">
+          <span class="md-nav__icon md-icon"></span>
+          Server deployment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="system-requirements.html" class="md-nav__link">
+        System requirements
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1-2" type="checkbox" id="nav-4-1-2" checked>
+      
+      <label class="md-nav__link" for="nav-4-1-2">
+        Machine setup
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Machine setup" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-1-2">
+          <span class="md-nav__icon md-icon"></span>
+          Machine setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="machine-setup.html" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Cloud Deployment
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="azure.html" class="md-nav__link md-nav__link--active">
+        Cloud Deployment
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#attestation" class="md-nav__link">
+    Attestation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#background-the-dcap-protocol" class="md-nav__link">
+    Background: The DCAP protocol
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#machine-setup" class="md-nav__link">
+    Machine setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Machine setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dcap-plugin" class="md-nav__link">
+    DCAP Plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="DCAP Plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-client-plugin" class="md-nav__link">
+    Azure client plugin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intel-dcap-plugin" class="md-nav__link">
+    Intel DCAP plugin
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-docker-containers" class="md-nav__link">
+    Using Docker container(s)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-conclave-application" class="md-nav__link">
+    Running a Conclave Application
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ias.html" class="md-nav__link">
+        Self-Hosting
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2" >
+      
+      <label class="md-nav__link" for="nav-4-2">
+        Upgrades
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Upgrades" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-2">
+          <span class="md-nav__icon md-icon"></span>
+          Upgrades
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="signing.html" class="md-nav__link">
+        Enclave signing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="renewability.html" class="md-nav__link">
+        Renewability
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="faq.html" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#attestation" class="md-nav__link">
+    Attestation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#background-the-dcap-protocol" class="md-nav__link">
+    Background: The DCAP protocol
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#machine-setup" class="md-nav__link">
+    Machine setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Machine setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dcap-plugin" class="md-nav__link">
+    DCAP Plugin
+  </a>
+  
+    <nav class="md-nav" aria-label="DCAP Plugin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-client-plugin" class="md-nav__link">
+    Azure client plugin
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intel-dcap-plugin" class="md-nav__link">
+    Intel DCAP plugin
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-docker-containers" class="md-nav__link">
+    Using Docker container(s)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-conclave-application" class="md-nav__link">
+    Running a Conclave Application
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="deploying-to-azure">Deploying to Azure<a class="headerlink" href="#deploying-to-azure" title="Permanent link">&para;</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Azure does not guarantee access to the same machine on reboot, secrets that are encrypted for a particular enclave may be lost.
+Consider using the Azure Key Vault to prevent this. At time of writing, access to Azure Key Vault is not a part of the Conclave SDK (v1.1).</p>
+</div>
+<h2 id="attestation">Attestation<a class="headerlink" href="#attestation" title="Permanent link">&para;</a></h2>
+<p>Microsoft Azure provides ready-made VMs that support the latest attestation protocols. This document explains the
+background and provides a walkthrough showing how to get such a VM.</p>
+<h2 id="background-the-dcap-protocol">Background: The DCAP protocol<a class="headerlink" href="#background-the-dcap-protocol" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you just want to deploy to Azure as quickly as possible you can skip this section.</p>
+</div>
+<p>There are two protocols for establishing what code is running in an enclave: EPID and DCAP. EPID is an older
+protocol designed for consumer applications, and as such includes some sophisticated privacy features. For servers
+where the IP address doesn't need to be hidden (because it's public in DNS to begin with), these features 
+aren't helpful and thus there is DCAP (<em>datacenter attestation primitives</em>). DCAP requires more modern hardware 
+but is otherwise simpler and more robust. You may also see DCAP referred to as "ECDSA attestation".</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Intel does not provide EPID attestation support on any Xeon Scalable processors. This includes Ice Lake Xeon CPUs and any future
+generations. Please ensure you are using DCAP attestation on these platforms.</p>
+</div>
+<p>In DCAP repeating attestation requests aren't forwarded to Intel, but rather served from a cache. A newly installed 
+machine obtains a machine certificate from Intel via the cache which may then be persisted to disk. All this is
+automated for you.</p>
+<p>Because caches are run by cloud providers DCAP supports vendor-specific plugins. Intel provides a default one 
+which requires a <a href="https://api.portal.trustedservices.intel.com/products/liv-intel-software-guard-extensions-provisioning-certification-service">subscription</a>.  </p>
+<p>Azure provides a DCAP <a href="https://github.com/microsoft/Azure-DCAP-Client">plugin</a> that does not require a subscription. Conclave 
+bundles and uses that plugin by default. The Azure caches are open to the public internet and can actually
+be used from anywhere. Azure Confidential Computing instances (DC4s_v2) come pre-provisioned for DCAP and as Conclave
+comes with the necessary libraries bundled, you don't need to do any further setup.</p>
+<h2 id="machine-setup">Machine setup<a class="headerlink" href="#machine-setup" title="Permanent link">&para;</a></h2>
+<p>You need to create an Ubuntu 18.04 LTS Gen2 VM from the <a href="https://azure.microsoft.com/en-gb/solutions/confidential-compute/">confidential
+compute</a> line (named like this: DC?s_v2) where the
+question mark is the size. Other distributions should work as long as they are on these VMs, but we haven't tested them.</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Azure CLI</label><div class="tabbed-content">
+<p>The VM must be created inside a resource group. You may use an existing resource group or create one with the
+following command:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>az group create -l &lt;LOCATION&gt; -n &lt;GROUP-NAME&gt;
+</code></pre></div>
+</td></tr></table></p>
+<p>Now create the VM.
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>az vm create <span class="se">\</span>
+--size Standard_DC4s_v2 <span class="se">\</span>
+--image Canonical:UbuntuServer:18_04-lts-gen2:latest <span class="se">\</span>
+--name &lt;VM-NAME&gt; <span class="se">\</span>
+--resource-group &lt;GROUP-NAME&gt;
+</code></pre></div>
+</td></tr></table></p>
+<p><code>VM-NAME</code> is the name you choose for the VM and <code>GROUP-NAME</code> is the name of the chosen resource group.</p>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Azure Portal</label><div class="tabbed-content">
+<p>Make sure you do the following when creating your Azure Confidential Computing VM:</p>
+<ul>
+<li>Use the <code>Ubuntu Server 18.04 (Gen2)</code> image</li>
+<li>Pick a size that's got plenty of RAM. For example, you might want to click "Change size" to find <code>DC4s_v2</code> type</li>
+<li>Ensure that the public inbound ports are open for SSH access</li>
+</ul>
+<p><img alt="" src="images/create_vm_1_1.png" /></p>
+<p><img alt="" src="images/create_vm_2_1.png" /></p>
+</div>
+</div>
+<p>Just in case, once you have logged onto the VM:</p>
+<ul>
+<li>Check that the <code>enclave</code> device is present in the <code>/dev/sgx/</code> directory</li>
+<li>Check driver version <code>dmesg | grep sgx</code>. Conclave requires driver version 1.33+</li>
+<li>If either check fails:<ul>
+<li>Download the <a href="https://download.01.org/intel-sgx/latest/dcap-latest/linux/distro/ubuntu18.04-server/">driver</a></li>
+<li>Follow the <a href="https://download.01.org/intel-sgx/latest/dcap-latest/linux/docs/Intel_SGX_DCAP_Linux_SW_Installation_Guide.pdf">install instructions</a></li>
+</ul>
+</li>
+</ul>
+<p>You may need to add your user into <code>sgx_prv</code> group to give it access to SGX.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo usermod -aG sgx_prv <span class="nv">$USER</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="dcap-plugin">DCAP Plugin<a class="headerlink" href="#dcap-plugin" title="Permanent link">&para;</a></h3>
+<p>In order to perform attestation using DCAP Conclave needs a way to gather information about the platform the enclave is hosted on. This information provides proof from Intel that a system supports SGX and that it is patched and up to date.</p>
+<p>DCAP is designed to work on many different server topologies, therefore rather than directly connecting to Intel services to retrieve this information, the cloud vendor or owner of the SGX system must provide a DCAP client plugin that will provide the required information. Intel provide a generic DCAP client plugin as part of the DCAP runtime. In order to use this you also need to set up a Provisioning Certificate Caching Service (PCCS). Intel provide an example and some instructions <a href="https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/master/QuoteGeneration/pccs/README.md">here</a>. If you would like to use Intel's reference implementation of their <a href="https://github.com/intel/SGXDataCenterAttestationPrimitives/blob/master/QuoteGeneration/pccs">PCCS service</a> then there may be additional work required to provide data in the correct format for Conclave. Please contact R3 support if you need help in getting this setup.</p>
+<p>Microsoft has written a DCAP client plugin that works with its Azure Confidential Compute virtual machines. In fact, it also works outside of Azure for single CPU systems but this may not always be the case.</p>
+<p><em>Our SDK comes bundled with the Azure client plugin</em>.
+The bundled version will <em>only</em> be used if no other plugin has been found on the system.
+The runtime will use the first <code>.so</code> it encounters in the search order below:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>/usr/lib/x86_64-linux-gnu/libdcap_quoteprov.so.1
+/usr/lib/x86_64-linux-gnu/libdcap_quoteprov.so
+/usr/lib/libdcap_quoteprov.so.1
+/usr/lib/libdcap_quoteprov.so
+</code></pre></div>
+</td></tr></table>
+Should you decide to use a bundled version (recommended), ensure the files listed above don't exist (delete or rename
+them if necessary).</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The bundled DCAP Azure client plugin works with all current generation Azure confidential VMs as well as existing
+CPUs. However, if Azure extends their offerings to include new platforms, or if you attempt to use a new generation
+system such as a multi-CPU Ice Lake platform then the bundled Azure client plugin may not work and you might see an error
+when attempting to load your enclave. In this case <a href="#azure-client-plugin">follow the instructions below</a> to 
+build/install an updated version of the Azure client plugin that supports the platform.</p>
+</div>
+<p>You may want to set the Azure DCAP client logging level to FATAL as the default setting is fairly verbose:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">AZDCAP_DEBUG_LOG_LEVEL</span><span class="o">=</span>FATAL
+</code></pre></div>
+</td></tr></table></p>
+<p>If you would like to configure the DCAP plugin yourself, keep reading. If you are using bundled version, you can skip the rest of this section.</p>
+<h4 id="azure-client-plugin">Azure client plugin<a class="headerlink" href="#azure-client-plugin" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>Identify the currently installed DCAP client plugin. It will always have one of the following names: <code>libdcap_quoteprov.so.1</code> or <code>libdcap_quoteprov.so</code>. You might find other similarly named files, but they won't be used as a plugin.
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>ls /usr/lib/x86_64-linux-gnu/libdcap_quoteprov.so*
+ls /usr/lib/libdcap_quoteprov.so*
+</code></pre></div>
+</td></tr></table></p>
+</li>
+<li>
+<p>If you already have the Azure plugin installed then it will contain the text 'AZDCAP'.
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>grep AZDCAP /usr/lib/x86_64-linux-gnu/libdcap_quoteprov.so*
+grep AZDCAP /usr/lib/libdcap_quoteprov.so*
+</code></pre></div>
+</td></tr></table></p>
+</li>
+<li>If the Azure plugin is not currently installed then:<ul>
+<li>You can build it from <a href="github.com/microsoft/Azure-DCAP-Client">source</a>.</li>
+<li>Or extract from a pre-built package provided by Microsoft. E.g. for Ubuntu 18.04 via the command below (only libdcap_quoteprov.so is required).
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>wget https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/a/az-dcap-client/az-dcap-client_1.8_amd64.deb <span class="o">&amp;&amp;</span> ar x az-dcap-client_1.8_amd64.deb data.tar.xz <span class="o">&amp;&amp;</span> tar xvJf data.tar.xz --transform<span class="o">=</span><span class="s1">&#39;s/.*\///&#39;</span> ./usr/lib/libdcap_quoteprov.so <span class="o">&amp;&amp;</span> rm az-dcap-client_1.8_amd64.deb data.tar.xz
+</code></pre></div>
+</td></tr></table></li>
+</ul>
+</li>
+<li>The preferred name and location of the DCAP client plugin is <code>/usr/lib/x86_64-linux-gnu/libdcap_quoteprov.so.1</code>.
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cp <span class="k">$(</span>Azure-DCAP-Client<span class="k">)</span>/libdcap_quoteprov.so /usr/lib/x86_64-linux-gnu/libdcap_quoteprov.so.azure
+ln -sf /usr/lib/x86_64-linux-gnu/libdcap_quoteprov.so.azure /usr/lib/x86_64-linux-gnu/libdcap_quoteprov.so.1
+</code></pre></div>
+</td></tr></table></li>
+<li>Set the Azure DCAP client logging level to FATAL as desired.
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">AZDCAP_DEBUG_LOG_LEVEL</span><span class="o">=</span>FATAL
+</code></pre></div>
+</td></tr></table></li>
+</ul>
+<h4 id="intel-dcap-plugin">Intel DCAP plugin<a class="headerlink" href="#intel-dcap-plugin" title="Permanent link">&para;</a></h4>
+<p>Please read the installation instructions in the "Install the DCAP packages" section of the <a href="https://download.01.org/intel-sgx/latest/dcap-latest/linux/docs/Intel_SGX_DCAP_Linux_SW_Installation_Guide.pdf">installation guide</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you happen to have the Intel DCAP plugin installed alongside the Azure one, bear in mind that running <code>apt update</code> might reset the symlink above to point to Intel's plugin.</p>
+</div>
+<h2 id="using-docker-containers">Using Docker container(s)<a class="headerlink" href="#using-docker-containers" title="Permanent link">&para;</a></h2>
+<p>If you plan to use a Docker container with DCAP hardware, you must map two different device files like this:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>docker run --device /dev/sgx/enclave --device /dev/sgx/provision ...
+</code></pre></div>
+</td></tr></table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Azure offers a "Confidential Kubernetes" service. At this time we haven't tested Conclave with that. If you try it,
+let us and the community know if it works (conclave-discuss@groups.io)</p>
+</div>
+<h2 id="running-a-conclave-application">Running a Conclave Application<a class="headerlink" href="#running-a-conclave-application" title="Permanent link">&para;</a></h2>
+<p>Once the machine is set up, you can follow the <a href="tutorial.html">Compiling and running</a> tutorial to run the <code>hello-world</code> sample.</p>
+<p>The sample is configured to use DCAP attestation with the
+following line in <code>Host.java</code>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">enclave</span><span class="p">.</span><span class="na">start</span><span class="p">(</span><span class="k">new</span> <span class="n">AttestationParameters</span><span class="p">.</span><span class="na">DCAP</span><span class="p">(),</span> <span class="p">...</span> <span class="p">);</span>
+</code></pre></div>
+</td></tr></table></p>
+<p>DCAP doesn't require any specific API keys or parameters, so just creating the empty object is sufficient to choose it.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="machine-setup.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="ias.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Self-Hosting
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.53cc9318.min.js"></script>
+      <script src="assets/javascripts/bundle.e9c9f54f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: ['navigation.tabs', 'navigation.instant', 'navigation.sections'],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

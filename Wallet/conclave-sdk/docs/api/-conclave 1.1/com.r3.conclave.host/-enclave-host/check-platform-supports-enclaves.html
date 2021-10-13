@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>checkPlatformSupportsEnclaves</title>
+<link href="../../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script><link href="../../../images/docs_logo.svg"><link href="../../../images/arrow_down.svg">  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="Conclave 1.1::com.r3.conclave.host/EnclaveHost/checkPlatformSupportsEnclaves/#kotlin.Boolean/PointingToDeclaration//-654294413">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">Conclave 1.1</a>/<a href="../index.html">com.r3.conclave.host</a>/<a href="index.html">EnclaveHost</a>/<a href="check-platform-supports-enclaves.html">checkPlatformSupportsEnclaves</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>check</span><wbr></wbr><span>Platform</span><wbr></wbr><span>Supports</span><wbr></wbr><span>Enclaves</span></h1>
+          </div>
+<div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block">static <span data-unresolved-link="/void///PointingToDeclaration/">void</span> <a href="check-platform-supports-enclaves.html">checkPlatformSupportsEnclaves</a>(<span data-unresolved-link="/boolean///PointingToDeclaration/">boolean</span> enableSupport)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<p class="paragraph">Checks to see if the platform supports hardware based enclaves.</p><p class="paragraph">This method checks to see if the CPU and the BIOS are capable of supporting enclaves and whether support has been enabled.</p><p class="paragraph">If enclaves are supported but not enabled some platforms allow support to be enabled via a software call. This method can optionally be used to attempt to enable support on the platform. Enabling enclave support via software may require the application calling this method to be started with root privileges.</p><h2 class="">Parameters</h2><div data-togglable="Parameters"><div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="Parameters"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div data-togglable="Parameters"><div class="table" data-togglable="Parameters"><div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="main-subrow keyValue WithExtraAttributes"><div class=""><span class="inline-flex">enableSupport</span></div><div><div class="title"><div data-togglable="Parameters"><p class="paragraph">Set to true to attempt to enable enclave support on the platform if support is currently disabled.</p></div></div></div></div></div></div></div></div></div></div><h4 class="">Throws</h4><div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="table"><div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><a href="../-enclave-load-exception/index.html">com.r3.conclave.host.EnclaveLoadException</a></span></div><div><div class="title"><p class="paragraph">if HARDWARE enclave support is not available on the platform. The exception message gives a detailed reason why HARDWARE enclaves are not supported.</p></div></div></div></div><div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><a href="../-mock-only-supported-exception/index.html">com.r3.conclave.host.MockOnlySupportedException</a></span></div><div><div class="title"><p class="paragraph">if mock only enclave is supported on the platform. The exception message gives a detailed reason why mock only enclaves are supported.</p></div></div></div></div></div></div></div></div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span><a href="https://docs.conclave.net">&#60;&#60; Back to Conclave documentation</a></span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

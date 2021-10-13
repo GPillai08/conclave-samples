@@ -1,0 +1,61 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.r3.conclave",
+    "module": "native-substratevm-simulation",
+    "version": "1.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.6.1",
+      "buildId": "ynpnrwttbnazrjru2alvsadliq"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "native-substratevm-simulation-1.1.jar",
+          "url": "native-substratevm-simulation-1.1.jar",
+          "size": 900992,
+          "sha512": "b90f1af92887ee9b6e935a745611388a33ee72287199ef19936a7efc7faeb260db93b514bf0d1514fa903a0c661ef7fd1c35c18c7c95a147c2bb132c32af66de",
+          "sha256": "9192047c8a14cf57cf6c12a5a821a4c5e3028bac9a071b8cbff2b94e60fb3d6c",
+          "sha1": "d04d505910c92a75414ad6bf2a877c54a75ccff5",
+          "md5": "4c964d576f51187c990b58b3763adc64"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "native-substratevm-simulation-1.1.jar",
+          "url": "native-substratevm-simulation-1.1.jar",
+          "size": 900992,
+          "sha512": "b90f1af92887ee9b6e935a745611388a33ee72287199ef19936a7efc7faeb260db93b514bf0d1514fa903a0c661ef7fd1c35c18c7c95a147c2bb132c32af66de",
+          "sha256": "9192047c8a14cf57cf6c12a5a821a4c5e3028bac9a071b8cbff2b94e60fb3d6c",
+          "sha1": "d04d505910c92a75414ad6bf2a877c54a75ccff5",
+          "md5": "4c964d576f51187c990b58b3763adc64"
+        }
+      ]
+    }
+  ]
+}

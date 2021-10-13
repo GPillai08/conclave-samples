@@ -1,0 +1,61 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.r3.conclave",
+    "module": "native-host-debug",
+    "version": "1.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.6.1",
+      "buildId": "ynpnrwttbnazrjru2alvsadliq"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "native-host-debug-1.1.jar",
+          "url": "native-host-debug-1.1.jar",
+          "size": 3532232,
+          "sha512": "1038416cb54fc594770e5e4a75ceac47dd0df9569801f64dcce3daf9d8b78153224b96d177499b8fdfe73d1585d4912d6d0d79ecc388395604436363ce769d2c",
+          "sha256": "3a7a648acf858aa9a862fce915c03af849e7519919339603af19bfebcf5b77bb",
+          "sha1": "e28e27fc0f08d94a97b0bb3abe02091080a6d997",
+          "md5": "85312369f2678e1c214a974025e25cfd"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "native-host-debug-1.1.jar",
+          "url": "native-host-debug-1.1.jar",
+          "size": 3532232,
+          "sha512": "1038416cb54fc594770e5e4a75ceac47dd0df9569801f64dcce3daf9d8b78153224b96d177499b8fdfe73d1585d4912d6d0d79ecc388395604436363ce769d2c",
+          "sha256": "3a7a648acf858aa9a862fce915c03af849e7519919339603af19bfebcf5b77bb",
+          "sha1": "e28e27fc0f08d94a97b0bb3abe02091080a6d997",
+          "md5": "85312369f2678e1c214a974025e25cfd"
+        }
+      ]
+    }
+  ]
+}

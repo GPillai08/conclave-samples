@@ -1,0 +1,375 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>EnclavePostOffice</title>
+<link href="../../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script><link href="../../../images/docs_logo.svg"><link href="../../../images/arrow_down.svg">  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="Conclave 1.1::com.r3.conclave.enclave/EnclavePostOffice///PointingToDeclaration//-654294413">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">Conclave 1.1</a>/<a href="../index.html">com.r3.conclave.enclave</a>/<a href="index.html">EnclavePostOffice</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Enclave</span><wbr></wbr><span>Post</span><wbr></wbr><span>Office</span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace">public abstract class <a href="index.html">EnclavePostOffice</a> extends <span data-unresolved-link="com.r3.conclave.mail.internal/AbstractPostOffice///PointingToDeclaration/">AbstractPostOffice</span><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">A special post office which is tailored for use inside the enclave. A cached instance can be retrieved using one of the <a href="../-enclave/post-office.html">Enclave.postOffice</a> methods. The sender private key is automatically set to the enclave's private encryption key, which is why a private key is not required.</p><p class="paragraph"><a href="index.html">EnclavePostOffice</a> differs from the general <a href="../../com.r3.conclave.mail/-post-office/index.html">PostOffice</a> by not having a decrypt method as the enclave already does that, and not exposing the sender private key as that's a secret of the enclave that should not be leaked.</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Constructors">Constructors</button><button class="section-tab" data-togglable="Methods">Methods</button><button class="section-tab" data-togglable="Properties">Properties</button><button class="section-tab" data-togglable="See also">See also</button></div>
+            <div class="tabs-section-body">
+              <h2 class="">See also</h2>
+              <div data-togglable="See also">
+                <div class="platform-hinted WithExtraAttributes" data-platform-hinted="data-platform-hinted" data-togglable="See also"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div data-togglable="See also"><div class="table" data-togglable="See also"><div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="main-subrow keyValue WithExtraAttributes RowTitle"><div class=""><span class="inline-flex"><a href="../../com.r3.conclave.mail/-post-office/index.html">PostOffice</a></span><span class="inline-flex"><div data-togglable="See also"></div></span></div><div></div></div></div><div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="main-subrow keyValue WithExtraAttributes RowTitle"><div class=""><span class="inline-flex"><a href="../-enclave/post-office.html">Enclave.postOffice</a></span><span class="inline-flex"><div data-togglable="See also"></div></span></div><div></div></div></div></div></div></div></div>
+              </div>
+              <h2 class="tabbedcontent">Constructors</h2>
+              <div class="table" data-togglable="Constructors"><a data-name="-1517026719%2FConstructors%2F-654294413" anchor-label="EnclavePostOffice" id="-1517026719%2FConstructors%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue TabbedContent">
+                    <div class=""><span class="inline-flex"><a href="-enclave-post-office.html">EnclavePostOffice</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1517026719%2FConstructors%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block"><a href="index.html">EnclavePostOffice</a> <a href="-enclave-post-office.html">EnclavePostOffice</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/security/PublicKey.html">PublicKey</a> destinationPublicKey, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html">String</a> topic)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Methods</h2>
+              <div class="table" data-togglable="Methods"><a data-name="1537267700%2FFunctions%2F-654294413" anchor-label="encryptMail" id="1537267700%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="encrypt-mail.html">encryptMail</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1537267700%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block"><span data-unresolved-link="/byte[]///PointingToDeclaration/">byte[]</span> <a href="encrypt-mail.html">encryptMail</a>(<span data-unresolved-link="/byte[]///PointingToDeclaration/">byte[]</span> body)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-1474911892%2FFunctions%2F-654294413" anchor-label="encryptMail" id="-1474911892%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="-1474911892%2FFunctions%2F-654294413" anchor-label="encryptMail" id="-1474911892%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">Uses <a href="index.html#1755659014%2FProperties%2F-654294413">destinationPublicKey</a> to encrypt mail with the given body. Only the corresponding private key will be able to decrypt the mail. The returned ciphertext will include <a href="index.html#-314836867%2FProperties%2F-654294413">topic</a>, incremented sequence number (see <a href="index.html#-469334159%2FProperties%2F-654294413">nextSequenceNumber</a>) in the clear but authenticated (for the recipient only) as coming from the holder of the sender private key.</p><p class="paragraph">The recipient needs to call <a href="../../com.r3.conclave.mail/-post-office/decrypt-mail.html">PostOffice.decryptMail</a> on a post office with the private key of <a href="index.html#1755659014%2FProperties%2F-654294413">destinationPublicKey</a> to decrypt the bytes.</p><p class="paragraph">The encoded bytes contains the <a href="encrypt-mail.html">body</a>, header and the handshake bytes that set up the shared session key. A mail may not be larger than the 2 gigabyte limit of a Java byte array. The format is not defined here and subject to change.</p><p class="paragraph">It's safe to call this method from multiple threads.</p></div></div>
+<div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block"><span data-unresolved-link="/byte[]///PointingToDeclaration/">byte[]</span> <a href="encrypt-mail.html">encryptMail</a>(<span data-unresolved-link="/byte[]///PointingToDeclaration/">byte[]</span> body, <span data-unresolved-link="/byte[]///PointingToDeclaration/">byte[]</span> envelope)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="978568212%2FFunctions%2F-654294413" anchor-label="encryptMail" id="978568212%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="978568212%2FFunctions%2F-654294413" anchor-label="encryptMail" id="978568212%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">Uses <a href="index.html#1755659014%2FProperties%2F-654294413">destinationPublicKey</a> to encrypt mail with the given body. Only the coresponding private key will be able to decrypt the mail. The returned ciphertext will include <a href="index.html#-314836867%2FProperties%2F-654294413">topic</a>, incremented sequence number (see <a href="index.html#-469334159%2FProperties%2F-654294413">nextSequenceNumber</a>) and <a href="encrypt-mail.html">envelope</a> in the clear but authenticated (for the recipient only) as coming from the holder of the sender private key.</p><p class="paragraph">The recipient needs to call <a href="../../com.r3.conclave.mail/-post-office/decrypt-mail.html">PostOffice.decryptMail</a> on a post office with the private key of <a href="index.html#1755659014%2FProperties%2F-654294413">destinationPublicKey</a> to decrypt the bytes.</p><p class="paragraph">The encoded bytes contains the <a href="encrypt-mail.html">body</a>, the <a href="encrypt-mail.html">envelope</a>, header and the handshake bytes that set up the shared session key. A mail may not be larger than the 2 gigabyte limit of a Java byte array. The format is not defined here and subject to change.</p><p class="paragraph">It's safe to call this method from multiple threads.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1264428942%2FFunctions%2F-654294413" anchor-label="getDestinationPublicKey" id="1264428942%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="get-destination-public-key.html">getDestinationPublicKey</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1264428942%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block"><a href="https://docs.oracle.com/javase/8/docs/api/java/security/PublicKey.html">PublicKey</a> <a href="get-destination-public-key.html">getDestinationPublicKey</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="1264428942%2FFunctions%2F-654294413" anchor-label="getDestinationPublicKey" id="1264428942%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="1264428942%2FFunctions%2F-654294413" anchor-label="getDestinationPublicKey" id="1264428942%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">The public key of the recipient to which mail will be encrypted to.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-535214014%2FFunctions%2F-654294413" anchor-label="getEncryptCalled" id="-535214014%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="get-encrypt-called.html">getEncryptCalled</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-535214014%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block"><span data-unresolved-link="/boolean///PointingToDeclaration/">boolean</span> <a href="get-encrypt-called.html">getEncryptCalled</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1188309134%2FFunctions%2F-654294413" anchor-label="getKeyDerivation" id="1188309134%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="get-key-derivation.html">getKeyDerivation</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1188309134%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block">abstract <span data-unresolved-link="/byte[]///PointingToDeclaration/">byte[]</span> <a href="get-key-derivation.html">getKeyDerivation</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="729726815%2FFunctions%2F-654294413" anchor-label="getMinSizePolicy" id="729726815%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="get-min-size-policy.html">getMinSizePolicy</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="729726815%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block"><a href="../../com.r3.conclave.mail/-min-size-policy/index.html">MinSizePolicy</a> <a href="get-min-size-policy.html">getMinSizePolicy</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="729726815%2FFunctions%2F-654294413" anchor-label="getMinSizePolicy" id="729726815%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="729726815%2FFunctions%2F-654294413" anchor-label="getMinSizePolicy" id="729726815%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">Returns the <a href="../../com.r3.conclave.mail/-min-size-policy/index.html">MinSizePolicy</a> used to apply the minimum size for each encrypted mail. If none is specified then <span data-unresolved-link="com.r3.conclave.mail/MinSizePolicy.Companion/movingAverage/#/PointingToDeclaration/">MinSizePolicy.movingAverage</span> is used.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1031828985%2FFunctions%2F-654294413" anchor-label="getNextSequenceNumber" id="1031828985%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="get-next-sequence-number.html">getNextSequenceNumber</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1031828985%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block"><span data-unresolved-link="/long///PointingToDeclaration/">long</span> <a href="get-next-sequence-number.html">getNextSequenceNumber</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="1031828985%2FFunctions%2F-654294413" anchor-label="getNextSequenceNumber" id="1031828985%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="1031828985%2FFunctions%2F-654294413" anchor-label="getNextSequenceNumber" id="1031828985%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">Returns the sequence number that will be assigned to the next mail.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1514823419%2FFunctions%2F-654294413" anchor-label="getSenderPrivateKey" id="-1514823419%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="get-sender-private-key.html">getSenderPrivateKey</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1514823419%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block">abstract <a href="https://docs.oracle.com/javase/8/docs/api/java/security/PrivateKey.html">PrivateKey</a> <a href="get-sender-private-key.html">getSenderPrivateKey</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1048422164%2FFunctions%2F-654294413" anchor-label="getSequenceNumber" id="-1048422164%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="get-sequence-number.html">getSequenceNumber</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1048422164%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block"><span data-unresolved-link="/long///PointingToDeclaration/">long</span> <a href="get-sequence-number.html">getSequenceNumber</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1499919115%2FFunctions%2F-654294413" anchor-label="getTopic" id="-1499919115%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="get-topic.html">getTopic</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1499919115%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block"><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html">String</a> <a href="get-topic.html">getTopic</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-1499919115%2FFunctions%2F-654294413" anchor-label="getTopic" id="-1499919115%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="-1499919115%2FFunctions%2F-654294413" anchor-label="getTopic" id="-1499919115%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">The topic mail created by this post office will have.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1263758573%2FFunctions%2F-654294413" anchor-label="setEncryptCalled" id="-1263758573%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-encrypt-called.html">setEncryptCalled</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1263758573%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block"><span data-unresolved-link="/void///PointingToDeclaration/">void</span> <a href="set-encrypt-called.html">setEncryptCalled</a>(<span data-unresolved-link="/boolean///PointingToDeclaration/">boolean</span> encryptCalled)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="796850164%2FFunctions%2F-654294413" anchor-label="setMinSizePolicy" id="796850164%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-min-size-policy.html">setMinSizePolicy</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="796850164%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block"><span data-unresolved-link="/void///PointingToDeclaration/">void</span> <a href="set-min-size-policy.html">setMinSizePolicy</a>(<a href="../../com.r3.conclave.mail/-min-size-policy/index.html">MinSizePolicy</a> minSizePolicy)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="796850164%2FFunctions%2F-654294413" anchor-label="setMinSizePolicy" id="796850164%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="796850164%2FFunctions%2F-654294413" anchor-label="setMinSizePolicy" id="796850164%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">Returns the <a href="../../com.r3.conclave.mail/-min-size-policy/index.html">MinSizePolicy</a> used to apply the minimum size for each encrypted mail. If none is specified then <span data-unresolved-link="com.r3.conclave.mail/MinSizePolicy.Companion/movingAverage/#/PointingToDeclaration/">MinSizePolicy.movingAverage</span> is used.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1197029159%2FFunctions%2F-654294413" anchor-label="setSequenceNumber" id="-1197029159%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="set-sequence-number.html">setSequenceNumber</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1197029159%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block"><span data-unresolved-link="/void///PointingToDeclaration/">void</span> <a href="set-sequence-number.html">setSequenceNumber</a>(<span data-unresolved-link="/long///PointingToDeclaration/">long</span> sequenceNumber)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h2 class="">Properties</h2>
+              <div class="table" data-togglable="Properties"><a data-name="1755659014%2FProperties%2F-654294413" anchor-label="destinationPublicKey" id="1755659014%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#1755659014%2FProperties%2F-654294413">destinationPublicKey</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1755659014%2FProperties%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><a data-name="1755659014%2FProperties%2F-654294413" anchor-label="destinationPublicKey" id="1755659014%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="symbol monospace block">private <a href="https://docs.oracle.com/javase/8/docs/api/java/security/PublicKey.html">PublicKey</a> <a href="index.html#1755659014%2FProperties%2F-654294413">destinationPublicKey</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1755659014%2FProperties%2F-654294413" anchor-label="destinationPublicKey" id="1755659014%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">The public key of the recipient to which mail will be encrypted to.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-84137014%2FProperties%2F-654294413" anchor-label="encryptCalled" id="-84137014%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#-84137014%2FProperties%2F-654294413">encryptCalled</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-84137014%2FProperties%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><a data-name="-84137014%2FProperties%2F-654294413" anchor-label="encryptCalled" id="-84137014%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="symbol monospace block">private <span data-unresolved-link="/boolean///PointingToDeclaration/">boolean</span> <a href="index.html#-84137014%2FProperties%2F-654294413">encryptCalled</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1639386134%2FProperties%2F-654294413" anchor-label="keyDerivation" id="1639386134%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#1639386134%2FProperties%2F-654294413">keyDerivation</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1639386134%2FProperties%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><a data-name="1639386134%2FProperties%2F-654294413" anchor-label="keyDerivation" id="1639386134%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="symbol monospace block">private <span data-unresolved-link="/byte[]///PointingToDeclaration/">byte[]</span> <a href="index.html#1639386134%2FProperties%2F-654294413">keyDerivation</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1180803815%2FProperties%2F-654294413" anchor-label="minSizePolicy" id="1180803815%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#1180803815%2FProperties%2F-654294413">minSizePolicy</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1180803815%2FProperties%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><a data-name="1180803815%2FProperties%2F-654294413" anchor-label="minSizePolicy" id="1180803815%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="symbol monospace block">private <a href="../../com.r3.conclave.mail/-min-size-policy/index.html">MinSizePolicy</a> <a href="index.html#1180803815%2FProperties%2F-654294413">minSizePolicy</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="1180803815%2FProperties%2F-654294413" anchor-label="minSizePolicy" id="1180803815%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">Returns the <a href="../../com.r3.conclave.mail/-min-size-policy/index.html">MinSizePolicy</a> used to apply the minimum size for each encrypted mail. If none is specified then <span data-unresolved-link="com.r3.conclave.mail/MinSizePolicy.Companion/movingAverage/#/PointingToDeclaration/">MinSizePolicy.movingAverage</span> is used.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-469334159%2FProperties%2F-654294413" anchor-label="nextSequenceNumber" id="-469334159%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#-469334159%2FProperties%2F-654294413">nextSequenceNumber</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-469334159%2FProperties%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><a data-name="-469334159%2FProperties%2F-654294413" anchor-label="nextSequenceNumber" id="-469334159%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="symbol monospace block">private <span data-unresolved-link="/long///PointingToDeclaration/">long</span> <a href="index.html#-469334159%2FProperties%2F-654294413">nextSequenceNumber</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-469334159%2FProperties%2F-654294413" anchor-label="nextSequenceNumber" id="-469334159%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">Returns the sequence number that will be assigned to the next mail.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1862381693%2FProperties%2F-654294413" anchor-label="senderPrivateKey" id="1862381693%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#1862381693%2FProperties%2F-654294413">senderPrivateKey</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1862381693%2FProperties%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><a data-name="1862381693%2FProperties%2F-654294413" anchor-label="senderPrivateKey" id="1862381693%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="symbol monospace block">private <a href="https://docs.oracle.com/javase/8/docs/api/java/security/PrivateKey.html">PrivateKey</a> <a href="index.html#1862381693%2FProperties%2F-654294413">senderPrivateKey</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="50062948%2FProperties%2F-654294413" anchor-label="sequenceNumber" id="50062948%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#50062948%2FProperties%2F-654294413">sequenceNumber</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="50062948%2FProperties%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><a data-name="50062948%2FProperties%2F-654294413" anchor-label="sequenceNumber" id="50062948%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="symbol monospace block">private <span data-unresolved-link="/long///PointingToDeclaration/">long</span> <a href="index.html#50062948%2FProperties%2F-654294413">sequenceNumber</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-314836867%2FProperties%2F-654294413" anchor-label="topic" id="-314836867%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#-314836867%2FProperties%2F-654294413">topic</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-314836867%2FProperties%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title">
+                        <div class="platform-hinted " data-platform-hinted="data-platform-hinted" data-togglable="Properties"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><a data-name="-314836867%2FProperties%2F-654294413" anchor-label="topic" id="-314836867%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="symbol monospace block">private <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html">String</a> <a href="index.html#-314836867%2FProperties%2F-654294413">topic</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><div class="brief "><a data-name="-314836867%2FProperties%2F-654294413" anchor-label="topic" id="-314836867%2FProperties%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">The topic mail created by this post office will have.</p></div></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span><a href="https://docs.conclave.net">&#60;&#60; Back to Conclave documentation</a></span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

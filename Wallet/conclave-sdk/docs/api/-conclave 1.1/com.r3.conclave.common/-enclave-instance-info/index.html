@@ -1,0 +1,233 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>EnclaveInstanceInfo</title>
+<link href="../../../../../../images/logo-icon.svg" rel="icon" type="image/svg"><script>var pathToRoot = "../../../";</script><script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script><link href="../../../styles/style.css" rel="Stylesheet"><link href="../../../styles/logo-styles.css" rel="Stylesheet"><link href="../../../styles/jetbrains-mono.css" rel="Stylesheet"><link href="../../../styles/main.css" rel="Stylesheet"><script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script><script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script><script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script><script type="text/javascript" src="../../../scripts/main.js" async="async"></script><link href="../../../images/docs_logo.svg"><link href="../../../images/arrow_down.svg">  </head>
+  <body>
+    <div id="container">
+      <div id="leftColumn"><a href="../../../index.html">
+          <div id="logo"></div>
+        </a>
+        <div id="paneSearch"></div>
+        <div id="sideMenu"></div>
+      </div>
+      <div id="main">
+        <div id="leftToggler"><span class="icon-toggler"></span></div>
+<script type="text/javascript" src="../../../scripts/main.js"></script>        <div class="main-content" id="content" pageIds="Conclave 1.1::com.r3.conclave.common/EnclaveInstanceInfo///PointingToDeclaration//-654294413">
+          <div class="navigation-wrapper" id="navigation-wrapper">
+            <div class="breadcrumbs"><a href="../../../index.html">Conclave 1.1</a>/<a href="../index.html">com.r3.conclave.common</a>/<a href="index.html">EnclaveInstanceInfo</a></div>
+            <div class="pull-right d-flex">
+              <div id="searchBar"></div>
+            </div>
+          </div>
+          <div class="cover ">
+            <h1 class="cover"><span>Enclave</span><wbr></wbr><span>Instance</span><wbr></wbr><span>Info</span></h1>
+            <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace">public interface <a href="index.html">EnclaveInstanceInfo</a><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Contains serializable information about an instantiated enclave running on a specific machine, with the measurement and instance signing key verified by remote attestation. The remote attestation infrastructure backing all trusted computing schemes is what gives you confidence that the data in this object is correct and can be trusted, as long as <span data-unresolved-link="com.r3.conclave.common/EnclaveInstanceInfo/securityInfo/#/PointingToDeclaration/">securityInfo</span> and <span data-unresolved-link="com.r3.conclave.common/EnclaveInstanceInfo/enclaveInfo/#/PointingToDeclaration/">enclaveInfo</span> match what you expect.</p><p class="paragraph">An <a href="index.html">EnclaveInstanceInfo</a> should be fetched from the host via some app specific mechanism, such as via an HTTP request, a directory service lookup, shared file etc.</p></div></div>
+          </div>
+          <div class="tabbedcontent">
+            <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="Methods">Methods</button></div>
+            <div class="tabs-section-body">
+              <h2 class="">Methods</h2>
+              <div class="table" data-togglable="Methods"><a data-name="1135435123%2FFunctions%2F-654294413" anchor-label="createPostOffice" id="1135435123%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="create-post-office.html">createPostOffice</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1135435123%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block"><a href="../../com.r3.conclave.mail/-post-office/index.html">PostOffice</a> <a href="create-post-office.html">createPostOffice</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-1272792452%2FFunctions%2F-654294413" anchor-label="createPostOffice" id="-1272792452%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="-1272792452%2FFunctions%2F-654294413" anchor-label="createPostOffice" id="-1272792452%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">Returns a new <a href="../../com.r3.conclave.mail/-post-office/index.html">PostOffice</a> instance for encrypting mail to this target enclave on the &quot;default&quot; topic.</p><p class="paragraph">A new sender private key will be used (which can be retrieved with <a href="../../com.r3.conclave.mail/-post-office/index.html#1214637768%2FProperties%2F-654294413">PostOffice.senderPrivateKey</a>), and each mail created by this post office will be authenticated with it and act as the client's authenticated identity to the enclave (see <span data-unresolved-link="com.r3.conclave.mail/EnclaveMail/authenticatedSender/#/PointingToDeclaration/">EnclaveMail.authenticatedSender</span>). Typically only one sender key is required per client .</p><p class="paragraph">It's very important that related mail are created from the same post office instance, i.e. having the same topic and sender key. This is so the post office can apply an increasing sequence number to each mail, which the target enclave will use to make sure they are received in order and that none have been dropped (see <span data-unresolved-link="com.r3.conclave.mail/EnclaveMailHeader/sequenceNumber/#/PointingToDeclaration/">EnclaveMailHeader.sequenceNumber</span>).</p><p class="paragraph">For a different stream of mail create another post office with a different topic.</p></div></div>
+<div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block">abstract <a href="../../com.r3.conclave.mail/-post-office/index.html">PostOffice</a> <a href="create-post-office.html">createPostOffice</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/security/PrivateKey.html">PrivateKey</a> senderPrivateKey, <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html">String</a> topic)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="1177737347%2FFunctions%2F-654294413" anchor-label="createPostOffice" id="1177737347%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="1177737347%2FFunctions%2F-654294413" anchor-label="createPostOffice" id="1177737347%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">Returns a new <a href="../../com.r3.conclave.mail/-post-office/index.html">PostOffice</a> instance far encrypting mail to this target enclave on the given topic.</p><p class="paragraph">Each mail created by this post office will be authenticated with the given private key, and will act as the client's authenticated identity to the enclave (see <span data-unresolved-link="com.r3.conclave.mail/EnclaveMail/authenticatedSender/#/PointingToDeclaration/">EnclaveMail.authenticatedSender</span>). Typically only one sender key is required per client (a new one can be created using <span data-unresolved-link="com.r3.conclave.mail/Curve25519PrivateKey.Companion/random/#/PointingToDeclaration/">Curve25519PrivateKey.random</span>).</p><p class="paragraph">It's very important that related mail are created from the same post office instance, i.e. having the same topic and sender key. This is so the post office can apply an increasing sequence number to each mail, which the target enclave will use to make sure they are received in order and that none have been dropped (see <span data-unresolved-link="com.r3.conclave.mail/EnclaveMailHeader/sequenceNumber/#/PointingToDeclaration/">EnclaveMailHeader.sequenceNumber</span>).</p><p class="paragraph">For a different stream of mail create another post office with a different topic.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="1922666371%2FFunctions%2F-654294413" anchor-label="deserialize" id="1922666371%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="deserialize.html">deserialize</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1922666371%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block">static <a href="index.html">EnclaveInstanceInfo</a> <a href="deserialize.html">deserialize</a>(<span data-unresolved-link="/byte[]///PointingToDeclaration/">byte[]</span> from)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="1922666371%2FFunctions%2F-654294413" anchor-label="deserialize" id="1922666371%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="1922666371%2FFunctions%2F-654294413" anchor-label="deserialize" id="1922666371%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">Deserializes this object from its custom format.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="45691232%2FFunctions%2F-654294413" anchor-label="equals" id="45691232%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#45691232%2FFunctions%2F-654294413">equals</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="45691232%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block"><span data-unresolved-link="/boolean///PointingToDeclaration/">boolean</span> <a href="index.html#45691232%2FFunctions%2F-654294413">equals</a>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html">Object</a> other)<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="41794348%2FFunctions%2F-654294413" anchor-label="getDataSigningKey" id="41794348%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="get-data-signing-key.html">getDataSigningKey</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="41794348%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block">abstract <a href="https://docs.oracle.com/javase/8/docs/api/java/security/PublicKey.html">PublicKey</a> <a href="get-data-signing-key.html">getDataSigningKey</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="41794348%2FFunctions%2F-654294413" anchor-label="getDataSigningKey" id="41794348%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="41794348%2FFunctions%2F-654294413" anchor-label="getDataSigningKey" id="41794348%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">A key used by the enclave to digitally sign static data structures.</p><p class="paragraph">This is not the same as the enclave code signing key, which just links a specific enclave file to its author.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1667791810%2FFunctions%2F-654294413" anchor-label="getEnclaveInfo" id="-1667791810%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="get-enclave-info.html">getEnclaveInfo</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1667791810%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block">abstract <a href="../-enclave-info/index.html">EnclaveInfo</a> <a href="get-enclave-info.html">getEnclaveInfo</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-1667791810%2FFunctions%2F-654294413" anchor-label="getEnclaveInfo" id="-1667791810%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="-1667791810%2FFunctions%2F-654294413" anchor-label="getEnclaveInfo" id="-1667791810%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">Contains information about the enclave code that was loaded.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1618390098%2FFunctions%2F-654294413" anchor-label="getEncryptionKey" id="-1618390098%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="get-encryption-key.html">getEncryptionKey</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1618390098%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block">abstract <a href="https://docs.oracle.com/javase/8/docs/api/java/security/PublicKey.html">PublicKey</a> <a href="get-encryption-key.html">getEncryptionKey</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-1618390098%2FFunctions%2F-654294413" anchor-label="getEncryptionKey" id="-1618390098%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="-1618390098%2FFunctions%2F-654294413" anchor-label="getEncryptionKey" id="-1618390098%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">Returns the enclave's public encryption key.</p><p class="paragraph">For creating mail targeted to this enclave use a <a href="../../com.r3.conclave.mail/-post-office/index.html">PostOffice</a> from <a href="create-post-office.html">createPostOffice</a>.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-999809662%2FFunctions%2F-654294413" anchor-label="getSecurityInfo" id="-999809662%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="get-security-info.html">getSecurityInfo</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-999809662%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block">abstract <a href="../-enclave-security-info/index.html">EnclaveSecurityInfo</a> <a href="get-security-info.html">getSecurityInfo</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-999809662%2FFunctions%2F-654294413" anchor-label="getSecurityInfo" id="-999809662%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="-999809662%2FFunctions%2F-654294413" anchor-label="getSecurityInfo" id="-999809662%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">Exposes how secure the remote enclave is currently considered to be.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1659114618%2FFunctions%2F-654294413" anchor-label="hashCode" id="-1659114618%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#-1659114618%2FFunctions%2F-654294413">hashCode</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1659114618%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block"><span data-unresolved-link="/int///PointingToDeclaration/">int</span> <a href="index.html#-1659114618%2FFunctions%2F-654294413">hashCode</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-925031578%2FFunctions%2F-654294413" anchor-label="serialize" id="-925031578%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="serialize.html">serialize</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-925031578%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block">abstract <span data-unresolved-link="/byte[]///PointingToDeclaration/">byte[]</span> <a href="serialize.html">serialize</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="-925031578%2FFunctions%2F-654294413" anchor-label="serialize" id="-925031578%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="-925031578%2FFunctions%2F-654294413" anchor-label="serialize" id="-925031578%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">Serializes this object to a custom format and returns the byte array.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="-1837280683%2FFunctions%2F-654294413" anchor-label="toString" id="-1837280683%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="index.html#-1837280683%2FFunctions%2F-654294413">toString</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1837280683%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block"><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html">String</a> <a href="index.html#-1837280683%2FFunctions%2F-654294413">toString</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+</div>
+</div>
+                    </div>
+                  </div>
+                </div>
+<a data-name="306536958%2FFunctions%2F-654294413" anchor-label="verifier" id="306536958%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a>
+                <div class="table-row" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave">
+                  <div class="main-subrow keyValue ">
+                    <div class=""><span class="inline-flex"><a href="verifier.html">verifier</a><span class="anchor-wrapper"><span class="anchor-icon" pointing-to="306536958%2FFunctions%2F-654294413"></span>
+                          <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                        </span></span></div>
+                    <div>
+                      <div class="title"><div class="divergent-group" data-filterable-current=":dokkaHtml/conclave" data-filterable-set=":dokkaHtml/conclave"><div class="with-platform-tags"><span class="pull-right"></span></div>
+
+  <div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-depenent-content" data-active="" data-togglable=":dokkaHtml/conclave"><div class="symbol monospace block">abstract <a href="https://docs.oracle.com/javase/8/docs/api/java/security/Signature.html">Signature</a> <a href="verifier.html">verifier</a>()<span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+<a data-name="306536958%2FFunctions%2F-654294413" anchor-label="verifier" id="306536958%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><div class="brief "><a data-name="306536958%2FFunctions%2F-654294413" anchor-label="verifier" id="306536958%2FFunctions%2F-654294413" data-filterable-set=":dokkaHtml/conclave"></a><p class="paragraph">Returns a <a href="https://docs.oracle.com/javase/8/docs/api/java/security/Signature.html">Signature</a> object pre-initialised with <span data-unresolved-link="com.r3.conclave.common/EnclaveInstanceInfo/dataSigningKey/#/PointingToDeclaration/">dataSigningKey</span>, ready for the verification of digitial signatures generated by the enclave.</p></div></div>
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span class="go-to-top-icon"><a href="#content"></a></span><span><a href="https://docs.conclave.net">&#60;&#60; Back to Conclave documentation</a></span><span class="pull-right"><span>Generated by </span><a href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span></div>
+      </div>
+    </div>
+  </body>
+</html>
+

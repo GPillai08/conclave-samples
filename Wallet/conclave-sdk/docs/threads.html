@@ -1,0 +1,1238 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.6">
+    
+    
+      
+        <title>Threads - Conclave documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-87760032-7","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#using-threads-in-enclaves" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="index.html" title="Conclave documentation" class="md-header-nav__button md-logo" aria-label="Conclave documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Conclave documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Threads
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="index.html" class="md-tabs__link">
+      Welcome
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="enclaves.html" class="md-tabs__link">
+        Concepts
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="tutorial.html" class="md-tabs__link md-tabs__link--active">
+        Development
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="system-requirements.html" class="md-tabs__link">
+        Operations
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="faq.html" class="md-tabs__link">
+      FAQ
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Conclave documentation" class="md-nav__button md-logo" aria-label="Conclave documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Conclave documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+      
+      <label class="md-nav__link" for="nav-2">
+        Concepts
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Concepts" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="enclaves.html" class="md-nav__link">
+        Confidential Computing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architecture.html" class="md-nav__link">
+        Conclave Architecture
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      
+      <label class="md-nav__link" for="nav-3">
+        Development
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Development" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+      
+      <label class="md-nav__link" for="nav-3-1">
+        Tutorials
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="2">
+        <label class="md-nav__title" for="nav-3-1">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial.html" class="md-nav__link">
+        Running your first enclave
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="writing-hello-world.html" class="md-nav__link">
+        Writing your first enclave
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="writing-cordapps.html" class="md-nav__link">
+        Integrating an enclave with Corda
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2" >
+      
+      <label class="md-nav__link" for="nav-3-2">
+        Design topics
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Design topics" data-md-level="2">
+        <label class="md-nav__title" for="nav-3-2">
+          <span class="md-nav__icon md-icon"></span>
+          Design topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mail.html" class="md-nav__link">
+        Communicating with an enclave using Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mockmode.html" class="md-nav__link">
+        Rapid testing and development with Mock Mode
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security.html" class="md-nav__link">
+        Maximising the security of your enclave
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3" checked>
+      
+      <label class="md-nav__link" for="nav-3-3">
+        Reference
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Reference" data-md-level="2">
+        <label class="md-nav__title" for="nav-3-3">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Threads
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="threads.html" class="md-nav__link md-nav__link--active">
+        Threads
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#writing-thread-safe-enclaves" class="md-nav__link">
+    Writing thread safe enclaves
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-enclave-current-context" class="md-nav__link">
+    The enclave current context
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-control-structure-and-threads" class="md-nav__link">
+    Thread Control Structure and threads
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-conclave-manages-threads" class="md-nav__link">
+    How Conclave manages threads
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#threads-created-inside-the-enclave" class="md-nav__link">
+    Threads created inside the enclave
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handling-deadlocks" class="md-nav__link">
+    Handling deadlocks
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="javascript.html" class="md-nav__link">
+        JavaScript
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="filesystem.html" class="md-nav__link">
+        File system
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="performance.html" class="md-nav__link">
+        Performance
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="container-gradle.html" class="md-nav__link">
+        Testing on macOS
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" >
+      
+      <label class="md-nav__link" for="nav-3-4">
+        API
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="API" data-md-level="2">
+        <label class="md-nav__title" for="nav-3-4">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/index.html" class="md-nav__link">
+        JavaDocs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="enclave-configuration.html" class="md-nav__link">
+        Configuration options for enclaves
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api-changes.html" class="md-nav__link">
+        Migration notes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="known-issues.html" class="md-nav__link">
+        Known issues
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+      
+      <label class="md-nav__link" for="nav-4">
+        Operations
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Operations" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Operations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+      
+      <label class="md-nav__link" for="nav-4-1">
+        Server deployment
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Server deployment" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-1">
+          <span class="md-nav__icon md-icon"></span>
+          Server deployment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="system-requirements.html" class="md-nav__link">
+        System requirements
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1-2" type="checkbox" id="nav-4-1-2" >
+      
+      <label class="md-nav__link" for="nav-4-1-2">
+        Machine setup
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Machine setup" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-1-2">
+          <span class="md-nav__icon md-icon"></span>
+          Machine setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="machine-setup.html" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="azure.html" class="md-nav__link">
+        Cloud Deployment
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ias.html" class="md-nav__link">
+        Self-Hosting
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2" >
+      
+      <label class="md-nav__link" for="nav-4-2">
+        Upgrades
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Upgrades" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-2">
+          <span class="md-nav__icon md-icon"></span>
+          Upgrades
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="signing.html" class="md-nav__link">
+        Enclave signing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="renewability.html" class="md-nav__link">
+        Renewability
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="faq.html" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#writing-thread-safe-enclaves" class="md-nav__link">
+    Writing thread safe enclaves
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-enclave-current-context" class="md-nav__link">
+    The enclave current context
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#thread-control-structure-and-threads" class="md-nav__link">
+    Thread Control Structure and threads
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-conclave-manages-threads" class="md-nav__link">
+    How Conclave manages threads
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#threads-created-inside-the-enclave" class="md-nav__link">
+    Threads created inside the enclave
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#handling-deadlocks" class="md-nav__link">
+    Handling deadlocks
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="using-threads-in-enclaves">Using threads in enclaves<a class="headerlink" href="#using-threads-in-enclaves" title="Permanent link">&para;</a></h1>
+<h2 id="writing-thread-safe-enclaves">Writing thread safe enclaves<a class="headerlink" href="#writing-thread-safe-enclaves" title="Permanent link">&para;</a></h2>
+<p>Writing a thread safe enclave is no different to writing any other thread safe code in Java, with one exception.
+Whilst all the same concurrency tools and utilities are available, you must opt-in to multi-threading. If you
+don't then all threads that enter the enclave will synchronize on the enclave object lock and execute serially. To opt in,
+override the <code>getThreadSafe</code> method and return true.</p>
+<p>This is a safety mechanism. It would be easy to write an enclave that isn't thread safe without thinking about it, 
+perhaps because the additional performance isn't important. That would be hard to notice as anyone reading the code
+would be looking for the absence of something rather than its presence. The host could then multi-thread the enclave
+without it being prepared for that and corrupt your application-level data structures in ways that might be exploitable.
+When you return true from <code>getThreadSafe</code> you're asserting to Conclave that you've taken care to ensure your 
+<code>receiveFromUntrustedHost</code> and <code>receiveMail</code> methods can handle concurrent execution, so it's safe for Conclave to stop
+locking the enclave itself. By requiring an opt-in it becomes visible to other developers and code reviewers, thus 
+reminding them that the code needs to be thread safe.</p>
+<h2 id="the-enclave-current-context">The enclave current context<a class="headerlink" href="#the-enclave-current-context" title="Permanent link">&para;</a></h2>
+<p>When your code is running inside an enclave the CPU maintains a lot of state about your code and potentially
+your private data. This information is all securely contained within the boundary of the SGX enclave: Code
+outside the enclave cannot peek into the enclave CPU state to try to see these secrets.</p>
+<p>This state information along with other private information such as the current stack contents is called
+the <em>current context</em>. </p>
+<p>Now, when a host application calls into an enclave, the host itself has a current context. We could feasibly 
+use the host current context within the enclave as the host isn't hiding secrets from the enclave. However, 
+when we are inside the enclave we may potentially put some secret information into the context structures
+which we don't want the host to know. When the enclave returns back to the host, how do we make sure that
+the current context does not contain any enclave secrets?</p>
+<p>Intel SGX solves this by maintaining a different version of the current context inside the enclave to the
+context outside the enclave. Whenever you make a call from the host to the enclave the host context is
+saved, and the context switches to an in-enclave current context that only the enclave can see. When the
+enclave exits back to the host, the enclave current context is saved in encrypted memory that only the
+enclave can see, and the host context is restored. Thus the secrets inside the enclave remain safe.</p>
+<h2 id="thread-control-structure-and-threads">Thread Control Structure and threads<a class="headerlink" href="#thread-control-structure-and-threads" title="Permanent link">&para;</a></h2>
+<p>SGX stores the in-enclave current context in a Thread Control Structure (TCS) and related information in
+a Save State Area (SSA). These live in a portion of EPC memory which is the
+encrypted memory that only that exact instance of the enclave can access. When an enclave is first loaded,
+the SGX platform reserves encrypted memory for the enclave, including any space required for TCS's that
+will be used by the enclave. This forms part of the memory layout of the enclave that is fixed during
+the build of the enclave and signed so it cannot be modified once deployed.</p>
+<p>So, what if you want to execute multiple threads simultaneously inside the enclave? Each time the host
+calls into the enclave the CPU needs to switch the current context from the host to the enclave context.
+Therefore there must be enough TCS slots available in EPC memory to store the number of threads that
+will simultaneously be running inside the enclave. If the enclave runs out of slots then it will not
+allow the thread to enter the enclave.</p>
+<p>As mentioned above, the TCS slots form part of the signed memory layout and cannot be dynamically changed,
+therefore the number of TCS slots available to an enclave needs to be selected carefully by the developer
+using <a href="enclave-configuration.html#maxthreads">Conclave configuration</a>. The setting is dependent on the 
+requirements of the host/enclave with regards to threading.</p>
+<p>Why not just set an arbitrarily large value for the number of TCS slots? This is possible but you
+have to remember that each TCS, along with the related SSA and stack space takes an amount of EPC.
+In current generations of SGX hardware, EPC can be very limited. You don't want to use it all up 
+on slots that may not be required.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Future SGX hardware will have the ability to dynamically create new threads, removing the limitation
+with fixed TCS slots. Conclave will be updated to support this when the hardware is available.</p>
+</div>
+<h2 id="how-conclave-manages-threads">How Conclave manages threads<a class="headerlink" href="#how-conclave-manages-threads" title="Permanent link">&para;</a></h2>
+<p>Conclave attempts to hide many of the complexities that arise due to the fixed number of TCS slots
+available at enclave runtime. It does this by arbitrating between threads that are contending for the
+limited TCS slots.</p>
+<p>Whenever the host calls into the enclave, a TCS slot is consumed. When the thread exits the enclave
+Conclave releases that TCS back to the pool allowing another thread to consume it. Conclave does not
+require the context to be maintained between external calls to the enclave.</p>
+<p>If the host attempts to call into the enclave when no TCS slots are available then the host thread is
+blocked until another thread exits the enclave and a TCS slot is freed.</p>
+<p>So, for example, this host code is perfectly acceptable to run on an enclave with 10 TCS slots:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="kt">int</span> <span class="n">numThreads</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+    <span class="n">ExecutorService</span> <span class="n">executor</span> <span class="o">=</span> <span class="n">Executors</span><span class="p">.</span><span class="na">newFixedThreadPool</span><span class="p">(</span><span class="n">numThreads</span><span class="p">);</span>
+    <span class="n">List</span><span class="o">&lt;</span><span class="n">Callable</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span> <span class="n">todo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Callable</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span><span class="p">(</span><span class="n">numThreads</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numThreads</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">todo</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">Executors</span><span class="p">.</span><span class="na">callable</span><span class="p">(</span><span class="k">new</span> <span class="n">EnclaveRunnable</span><span class="p">()));</span>
+    <span class="p">}</span>
+    <span class="n">executor</span><span class="p">.</span><span class="na">invokeAll</span><span class="p">(</span><span class="n">todo</span><span class="p">);</span>
+</code></pre></div>
+</td></tr></table>
+<p>The code above will create 100 threads all trying to call into the enclave simultaneously. When the TCS
+slots are used up Conclave will block each host thread until a slot becomes available.</p>
+<h2 id="threads-created-inside-the-enclave">Threads created inside the enclave<a class="headerlink" href="#threads-created-inside-the-enclave" title="Permanent link">&para;</a></h2>
+<p>When a thread is created in enclave code, rather than in the host, things work a bit differently.</p>
+<p>Enclaves themselves cannot create threads: SGX does not support creating threads inside of enclaves.
+When your code inside the enclave wants to create a thread we need to enlist the help of the host
+to create the thread for us. When a thread is created, the enclave calls out to the host and asks
+it to create a thread on the enclave's behalf. The host creates a new thread and tells it to call
+into the enclave. At the same time the original thread returns back to the enclave.</p>
+<p>This diagram illustrates this. The host consumes the first TCS slot (TCS1) and calls into the enclave.
+The enclave calls back out to the host on the same thread, still keeping TCS1 as the thread is
+still valid inside the enclave although the thread is currently executing on the host. The host
+creates a new thread and returns back to the enclave using TCS1. The new thread calls into the enclave
+using a new slot, TCS2.</p>
+<p><img alt="enclave threads" src="images/thread-tcs.png" /></p>
+<p>What happens if the new thread cannot start due to no TCS slots being available? In this case, 
+in exactly the same way as for threads created outside the enclave, the new thread is blocked 
+from calling into the enclave until a TCS slot becomes available.</p>
+<h2 id="handling-deadlocks">Handling deadlocks<a class="headerlink" href="#handling-deadlocks" title="Permanent link">&para;</a></h2>
+<p>Arbitration between threads where the total thread number exceeds the number of TCS
+slots available introduces the possibility of deadlock, where a thread is blocked from being 
+created because there are no slots available, but no slots will <em>ever</em> be available because
+they are all waiting for the new thread to do some work.</p>
+<p>Expanding on the example in the previous section, the diagram below shows an extreme situation
+where the enclave has been built to only support a single TCS slot. The host successfully
+grabs TCS1 and calls into the enclave. The enclave calls the host to create a new thread.
+This new thread then attempts to get allocate a new TCS slot to call back into the 
+enclave but it is blocked until one is available. However, at the same time the original
+host thread returns to the enclave which then waits for the (blocked) worker thread to
+complete. In this situation the enclave is deadlocked.</p>
+<p><img alt="enclave threads" src="images/thread-deadlock.png" /></p>
+<p>Conclave will detect this deadlock situation and will abort the enclave to alert the developer
+that the TCS slot count needs to be increased, or that the design of the enclave should be
+modified to prevent the deadlock.</p>
+<p>The deadlock detection is achieved by seeing that all threads are waiting for a fixed amount
+of time. This time defaults to 10 seconds but can be 
+<a href="enclave-configuration.html#deadlockTimeout">configured when the enclave is built</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Ensuring your enclave uses threads safely can be tricky. We recommend talking to R3
+support for help if you are unsure how to configure your enclave correctly.</p>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="security.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Maximising the security of your enclave
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="javascript.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                JavaScript
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.53cc9318.min.js"></script>
+      <script src="assets/javascripts/bundle.e9c9f54f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: ['navigation.tabs', 'navigation.instant', 'navigation.sections'],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

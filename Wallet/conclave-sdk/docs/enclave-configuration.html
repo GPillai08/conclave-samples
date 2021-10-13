@@ -1,0 +1,1619 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-6.2.6">
+    
+    
+      
+        <title>Configuration options for enclaves - Conclave documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ef5552">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-87760032-7","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="red" data-md-color-accent="red">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configuration-options-for-building-enclaves" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="index.html" title="Conclave documentation" class="md-header-nav__button md-logo" aria-label="Conclave documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Conclave documentation
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Configuration options for enclaves
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="index.html" class="md-tabs__link">
+      Welcome
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="enclaves.html" class="md-tabs__link">
+        Concepts
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="tutorial.html" class="md-tabs__link md-tabs__link--active">
+        Development
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="system-requirements.html" class="md-tabs__link">
+        Operations
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="faq.html" class="md-tabs__link">
+      FAQ
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Conclave documentation" class="md-nav__button md-logo" aria-label="Conclave documentation">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Conclave documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Welcome
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+      
+      <label class="md-nav__link" for="nav-2">
+        Concepts
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Concepts" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="enclaves.html" class="md-nav__link">
+        Confidential Computing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="architecture.html" class="md-nav__link">
+        Conclave Architecture
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      
+      <label class="md-nav__link" for="nav-3">
+        Development
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Development" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          Development
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+      
+      <label class="md-nav__link" for="nav-3-1">
+        Tutorials
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="2">
+        <label class="md-nav__title" for="nav-3-1">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="tutorial.html" class="md-nav__link">
+        Running your first enclave
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="writing-hello-world.html" class="md-nav__link">
+        Writing your first enclave
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="writing-cordapps.html" class="md-nav__link">
+        Integrating an enclave with Corda
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2" >
+      
+      <label class="md-nav__link" for="nav-3-2">
+        Design topics
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Design topics" data-md-level="2">
+        <label class="md-nav__title" for="nav-3-2">
+          <span class="md-nav__icon md-icon"></span>
+          Design topics
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mail.html" class="md-nav__link">
+        Communicating with an enclave using Mail
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="mockmode.html" class="md-nav__link">
+        Rapid testing and development with Mock Mode
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="security.html" class="md-nav__link">
+        Maximising the security of your enclave
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3" >
+      
+      <label class="md-nav__link" for="nav-3-3">
+        Reference
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Reference" data-md-level="2">
+        <label class="md-nav__title" for="nav-3-3">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="threads.html" class="md-nav__link">
+        Threads
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="javascript.html" class="md-nav__link">
+        JavaScript
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="filesystem.html" class="md-nav__link">
+        File system
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="performance.html" class="md-nav__link">
+        Performance
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="container-gradle.html" class="md-nav__link">
+        Testing on macOS
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" checked>
+      
+      <label class="md-nav__link" for="nav-3-4">
+        API
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="API" data-md-level="2">
+        <label class="md-nav__title" for="nav-3-4">
+          <span class="md-nav__icon md-icon"></span>
+          API
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/index.html" class="md-nav__link">
+        JavaDocs
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Configuration options for enclaves
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="enclave-configuration.html" class="md-nav__link md-nav__link--active">
+        Configuration options for enclaves
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#adding-the-conclave-gradle-plugin" class="md-nav__link">
+    Adding the Conclave Gradle plugin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclave-configuration-options" class="md-nav__link">
+    Conclave configuration options
+  </a>
+  
+    <nav class="md-nav" aria-label="Conclave configuration options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#productid" class="md-nav__link">
+    productID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#revocationlevel" class="md-nav__link">
+    revocationLevel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maxheapsize" class="md-nav__link">
+    maxHeapSize
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maxthreads" class="md-nav__link">
+    maxThreads
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deadlocktimeout" class="md-nav__link">
+    deadlockTimeout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maxstacksize" class="md-nav__link">
+    maxStackSize
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supportlanguages" class="md-nav__link">
+    supportLanguages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simulation-debug-and-release" class="md-nav__link">
+    simulation, debug and release
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reflectionconfigurationfiles" class="md-nav__link">
+    reflectionConfigurationFiles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serializationconfigurationfiles" class="md-nav__link">
+    serializationConfigurationFiles
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assisted-configuration-of-native-image-builds" class="md-nav__link">
+    Assisted Configuration of Native Image Builds
+  </a>
+  
+    <nav class="md-nav" aria-label="Assisted Configuration of Native Image Builds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-using-conclaves-graalvm" class="md-nav__link">
+    Example using Conclave's GraalVM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-using-the-executable-jar" class="md-nav__link">
+    Example using the executable JAR
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api-changes.html" class="md-nav__link">
+        Migration notes
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="known-issues.html" class="md-nav__link">
+        Known issues
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+      
+      <label class="md-nav__link" for="nav-4">
+        Operations
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Operations" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          Operations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1" >
+      
+      <label class="md-nav__link" for="nav-4-1">
+        Server deployment
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Server deployment" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-1">
+          <span class="md-nav__icon md-icon"></span>
+          Server deployment
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="system-requirements.html" class="md-nav__link">
+        System requirements
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-1-2" type="checkbox" id="nav-4-1-2" >
+      
+      <label class="md-nav__link" for="nav-4-1-2">
+        Machine setup
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Machine setup" data-md-level="3">
+        <label class="md-nav__title" for="nav-4-1-2">
+          <span class="md-nav__icon md-icon"></span>
+          Machine setup
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="machine-setup.html" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="azure.html" class="md-nav__link">
+        Cloud Deployment
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="ias.html" class="md-nav__link">
+        Self-Hosting
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2" >
+      
+      <label class="md-nav__link" for="nav-4-2">
+        Upgrades
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Upgrades" data-md-level="2">
+        <label class="md-nav__title" for="nav-4-2">
+          <span class="md-nav__icon md-icon"></span>
+          Upgrades
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="signing.html" class="md-nav__link">
+        Enclave signing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="renewability.html" class="md-nav__link">
+        Renewability
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="faq.html" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#adding-the-conclave-gradle-plugin" class="md-nav__link">
+    Adding the Conclave Gradle plugin
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclave-configuration-options" class="md-nav__link">
+    Conclave configuration options
+  </a>
+  
+    <nav class="md-nav" aria-label="Conclave configuration options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#productid" class="md-nav__link">
+    productID
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#revocationlevel" class="md-nav__link">
+    revocationLevel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maxheapsize" class="md-nav__link">
+    maxHeapSize
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maxthreads" class="md-nav__link">
+    maxThreads
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deadlocktimeout" class="md-nav__link">
+    deadlockTimeout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maxstacksize" class="md-nav__link">
+    maxStackSize
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supportlanguages" class="md-nav__link">
+    supportLanguages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simulation-debug-and-release" class="md-nav__link">
+    simulation, debug and release
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reflectionconfigurationfiles" class="md-nav__link">
+    reflectionConfigurationFiles
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serializationconfigurationfiles" class="md-nav__link">
+    serializationConfigurationFiles
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assisted-configuration-of-native-image-builds" class="md-nav__link">
+    Assisted Configuration of Native Image Builds
+  </a>
+  
+    <nav class="md-nav" aria-label="Assisted Configuration of Native Image Builds">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-using-conclaves-graalvm" class="md-nav__link">
+    Example using Conclave's GraalVM
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-using-the-executable-jar" class="md-nav__link">
+    Example using the executable JAR
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="configuration-options-for-building-enclaves">Configuration options for building enclaves<a class="headerlink" href="#configuration-options-for-building-enclaves" title="Permanent link">&para;</a></h1>
+<p>There are a number of different options that can be configured that affect the generation of your enclave when
+building with the Conclave Gradle plugin.</p>
+<p>The <a href="writing-hello-world.html">tutorial</a> takes you through the configuration of an enclave project step-by-step.
+This page goes into each possible option in detail and can be used as a reference when configuring your
+enclave.</p>
+<h2 id="adding-the-conclave-gradle-plugin">Adding the Conclave Gradle plugin<a class="headerlink" href="#adding-the-conclave-gradle-plugin" title="Permanent link">&para;</a></h2>
+<p>The first thing to do when creating an enclave project is to add the Conclave Gradle plugin to your
+<code>build.gradle</code> file:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">plugins</span> <span class="o">{</span>
+<span class="hll">    <span class="n">id</span> <span class="s1">&#39;com.r3.conclave.enclave&#39;</span>
+</span><span class="o">}</span>
+</code></pre></div>
+</td></tr></table></p>
+<p>Then add a dependency on the Conclave enclave library. The Conclave version is configured for you automatically.
+Also, add a test dependency on the Conclave host library so you can use <a href="mockmode.html">mock mode</a> for testing.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">dependencies</span> <span class="o">{</span>
+<span class="hll">    <span class="n">implementation</span> <span class="s2">&quot;com.r3.conclave:conclave-enclave&quot;</span>
+</span><span class="hll">    <span class="n">testImplementation</span> <span class="s2">&quot;com.r3.conclave:conclave-host&quot;</span>
+</span>    <span class="n">testImplementation</span> <span class="s2">&quot;org.junit.jupiter:junit-jupiter:5.6.0&quot;</span>
+<span class="o">}</span>
+</code></pre></div>
+</td></tr></table>
+<h2 id="conclave-configuration-options">Conclave configuration options<a class="headerlink" href="#conclave-configuration-options" title="Permanent link">&para;</a></h2>
+<p>The enclave's runtime environment is configured within the <code>conclave</code> section in the enclave <code>build.gradle</code>. 
+The complete set of options with their default values is shown below. Items marked 'Mandatory' do not have
+a default value and must be specified in your configuration. Items that have default values can be omitted
+from your configuration.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">conclave</span> <span class="o">{</span>
+    <span class="n">productID</span> <span class="o">=</span> <span class="mi">1</span>                       <span class="c1">// Mandatory</span>
+    <span class="n">revocationLevel</span> <span class="o">=</span> <span class="mi">0</span>                 <span class="c1">// Mandatory</span>
+    <span class="n">maxHeapSize</span> <span class="o">=</span> <span class="s2">&quot;256m&quot;</span>
+    <span class="n">maxStackSize</span> <span class="o">=</span> <span class="s2">&quot;2m&quot;</span>
+    <span class="n">maxThreads</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">supportLanguages</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">reflectionConfigurationFiles</span><span class="o">.</span><span class="na">from</span><span class="o">(</span><span class="s2">&quot;config.json&quot;</span><span class="o">)</span>
+    <span class="n">serializationConfigurationFiles</span><span class="o">.</span><span class="na">from</span><span class="o">(</span><span class="s2">&quot;serialization.json&quot;</span><span class="o">)</span>
+
+    <span class="n">simulation</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="n">debug</span> <span class="o">{</span>
+    <span class="o">}</span>
+    <span class="n">release</span> <span class="o">{</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>Each option is described below:</p>
+<h3 id="productid">productID<a class="headerlink" href="#productid" title="Permanent link">&para;</a></h3>
+<p><em>Default: None. You must provide a value</em> </p>
+<p>The product ID is an arbitrary number that can be used to distinguish between different enclaves produced by the same
+organisation (which may for internal reasons wish to use a single signing key). This value should not change once you have 
+picked it.</p>
+<h3 id="revocationlevel">revocationLevel<a class="headerlink" href="#revocationlevel" title="Permanent link">&para;</a></h3>
+<p><em>Default: None. You must provide a value</em> </p>
+<p>The revocation level should be incremented whenever a weakness or vulnerability in the enclave code is discovered
+and fixed. Doing this will enable clients to avoid connecting to old, compromised enclaves. The client can set an
+<a href="/api/com/r3/conclave/client/EnclaveConstraint.html"><code>EnclaveConstraint</code></a> that specifies the required minimum 
+revocation level when loading an enclave.</p>
+<p>The revocation level in an enclave affects the keys that are generated for 'sealing' data in an enclave. 
+Because enclaves can generate encryption keys private to themselves, encryption and authentication can be used to stop
+the host editing the data. Data encrypted in this way is called <strong>sealed data</strong>. Sealed data can be re-requested from
+the operating system and decrypted inside the enclave. </p>
+<p>Whenever the revocation level is raised for an enclave, the data that is sealed by the new version cannot be unsealed
+and read by enclaves with a lower revocation level. This is not true in the opposite direction though: enclaves can 
+unseal data that was encrypted by an enclave with a lower revocation level.</p>
+<p>This directly affects enclaves that are using <a href="mail.html#using_mail_for_storage">mail as storage</a>. When a new enclave
+is deployed with a higher revocation level and the host contains persisted data sealed with a previous version of
+the enclave, the newer enclave is able to process the stored mail. If a malicious host decides to drop in an older
+version of the enclave, potentially to exploit a discovered vulnerability in the enclave, then this older enclave
+cannot read the data sealed using an enclave with a higher revocation level.</p>
+<p>This behaviour allows for uninterrupted communication with clients across upgrades of the enclave. The persisted
+data is automatically upgraded to the higher security level as it is consumed and resealed by the new enclave, 
+incrementally phasing out the previous version of the enclave, thus recovering from a compromise.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The revocation level should not be incremented on every new release, but only when security improvements have been made.</p>
+</div>
+<h3 id="maxheapsize">maxHeapSize<a class="headerlink" href="#maxheapsize" title="Permanent link">&para;</a></h3>
+<p><em>Default:</em> <code>256m</code></p>
+<p>This setting defines the maximum size the heap is allowed to grow to in the runtime environment inside the enclave.</p>
+<p>You might be familiar with the JVM option <code>-Xmx</code> which allows you to set the maximum heap size of a JVM based
+application. Most of the time in a normal JVM application you can just leave this setting alone and let the JVM 
+decide the heap size. However the option is there in case you need to increase beyond the default maximum, or if you
+want to configure your application to use less memory to co-exist with other applications.</p>
+<p>The <code>maxHeapSize</code> setting provides the same control over heap memory as the JVM provides, but for the runtime 
+environment in the enclave.</p>
+<p>Why is there a separate heap for enclaves? This requires a bit of explanation:</p>
+<p>In order to keep your data private, all data allocated inside an enclave is encrypted. This encryption is implemented
+using SGX hardware in a block of physical memory that Intel have named the "Encrypted Page Cache" or "EPC". Whenever
+you create an object or store some data in memory inside an enclave it is stored in this EPC memory. This is why
+the enclave runtime manages its own heap - to ensure all data stays with the EPC memory.</p>
+<p>So, what should the heap size be set to? This depends. In most cases you can leave this setting at its default value
+of 256Mb. For many enclaves this will be enough. However your enclave may want access to a very large set of data.
+In this case you want to increase the heap size.</p>
+<p>What happens if you want to specify a heap size that is greater than the EPC provided on your SGX system? Well, this
+is not a problem as SGX allows EPC memory to be 'paged'. This means that when you want some EPC memory but none is
+available, SGX will take an existing portion of memory, encrypt it inside the enclave then move it to conventional, 
+non-EPC memory to make space for the new block. When the enclave needs to access the original memory, it juggles
+other pages to make space in EPC to move the block back from conventional memory and decrypt it.</p>
+<p>The downside to this 'paging' is that it has a performance impact. Therefore, if performance is important then 
+it is recommended to keep your enclave memory usage as small as possible, preferably less than the size of the EPC 
+on your SGX system to reduce the amount of paging that occurs.</p>
+<p>This is something to consider when looking at sizing your SGX capable system. For example, your enclave may run 
+without any problems on a system with 128Mb of EPC but it may run much faster and with less CPU load on a system 
+with 256Mb or more EPC.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The size is specified in bytes but you can put a <code>k</code>, <code>m</code> or <code>g</code> after the value to specify it in kilobytes, 
+megabytes or gigabytes respectively.</p>
+</div>
+<h3 id="maxthreads">maxThreads<a class="headerlink" href="#maxthreads" title="Permanent link">&para;</a></h3>
+<p><em>Default:</em> <code>10</code></p>
+<p>This is an advanced setting that defines the maximum number of threads that can be active inside an enclave 
+simultaneously. If you're interested, you can read <a href="threads.html">this detailed technical description</a>, otherwise you
+can safely leave this at the default value. Changing this value does not affect the maximum number
+of threads that you can simultaneously call into a Conclave enclave but affect the number of threads that you
+can create inside the enclave.</p>
+<p>The <code>maxThreads</code> option defines how many EPC slots are available for threads that are simultaneously
+active inside the enclave. Setting a higher number for this results in a larger SGX EPC memory requirement
+for the enclave even if not all the thread slots are currently in use inside the enclave.</p>
+<h3 id="deadlocktimeout">deadlockTimeout<a class="headerlink" href="#deadlocktimeout" title="Permanent link">&para;</a></h3>
+<p><em>Default:</em> <code>10</code></p>
+<p>This is an advanced setting related to <a href="#maxthreads">maxThreads</a> that determines the time after which all enclave
+threads have been blocked that Conclave will assume the threads are deadlocked and abort the enclave.</p>
+<p>See <a href="threads.html#handling-deadlocks">this section on deadlocks in enclave threads</a> for more information.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you are having problems with deadlocks in your enclave threads then we recommend contacting R3 support
+for help in solving the problem.</p>
+</div>
+<h3 id="maxstacksize">maxStackSize<a class="headerlink" href="#maxstacksize" title="Permanent link">&para;</a></h3>
+<p><em>Default:</em> <code>2m</code></p>
+<p>This is an advanced setting that specifies the stack size that will be allocated for each thread that runs inside
+the enclave. Normally you would not need to specify this setting in your configuration, the default of 2Mb being
+sufficient for most applications. Only change this setting if you are seeing errors related to the stack
+overflowing.</p>
+<p>The stack is used internally by the JVM to hold information about the current function; the chain of functions
+that called the current function (the 'call stack'); temporary variables and other contextual information. 
+Stack can be consumed in different ways but the default value provided for <code>maxStackSize</code> ensures you will
+likely never see an exhausted stack unless you accidentally generate an infinite recursion via a function calling
+itself.</p>
+<p>When the host calls into the enclave and the context is switched from the host JVM into the enclave runtime, the
+host stack cannot be used as it could potentially leak secret information on return. Instead, an in-enclave
+stack is used. When a value is provided for <code>maxStackSize</code> the in-enclave stack is set to this size for each
+thread that runs inside the enclave.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>As with <code>maxHeapSize</code>, the size is specified in bytes but you can put a <code>k</code>, <code>m</code> or <code>g</code> after the value to 
+specify it in kilobytes, megabytes or gigabytes respectively.</p>
+</div>
+<h3 id="supportlanguages">supportLanguages<a class="headerlink" href="#supportlanguages" title="Permanent link">&para;</a></h3>
+<p><em>Default:</em> <code>""</code></p>
+<p>A comma separated list of languages to support using the polyglot context capability provided by GraalVM.</p>
+<p>This allows for code in the supported languages to be parsed and invoked by the enclave giving the ability 
+to deploy dynamic code, or to develop part of your enclave logic in a different language.</p>
+<p>The current version of conclave only supports JavaScript so the value for this setting can either be the
+default empty string or <code>"js"</code> indicating the enclave should provide support for JavaScript polyglot contexts.</p>
+<p>See <a href="javascript.html">this page on running JavaScript in your enclave</a> for details on how to use this setting.</p>
+<h3 id="simulation-debug-and-release">simulation, debug and release<a class="headerlink" href="#simulation-debug-and-release" title="Permanent link">&para;</a></h3>
+<p>These sections contain the settings for signing the enclave. See <a href="signing.html">the page on signing</a> for information
+on these settings.</p>
+<h3 id="reflectionconfigurationfiles">reflectionConfigurationFiles<a class="headerlink" href="#reflectionconfigurationfiles" title="Permanent link">&para;</a></h3>
+<p><em>Default:</em> empty list</p>
+<p>A list of reflection configuration files as specified in the
+<a href="https://www.graalvm.org/reference-manual/native-image/Reflection/#manual-configuration">Reflection</a> section
+of Graal's reference manual.</p>
+<p>This allows for code which rely on reflection to specify which classes, methods, fields and their properties
+will be available at run time.</p>
+<h3 id="serializationconfigurationfiles">serializationConfigurationFiles<a class="headerlink" href="#serializationconfigurationfiles" title="Permanent link">&para;</a></h3>
+<p><em>Default:</em> empty list</p>
+<p>A list of serialization configuration files as specified in Graal's
+<a href="https://github.com/oracle/graal/blob/vm-21.0.0/substratevm/src/com.oracle.svm.core/src/com/oracle/svm/core/configure/doc-files/SerializationConfigurationFilesHelp.txt">Serialization</a>
+documentation file.</p>
+<p>This allows to specify classes which are expected to be serialized using Java serialization.</p>
+<h2 id="assisted-configuration-of-native-image-builds">Assisted Configuration of Native Image Builds<a class="headerlink" href="#assisted-configuration-of-native-image-builds" title="Permanent link">&para;</a></h2>
+<p>One way of generating the reflection and serialization configuration files is by using
+<a href="https://www.graalvm.org/reference-manual/native-image/BuildConfiguration/#assisted-configuration-of-native-image-builds">native-image-agent</a>.
+The agent will track usage of dynamic features and generate the configuration files when run
+against a regular Java VM.</p>
+<p>To ensure all of the necessary classes/resources are included in the configuration files you should ensure
+all enclave code paths are executed, for example by writing extensive tests and running them in <code>mock</code> mode.</p>
+<p>When placed under <code>enclave/src/main/resources/META-INF/native-image</code> the configuration files will be picked up
+by Gradle when building the <code>enclave</code> in <code>simulation</code>, <code>debug</code> or <code>release</code> modes.</p>
+<p>Running the host through Gradle and/or JUnit tests while the agent is enabled will likely cause Gradle, JUnit
+or host classes to be present in the configuration files. To avoid this you can configure
+<a href="https://www.graalvm.org/reference-manual/native-image/BuildConfiguration/#agent-advanced-usage">filters</a>
+to ensure host code is excluded or you can run the host as an executable JAR and trigger enclave logic
+by running it normally, like you would if you were to deploy it, for example, by sending requests from the
+host and/or client triggering as much of the enclave logic as possible.
+You can use the <a href="https://plugins.gradle.org/plugin/com.github.johnrengelman.shadow">Shadow Gradle plugin</a>
+to create an executable JAR which contains all the host's and enclave's dependencies.</p>
+<p>It is possible the generated configuration files aren't always correct, meaning you may need to adjust filters
+and/or edit and maintain them throughout the development process. We recommend keeping these files
+version controlled to make maintenance easier.</p>
+<p>Conclave ships with a Linux <a href="https://github.com/graalvm/graalvm-ce-builds/releases/tag/vm-21.0.0">GraalVM</a>
+containing the <code>native-image-agent</code>, which can also be used via
+<a href="container-gradle.html">container-gradle</a>. As an alternative to <a href="container-gradle.html">container-gradle</a>
+you can download <a href="https://github.com/graalvm/graalvm-ce-builds/releases/tag/vm-21.0.0">GraalVM</a>
+for your operating system. See both options below.</p>
+<h3 id="example-using-conclaves-graalvm">Example using Conclave's GraalVM<a class="headerlink" href="#example-using-conclaves-graalvm" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Configure the <a href="https://docs.gradle.org/6.6.1/userguide/application_plugin.html">application</a>
+    plugin on the <code>host</code>'s <code>build.gradle</code>:
+    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">plugins</span> <span class="o">{</span>
+    <span class="n">id</span> <span class="s1">&#39;application&#39;</span>
+<span class="o">}</span>
+
+<span class="kt">def</span> <span class="n">graalVMDir</span> <span class="o">=</span> <span class="n">tasks</span><span class="o">.</span><span class="na">getByPath</span><span class="o">(</span><span class="s2">&quot;:enclave:untarGraalVM&quot;</span><span class="o">).</span><span class="na">outputs</span><span class="o">.</span><span class="na">files</span><span class="o">.</span><span class="na">first</span><span class="o">()</span>
+<span class="kt">def</span> <span class="n">configurationDir</span> <span class="o">=</span> <span class="n">project</span><span class="o">(</span><span class="s2">&quot;:enclave&quot;</span><span class="o">).</span><span class="na">projectDir</span><span class="o">.</span><span class="na">toPath</span><span class="o">().</span><span class="na">resolve</span><span class="o">(</span><span class="s2">&quot;src/main/resources/META-INF/native-image&quot;</span><span class="o">)</span>
+<span class="kt">def</span> <span class="n">filterFile</span> <span class="o">=</span> <span class="n">configurationDir</span><span class="o">.</span><span class="na">resolve</span><span class="o">(</span><span class="s2">&quot;filter.json&quot;</span><span class="o">)</span>
+<span class="n">application</span> <span class="o">{</span>
+    <span class="n">run</span><span class="o">.</span><span class="na">dependsOn</span><span class="o">(</span><span class="s2">&quot;:enclave:untarGraalVM&quot;</span><span class="o">)</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">project</span><span class="o">.</span><span class="na">hasProperty</span><span class="o">(</span><span class="s2">&quot;generateConfigFiles&quot;</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">properties</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s2">&quot;enclaveMode&quot;</span><span class="o">).</span><span class="na">toString</span><span class="o">().</span><span class="na">toLowerCase</span><span class="o">()</span> <span class="o">==</span> <span class="s2">&quot;mock&quot;</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">applicationDefaultJvmArgs</span> <span class="o">=</span> <span class="o">[</span>
+                <span class="s2">&quot;-agentpath:$graalVMDir/jre/lib/amd64/libnative-image-agent.so=config-output-dir=$configurationDir,&quot;</span> <span class="o">+</span>
+                <span class="s2">&quot;caller-filter-file=$filterFile&quot;</span>
+        <span class="o">]</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+</td></tr></table>
+    Conclave's GraalVM path is obtained from the <code>untarGraalVM</code> task of the <code>enclave</code> project.
+    The <code>filter.json</code> and the configuration files generated by <code>native-image-agent</code> will be placed on the <code>enclave</code>'s resource directory.
+    The Gradle properties <code>generateConfigFiles</code> and <code>enclaveMode</code> are used to control when the files should be generated.</p>
+</li>
+<li>
+<p>Create the <code>enclave/src/main/resources/META-INF/native-image/filter.json</code> excluding classes expected to be captured by <code>native-image-agent</code>
+which are not part of the <code>enclave</code> code:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="p">{</span> <span class="nt">&quot;rules&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="nt">&quot;excludeClasses&quot;</span><span class="p">:</span> <span class="s2">&quot;nonapi.**&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="nt">&quot;excludeClasses&quot;</span><span class="p">:</span> <span class="s2">&quot;com.r3.conclave.host.**&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table></p>
+</li>
+<li>
+<p>Run the host:</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Linux</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>./gradlew -PgenerateConfigFiles -PenclaveMode<span class="o">=</span>mock host:run
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">macOS</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>../scripts/container-gradle -PgenerateConfigFiles -PenclaveMode=mock host:run
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>This process works best when the JDK used to generate the configuration files is the same version that will
+subsequently be used to create the enclave's native image.
+Check <a href="container-gradle.html#alternative-jdks">Alternative JDKs</a> for details on how to ensure this is the case.</p>
+</div>
+</li>
+<li>
+<p>Trigger <code>enclave</code> logic by running <code>client</code> requests:
+    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>./gradlew client:run
+</code></pre></div>
+</td></tr></table></p>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If using MacOS, configuration files will be stored in a docker container. See how to <a href="container-gradle.html#copying-files-out-of-the-container">copy files out of the container</a>.</p>
+</div>
+<h3 id="example-using-the-executable-jar">Example using the executable JAR<a class="headerlink" href="#example-using-the-executable-jar" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>To avoid container-gradle, download <a href="https://github.com/graalvm/graalvm-ce-builds/releases/tag/vm-21.0.0">GraalVM</a> for your operating system and <a href="https://www.graalvm.org/docs/getting-started/">install</a> it. Once you setup your GraalVM, ensure <code>native-image</code> is installed:
+    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nv">$JAVA_HOME</span>/bin/gu install native-image
+</code></pre></div>
+</td></tr></table></p>
+<p>Also enable <a href="https://www.graalvm.org/reference-manual/native-image/BuildConfiguration/#assisted-configuration-of-native-image-builds">native-image-agent</a> on the command line of the GraalVM <code>java</code> command:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nv">$JAVA_HOME</span>/bin/java -agentlib:native-image-agent<span class="o">=</span>config-output-dir<span class="o">=</span>/path/to/enclave/src/main/resources/META-INF/native-image/ ...
+</code></pre></div>
+</td></tr></table></p>
+</li>
+<li>
+<p>Add the <a href="https://plugins.gradle.org/plugin/com.github.johnrengelman.shadow">Shadow Gradle plugin</a>
+to the <code>plugins</code> section of the <code>host</code>'s <code>build.gradle</code>:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">plugins</span> <span class="o">{</span>
+    <span class="n">id</span> <span class="s1">&#39;com.github.johnrengelman.shadow&#39;</span> <span class="n">version</span> <span class="s1">&#39;6.1.0&#39;</span>
+<span class="o">}</span>
+</code></pre></div>
+</td></tr></table></p>
+</li>
+<li>
+<p>Generate the shadow jar:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>./gradlew -PenclaveMode<span class="o">=</span>mock host:shadowJar
+</code></pre></div>
+</td></tr></table>
+Default location should be <code>host/build/libs/host-all.jar</code>.</p>
+</li>
+<li>
+<p>Run the host with the agent enabled to generate the configuration files:
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nv">$JAVA_HOME</span>/bin/java -agentlib:native-image-agent<span class="o">=</span>config-output-dir<span class="o">=</span>/path/to/enclave/src/main/resources/META-INF/native-image/,caller-filter-file<span class="o">=</span>/path/to/enclave/src/main/resources/META-INF/native-image/filter.json -jar /path/to/host/build/libs/host-all.jar
+</code></pre></div>
+</td></tr></table></p>
+</li>
+<li>
+<p>Trigger <code>enclave</code> logic by sending <code>client</code> requests.
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>./gradlew client:run
+</code></pre></div>
+</td></tr></table></p>
+</li>
+</ol>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="api/index.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                JavaDocs
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="api-changes.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Migration notes
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/vendor.53cc9318.min.js"></script>
+      <script src="assets/javascripts/bundle.e9c9f54f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: ".",
+          features: ['navigation.tabs', 'navigation.instant', 'navigation.sections'],
+          search: Object.assign({
+            worker: "assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,80 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.r3.conclave",
+    "module": "jvm-enclave-common",
+    "version": "1.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.6.1",
+      "buildId": "ynpnrwttbnazrjru2alvsadliq"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "files": [
+        {
+          "name": "jvm-enclave-common-1.1.jar",
+          "url": "jvm-enclave-common-1.1.jar",
+          "size": 13890,
+          "sha512": "0d39409501a515b87fc10ca0138ede8aaeef0840c8a5c3f4a6bf8e4e5e5d3e3212707180dd7457615fbae649e20e344cb0e7ab7217376b1eaf6537f3ea0c4f4f",
+          "sha256": "92c5360307696ae38e10b3342257adffd2ef5b5ebeff3c68ebec0d33ebdfe0ac",
+          "sha1": "8cf7d1fe857da70d11b276dcfee3a2cad34998e1",
+          "md5": "3de57964ae86e68ea8c247d0f420a3df"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlinx",
+          "module": "kotlinx-serialization-json",
+          "version": {
+            "requires": "1.0.1"
+          },
+          "excludes": [
+            {
+              "group": "commons-logging",
+              "module": "commons-logging"
+            }
+          ]
+        }
+      ],
+      "files": [
+        {
+          "name": "jvm-enclave-common-1.1.jar",
+          "url": "jvm-enclave-common-1.1.jar",
+          "size": 13890,
+          "sha512": "0d39409501a515b87fc10ca0138ede8aaeef0840c8a5c3f4a6bf8e4e5e5d3e3212707180dd7457615fbae649e20e344cb0e7ab7217376b1eaf6537f3ea0c4f4f",
+          "sha256": "92c5360307696ae38e10b3342257adffd2ef5b5ebeff3c68ebec0d33ebdfe0ac",
+          "sha1": "8cf7d1fe857da70d11b276dcfee3a2cad34998e1",
+          "md5": "3de57964ae86e68ea8c247d0f420a3df"
+        }
+      ]
+    }
+  ]
+}
