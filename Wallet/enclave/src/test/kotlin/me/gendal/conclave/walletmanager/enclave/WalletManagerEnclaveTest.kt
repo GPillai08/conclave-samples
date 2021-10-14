@@ -32,7 +32,7 @@ class WalletManagerEnclaveTest {
 
     @BeforeEach
     fun startup() {
-        enclave = EnclaveHost.load("me.gendal.conclave.walletmanager.enclave.WalletManagerEnclave");
+        enclave = EnclaveHost.load("me.gendal.conclave.walletmanager.enclave.WalletManagerEnclave")
         enclave.start(null) { commands: List<MailCommand?> ->
             for (command in commands) {
                 if (command is MailCommand.PostMail) {
@@ -162,25 +162,25 @@ class WalletManagerEnclaveTest {
                 2
             )
         )
-        var responseSetup = enclaveRequest(setupAverageComputation, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        val responseSetup = enclaveRequest(setupAverageComputation, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
         assertSame(ResponseCode.SUCCESS, responseSetup[0].responseCode)
 
-        var submissionAlice = "100"
-        var submissionMessageForAlice  = "Submission from Alice"
+        val submissionAlice = "100"
+        val submissionMessageForAlice  = "Submission from Alice"
         val submitValueForAlice = SubmitValue("AverageComputation", Submission(submissionAlice, submissionMessageForAlice))
-        var responseForSubmissionByAlice = enclaveRequest(submitValueForAlice, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        val responseForSubmissionByAlice = enclaveRequest(submitValueForAlice, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
         assertSame(ResponseCode.SUCCESS, responseForSubmissionByAlice[0].responseCode)
 
-        var submissionBob = "200"
-        var submissionMessageForBob  = "Submission from Bob"
+        val submissionBob = "200"
+        val submissionMessageForBob  = "Submission from Bob"
         val submitValueForBob = SubmitValue("AverageComputation", Submission(submissionBob, submissionMessageForBob))
-        var responseForSubmissionByBob = enclaveRequest(submitValueForBob, EnclaveMessageResponse.serializer(), postOffices["bob"]!!)
+        val responseForSubmissionByBob = enclaveRequest(submitValueForBob, EnclaveMessageResponse.serializer(), postOffices["bob"]!!)
         assertSame(ResponseCode.SUCCESS, responseForSubmissionByBob[0].responseCode)
 
         val getComputationResult = GetComputationResult("AverageComputation")
-        var responseForGetComputationResult = enclaveRequest(getComputationResult, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        val responseForGetComputationResult = enclaveRequest(getComputationResult, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
         assertSame(ResponseCode.SUCCESS, responseForGetComputationResult[0].responseCode)
-        assertTrue("150.0".equals(responseForGetComputationResult[0].message))
+        assertTrue("150.0" == responseForGetComputationResult[0].message)
     }
 
     @Test
@@ -207,31 +207,31 @@ class WalletManagerEnclaveTest {
                 3
             )
         )
-        var responseSetup = enclaveRequest(setupMinComputation, EnclaveMessageResponse.serializer(), postOffices["charley"]!!)
+        val responseSetup = enclaveRequest(setupMinComputation, EnclaveMessageResponse.serializer(), postOffices["charley"]!!)
         assertSame(ResponseCode.SUCCESS, responseSetup[0].responseCode)
 
-        var submissionAlice = "100"
-        var submissionMessageForAlice  = "Submission from Alice"
+        val submissionAlice = "100"
+        val submissionMessageForAlice  = "Submission from Alice"
         val submitValueForAlice = SubmitValue("MinComputation", Submission(submissionAlice, submissionMessageForAlice))
-        var responseForSubmissionByAlice = enclaveRequest(submitValueForAlice, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        val responseForSubmissionByAlice = enclaveRequest(submitValueForAlice, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
         assertSame(ResponseCode.SUCCESS, responseForSubmissionByAlice[0].responseCode)
 
-        var submissionBob = "200"
-        var submissionMessageForBob  = "Submission from Bob"
+        val submissionBob = "200"
+        val submissionMessageForBob  = "Submission from Bob"
         val submitValueForBob = SubmitValue("MinComputation", Submission(submissionBob, submissionMessageForBob))
-        var responseForSubmissionByBob = enclaveRequest(submitValueForBob, EnclaveMessageResponse.serializer(), postOffices["bob"]!!)
+        val responseForSubmissionByBob = enclaveRequest(submitValueForBob, EnclaveMessageResponse.serializer(), postOffices["bob"]!!)
         assertSame(ResponseCode.SUCCESS, responseForSubmissionByBob[0].responseCode)
 
-        var submissionCharley = "300"
-        var submissionMessageForCharley  = "Submission from Charley"
+        val submissionCharley = "300"
+        val submissionMessageForCharley  = "Submission from Charley"
         val submitValueForCharley = SubmitValue("MinComputation", Submission(submissionCharley, submissionMessageForCharley))
-        var responseForSubmissionByCharley = enclaveRequest(submitValueForCharley, EnclaveMessageResponse.serializer(), postOffices["charley"]!!)
+        val responseForSubmissionByCharley = enclaveRequest(submitValueForCharley, EnclaveMessageResponse.serializer(), postOffices["charley"]!!)
         assertSame(ResponseCode.SUCCESS, responseForSubmissionByCharley[0].responseCode)
 
         val getComputationResult = GetComputationResult("MinComputation")
-        var responseForGetComputationResult = enclaveRequest(getComputationResult, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        val responseForGetComputationResult = enclaveRequest(getComputationResult, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
         assertSame(ResponseCode.SUCCESS, responseForGetComputationResult[0].responseCode)
-        assertTrue(keys["alice"]!!.publicKey.toString().equals(responseForGetComputationResult[0].message))
+        assertTrue(keys["alice"]!!.publicKey.toString()==(responseForGetComputationResult[0].message))
     }
 
     @Test
