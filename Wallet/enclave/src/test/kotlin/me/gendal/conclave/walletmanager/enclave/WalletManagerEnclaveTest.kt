@@ -1,6 +1,7 @@
 package me.gendal.conclave.walletmanager.enclave
 
 import com.r3.conclave.common.EnclaveInstanceInfo
+import com.r3.conclave.common.SHA256Hash
 import com.r3.conclave.host.EnclaveHost
 import com.r3.conclave.host.MailCommand
 import com.r3.conclave.mail.Curve25519PrivateKey
@@ -9,13 +10,13 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.protobuf.ProtoBuf
 import me.gendal.conclave.walletmanager.common.*
-import org.junit.jupiter.api.*
-import org.slf4j.LoggerFactory
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.Assertions.assertSame
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Test
 import java.util.*
 import java.util.concurrent.atomic.AtomicLong
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
-import org.junit.jupiter.api.Assertions.*
 
 @ExperimentalSerializationApi
 class WalletManagerEnclaveTest {
@@ -28,7 +29,6 @@ class WalletManagerEnclaveTest {
     private val postOffices = HashMap<String, PostOffice>()
 
     private val idCounter = AtomicLong()
-    private val logger = LoggerFactory.getLogger(WalletManagerEnclaveTest::class.java)
 
     @BeforeEach
     fun startup() {
@@ -246,6 +246,153 @@ class WalletManagerEnclaveTest {
          */
     }
 
+
+    @Test
+    fun `Confirm that a calculation cannot be locked before quorum`() {
+        /* TODO
+        *
+        * Confirm that a calculation cannot be locked before quorum
+        * Confirm that a calculation IS locked first time a results request after quorum is reached
+        * Confirm that once a calculation is locked no new results can be added
+        * Confirm that this does NOT apply to KeyMatcher
+        *
+         */
+        val setupMaxComputation = SetupComputation(
+            Computation(
+                "MaxComputation",
+                Computation.ComputationType.max,
+                listOf(keys["alice"]!!.publicKey, keys["bob"]!!.publicKey, keys["charley"]!!.publicKey),
+                3
+            )
+        )
+        val responseSetup = enclaveRequest(setupMaxComputation, EnclaveMessageResponse.serializer(), postOffices["charley"]!!)
+        assertSame(ResponseCode.SUCCESS, responseSetup[0].responseCode)
+
+        val submissionAlice = "-10"
+        val submissionMessageForAlice  = "Submission from Alice"
+        val submitValueForAlice = SubmitValue("MaxComputation", Submission(submissionAlice, submissionMessageForAlice))
+        val responseForSubmissionByAlice = enclaveRequest(submitValueForAlice, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByAlice[0].responseCode)
+
+        val submissionBob = "0"
+        val submissionMessageForBob  = "Submission from Bob"
+        val submitValueForBob = SubmitValue("MaxComputation", Submission(submissionBob, submissionMessageForBob))
+        val responseForSubmissionByBob = enclaveRequest(submitValueForBob, EnclaveMessageResponse.serializer(), postOffices["bob"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByBob[0].responseCode)
+
+        val submissionCharley = "300"
+        val submissionMessageForCharley  = "Submission from Charley"
+        val submitValueForCharley = SubmitValue("MaxComputation", Submission(submissionCharley, submissionMessageForCharley))
+        val responseForSubmissionByCharley = enclaveRequest(submitValueForCharley, EnclaveMessageResponse.serializer(), postOffices["charley"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByCharley[0].responseCode)
+
+        val getComputationResult = GetComputationResult("MaxComputation")
+        val responseForGetComputationResult = enclaveRequest(getComputationResult, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForGetComputationResult[0].responseCode)
+        assertTrue(keys["charley"]!!.publicKey.toString() == responseForGetComputationResult[0].message)
+    }
+
+    @Test
+    fun `Confirm that a calculation IS locked first time a results request after quorum is reached`() {
+        /* TODO
+        *
+        * Confirm that a calculation IS locked first time a results request after quorum is reached
+        * Confirm that once a calculation is locked no new results can be added
+        * Confirm that this does NOT apply to KeyMatcher
+        *
+         */
+        val setupMaxComputation = SetupComputation(
+            Computation(
+                "MaxComputation",
+                Computation.ComputationType.max,
+                listOf(keys["alice"]!!.publicKey, keys["bob"]!!.publicKey, keys["charley"]!!.publicKey),
+                3
+            )
+        )
+        val responseSetup = enclaveRequest(setupMaxComputation, EnclaveMessageResponse.serializer(), postOffices["charley"]!!)
+        assertSame(ResponseCode.SUCCESS, responseSetup[0].responseCode)
+
+        var submissionAlice = "-10"
+        var submissionMessageForAlice  = "Submission from Alice"
+        var submitValueForAlice = SubmitValue("MaxComputation", Submission(submissionAlice, submissionMessageForAlice))
+        var responseForSubmissionByAlice = enclaveRequest(submitValueForAlice, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByAlice[0].responseCode)
+
+        val submissionBob = "0"
+        val submissionMessageForBob  = "Submission from Bob"
+        val submitValueForBob = SubmitValue("MaxComputation", Submission(submissionBob, submissionMessageForBob))
+        val responseForSubmissionByBob = enclaveRequest(submitValueForBob, EnclaveMessageResponse.serializer(), postOffices["bob"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByBob[0].responseCode)
+
+        val submissionCharley = "300"
+        val submissionMessageForCharley  = "Submission from Charley"
+        val submitValueForCharley = SubmitValue("MaxComputation", Submission(submissionCharley, submissionMessageForCharley))
+        val responseForSubmissionByCharley = enclaveRequest(submitValueForCharley, EnclaveMessageResponse.serializer(), postOffices["charley"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByCharley[0].responseCode)
+
+        val getComputationResult = GetComputationResult("MaxComputation")
+        val responseForGetComputationResult = enclaveRequest(getComputationResult, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForGetComputationResult[0].responseCode)
+        assertTrue(keys["charley"]!!.publicKey.toString() == responseForGetComputationResult[0].message)
+
+         submissionAlice = "400"
+         submissionMessageForAlice  = "Submission from Alice"
+         submitValueForAlice = SubmitValue("MaxComputation", Submission(submissionAlice, submissionMessageForAlice))
+         responseForSubmissionByAlice = enclaveRequest(submitValueForAlice, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.COMPUTATION_LOCKED, responseForSubmissionByAlice[0].responseCode)
+    }
+
+    @Test
+    fun `Confirm that once a calculation is locked no new results can be added`() {
+        /* TODO
+        *
+        * Confirm that once a calculation is locked no new results can be added
+        * Confirm that this does NOT apply to KeyMatcher
+        *
+         */
+        val setupMaxComputation = SetupComputation(
+            Computation(
+                "MaxComputation",
+                Computation.ComputationType.max,
+                listOf(keys["alice"]!!.publicKey, keys["bob"]!!.publicKey, keys["charley"]!!.publicKey),
+                3
+            )
+        )
+        val responseSetup = enclaveRequest(setupMaxComputation, EnclaveMessageResponse.serializer(), postOffices["charley"]!!)
+        assertSame(ResponseCode.SUCCESS, responseSetup[0].responseCode)
+
+        var submissionAlice = "-10"
+        var submissionMessageForAlice  = "Submission from Alice"
+        var submitValueForAlice = SubmitValue("MaxComputation", Submission(submissionAlice, submissionMessageForAlice))
+        var responseForSubmissionByAlice = enclaveRequest(submitValueForAlice, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByAlice[0].responseCode)
+
+         submissionAlice = "400"
+         submissionMessageForAlice  = "Submission from Alice"
+         submitValueForAlice = SubmitValue("MaxComputation", Submission(submissionAlice, submissionMessageForAlice))
+         responseForSubmissionByAlice = enclaveRequest(submitValueForAlice, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByAlice[0].responseCode)
+
+        val submissionBob = "0"
+        val submissionMessageForBob  = "Submission from Bob"
+        val submitValueForBob = SubmitValue("MaxComputation", Submission(submissionBob, submissionMessageForBob))
+        val responseForSubmissionByBob = enclaveRequest(submitValueForBob, EnclaveMessageResponse.serializer(), postOffices["bob"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByBob[0].responseCode)
+
+        val submissionCharley = "300"
+        val submissionMessageForCharley  = "Submission from Charley"
+        val submitValueForCharley = SubmitValue("MaxComputation", Submission(submissionCharley, submissionMessageForCharley))
+        val responseForSubmissionByCharley = enclaveRequest(submitValueForCharley, EnclaveMessageResponse.serializer(), postOffices["charley"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByCharley[0].responseCode)
+
+        val getComputationResult = GetComputationResult("MaxComputation")
+        val responseForGetComputationResult = enclaveRequest(getComputationResult, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForGetComputationResult[0].responseCode)
+        assertTrue(keys["charley"]!!.publicKey.toString() == responseForGetComputationResult[0].message)
+
+
+    }
+
     @Test
     fun `Key matched logic works`() {
         /* TODO
@@ -261,6 +408,42 @@ class WalletManagerEnclaveTest {
 
     @Test
     fun `Confirm only submitters of a key can see what other submitters of same key have submitted`() {
+        val setupKeyComputation = SetupComputation(
+            Computation(
+                "KeyComputation",
+                Computation.ComputationType.key,
+                listOf(keys["alice"]!!.publicKey, keys["bob"]!!.publicKey, keys["charley"]!!.publicKey),
+                2
+            )
+        )
+        val responseSetup = enclaveRequest(setupKeyComputation, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseSetup[0].responseCode)
+
+        val submissionAlice = "KEY-Ganesh"
+        val submissionMessageForAlice  = "Submission from Alice"
+        val submitValueForAlice = SubmitValue("KeyComputation", Submission(submissionAlice, submissionMessageForAlice))
+        val responseForSubmissionByAlice = enclaveRequest(submitValueForAlice, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByAlice[0].responseCode)
+
+        val submissionBob = "Key-BOB"
+        val submissionMessageForBob  = "Submission from Bob"
+        val submitValueForBob = SubmitValue("KeyComputation", Submission(submissionBob, submissionMessageForBob))
+        val responseForSubmissionByBob = enclaveRequest(submitValueForBob, EnclaveMessageResponse.serializer(), postOffices["bob"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByBob[0].responseCode)
+
+        val getComputationResult = GetComputationResult("KeyComputation")
+        val responseForGetComputationResult = enclaveRequest(getComputationResult, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.CHECK_INBOX, responseForGetComputationResult[0].responseCode)
+        // assertTrue(keys["alice"]!!.publicKey.toString().equals(responseForGetComputationResult[0].message))
+
+        inbox(
+            "KeyMatch" + SHA256Hash.hash(keys["alice"]!!.publicKey.encoded).toString(),
+            postOffices["alice"]!!,
+            KeyMatcherResult.serializer()
+        )
+        println('1')
+
+
     }
 
     @Test
