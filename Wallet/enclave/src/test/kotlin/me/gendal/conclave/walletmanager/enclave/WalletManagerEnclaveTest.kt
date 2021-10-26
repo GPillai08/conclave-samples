@@ -103,7 +103,7 @@ class WalletManagerEnclaveTest {
         assertSame(ResponseCode.QUORUM_NOT_REACHED, response[0].responseCode)
     }
 
-    @Test
+        @Test
     fun `Cannot participate in computations you're not part of`() {
 
         val setupArbitraryComputation = SetupComputation(
@@ -137,6 +137,169 @@ class WalletManagerEnclaveTest {
         val listResponse2 = enclaveRequest(visibleComputations, Computations.serializer(), postOffices["charley"]!!)
         assertSame(ResponseCode.NO_RESULTS, listResponse2[0].responseCode)
     }
+
+    @Test
+    fun isValidCardNumberByLuhn() {
+
+        val setupisValidCardNumberByLuhnComputation = SetupComputation(
+            Computation(
+                "isValidCardNumberByLuhn",
+                Computation.ComputationType.addcard,
+                listOf(keys["alice"]!!.publicKey, keys["bob"]!!.publicKey, keys["charley"]!!.publicKey),
+                1
+            )
+        )
+        val responseSetup = enclaveRequest(setupisValidCardNumberByLuhnComputation, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseSetup[0].responseCode)
+
+        val submissionAlice = "1234567890123456"
+        val submissionMessageForAlice  = "Submission from Alice"
+        val submitValueForAlice = SubmitValue("isValidCardNumberByLuhn", Submission(submissionAlice, submissionMessageForAlice))
+        val responseForSubmissionByAlice = enclaveRequest(submitValueForAlice, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByAlice[0].responseCode)
+
+        val getComputationResult = GetComputationResult("isValidCardNumberByLuhn")
+        val responseForGetComputationResult = enclaveRequest(getComputationResult, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForGetComputationResult[0].responseCode)
+        assertTrue("true" == responseForGetComputationResult[0].message)
+    }
+
+
+    @Test
+    fun isValidCVC() {
+
+        val setupisValidCVCComputation = SetupComputation(
+            Computation(
+                "isValidCVC",
+                Computation.ComputationType.addcard,
+                listOf(keys["alice"]!!.publicKey, keys["bob"]!!.publicKey, keys["charley"]!!.publicKey),
+                1
+            )
+        )
+        val responseSetup = enclaveRequest(setupisValidCVCComputation, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseSetup[0].responseCode)
+
+        val submissionAlice = "123"
+        val submissionMessageForAlice  = "Submission from Alice"
+        val submitValueForAlice = SubmitValue("isValidCVC", Submission(submissionAlice, submissionMessageForAlice))
+        val responseForSubmissionByAlice = enclaveRequest(submitValueForAlice, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByAlice[0].responseCode)
+
+        val getComputationResult = GetComputationResult("isValidCVC")
+        val responseForGetComputationResult = enclaveRequest(getComputationResult, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForGetComputationResult[0].responseCode)
+        assertTrue("true" == responseForGetComputationResult[0].message)
+    }
+
+    @Test
+    fun isValidExpirationDate() {
+
+        val setupisValidExpirationDate = SetupComputation(
+            Computation(
+                "isValidExpirationDate",
+                Computation.ComputationType.addcard,
+                listOf(keys["alice"]!!.publicKey, keys["bob"]!!.publicKey, keys["charley"]!!.publicKey),
+                1
+            )
+        )
+        val responseSetup = enclaveRequest(setupisValidExpirationDate, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseSetup[0].responseCode)
+
+        val submissionAlice = "08/25"
+        val submissionMessageForAlice  = "Submission from Alice"
+        val submitValueForAlice = SubmitValue("isValidExpirationDate", Submission(submissionAlice, submissionMessageForAlice))
+        val responseForSubmissionByAlice = enclaveRequest(submitValueForAlice, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByAlice[0].responseCode)
+
+        val getComputationResult = GetComputationResult("isValidExpirationDate")
+        val responseForGetComputationResult = enclaveRequest(getComputationResult, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForGetComputationResult[0].responseCode)
+        assertTrue("true" == responseForGetComputationResult[0].message)
+    }
+
+    @Test
+    fun isValidCardNumberLength() {
+
+        val setupisValidCardNumberLength = SetupComputation(
+            Computation(
+                "isValidCardNumberLength",
+                Computation.ComputationType.addcard,
+                listOf(keys["alice"]!!.publicKey, keys["bob"]!!.publicKey, keys["charley"]!!.publicKey),
+                1
+            )
+        )
+        val responseSetup = enclaveRequest(setupisValidCardNumberLength, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseSetup[0].responseCode)
+
+        val submissionAlice = "1234567890123456"
+        val submissionMessageForAlice  = "Submission from Alice"
+        val submitValueForAlice = SubmitValue("isValidCardNumberLengthComputation", Submission(submissionAlice, submissionMessageForAlice))
+        val responseForSubmissionByAlice = enclaveRequest(submitValueForAlice, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByAlice[0].responseCode)
+
+        val getComputationResult = GetComputationResult("isValidCardNumberLength")
+        val responseForGetComputationResult = enclaveRequest(getComputationResult, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForGetComputationResult[0].responseCode)
+        assertTrue("true" == responseForGetComputationResult[0].message)
+    }
+
+
+    @Test
+    fun isValidCVCLENGTH() {
+
+        val setupisValidCVCLENGTHComputation = SetupComputation(
+            Computation(
+                "isValidCVCLENGTH",
+                Computation.ComputationType.addcard,
+                listOf(keys["alice"]!!.publicKey, keys["bob"]!!.publicKey, keys["charley"]!!.publicKey),
+                1
+            )
+        )
+        val responseSetup = enclaveRequest(setupisValidCVCLENGTHComputation, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseSetup[0].responseCode)
+
+        val submissionAlice = "123"
+        val submissionMessageForAlice  = "Submission from Alice"
+        val submitValueForAlice = SubmitValue("isValidCVCLENGTH", Submission(submissionAlice, submissionMessageForAlice))
+        val responseForSubmissionByAlice = enclaveRequest(submitValueForAlice, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByAlice[0].responseCode)
+
+        val getComputationResult = GetComputationResult("isValidCVCLENGTH")
+        val responseForGetComputationResult = enclaveRequest(getComputationResult, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForGetComputationResult[0].responseCode)
+        assertTrue("true" == responseForGetComputationResult[0].message)
+    }
+
+
+
+    @Test
+    fun isValidEXPYEARLENGTH() {
+
+        val setupisValidEXPYEARLENGTHComputation = SetupComputation(
+            Computation(
+                "isValidEXPYEARLENGTH",
+                Computation.ComputationType.addcard,
+                listOf(keys["alice"]!!.publicKey, keys["bob"]!!.publicKey, keys["charley"]!!.publicKey),
+                1
+            )
+        )
+        val responseSetup = enclaveRequest(setupisValidEXPYEARLENGTHComputation, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseSetup[0].responseCode)
+
+        val submissionAlice = "2025"
+        val submissionMessageForAlice  = "Submission from Alice"
+        val submitValueForAlice = SubmitValue("isValidEXPYEARLENGTH", Submission(submissionAlice, submissionMessageForAlice))
+        val responseForSubmissionByAlice = enclaveRequest(submitValueForAlice, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForSubmissionByAlice[0].responseCode)
+
+        val getComputationResult = GetComputationResult("isValidEXPYEARLENGTH")
+        val responseForGetComputationResult = enclaveRequest(getComputationResult, EnclaveMessageResponse.serializer(), postOffices["alice"]!!)
+        assertSame(ResponseCode.SUCCESS, responseForGetComputationResult[0].responseCode)
+        assertTrue("true" == responseForGetComputationResult[0].message)
+    }
+
+
+
 
     @Test
     fun `Simple Avg Calculations actually work`() {
